@@ -7,10 +7,8 @@
         mc:Ignorable="d"
         Title="VAPTS - Address Resolution Protocol" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="localDevices" HorizontalAlignment="Left" Height="337" Margin="139,72,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="643" FontFamily="Courier New" Grid.ColumnSpan="3"/>
-        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Width="792" RenderTransformOrigin="-2.719,-2.83" Background="#FF850505" Grid.ColumnSpan="3" Margin="0,0,0,354.8">
-            <DockPanel Height="565" LastChildFill="False" VerticalAlignment="Top" Width="837" Margin="0,54,0,-564"/>
-            <DockPanel LastChildFill="False" Width="134" RenderTransformOrigin="0.565,2.262" Margin="0,67,0,-352" Background="#FF363636"/>
+        <TextBox x:Name="localDevices" HorizontalAlignment="Left" Height="337" Margin="139,72,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="643" FontFamily="Courier New" Grid.ColumnSpan="3" BorderBrush="White"/>
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Width="800" RenderTransformOrigin="-2.719,-2.83" Background="#FF850505" Grid.ColumnSpan="3" Margin="0,0,0,354.8">
         </DockPanel>
         <Button x:Name="btnRun" HorizontalAlignment="Right" Margin="0,73,669.2,300.8" Width="116" Click="viewNetwork" Content="Run ARP Command"/>
 
