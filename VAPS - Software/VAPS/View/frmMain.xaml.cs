@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using VAPS.Controller;
 namespace VAPS.View
 {
     /// <summary>
@@ -19,16 +19,20 @@ namespace VAPS.View
     /// </summary>
     public partial class CoreWindow : Window
     {
+        ARPController network;
         public CoreWindow()
         {
+            
             InitializeComponent();
             var mainForm = this;
+            network = new ARPController();
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            var ARPWindow = new ARP();
-            ARPWindow.ShowDialog();
+            localDevices.Text = network.getArpList();
+
+            //ARPWindow.ShowDialog();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +40,9 @@ namespace VAPS.View
             Environment.Exit(0);
         }
 
-        private void btnARP_Clk(object sender, RoutedEventArgs e)
+        
+
+        private void btnARPClk(object sender, RoutedEventArgs e)
         {
 
         }

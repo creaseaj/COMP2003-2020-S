@@ -5,11 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VAPS.View"
         mc:Ignorable="d"
-        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="643.511" Width="995.674" ResizeMode="NoResize">
+        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="650" Width="1000" ResizeMode="NoResize">
     <Grid>
         <Rectangle Fill="#FF850505" Height="54" Stroke="Black" VerticalAlignment="Top" Margin="0,1,-0.8,0"/>
-        <Rectangle Fill="#FF363636" Height="561" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,840.2,-0.2"/>
-        <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,566,840.2,9.8" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White" DockPanel.Dock="Right" HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
-        <Button Content="ARP View" HorizontalAlignment="Left" Margin="170,73,0,0" VerticalAlignment="Top" Width="91" Height="68" Click="btnARP_Click"/>
+        <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,840.6,0"/>
+        <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,566,840.2,9.8" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
+        <TabControl x:Name="tabCon" HorizontalAlignment="Left" Height="567" Margin="0,54,-0.4,0" VerticalAlignment="Top" Width="994" TabStripPlacement="Left">
+            <TabItem Header="ARP View  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="White" >
+                <Grid>
+                    <Button x:Name="btnRun" FontWeight="Medium" FontSize="12" HorizontalAlignment="Left" Margin="17,10,0,508.6" Width="177" Content="Run ARP Command" Click="btnARP_Click"/>
+                    <TextBox x:Name="localDevices" FontWeight="Medium" FontSize="12" HorizontalAlignment="Left" Height="337" Margin="210,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="632" FontFamily="Courier New" BorderBrush="White"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem" Background="#FF363636" BorderBrush="{x:Null}" FontSize="22" FontWeight="Bold" Foreground="White" />
+        </TabControl>
     </Grid>
 </Window>
