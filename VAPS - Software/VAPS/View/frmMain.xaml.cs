@@ -35,5 +35,10 @@ namespace VAPS.View
         {
             Environment.Exit(0);
         }
+
+        private void btnARP_Clk(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

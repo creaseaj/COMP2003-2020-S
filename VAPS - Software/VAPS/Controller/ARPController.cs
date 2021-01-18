@@ -58,7 +58,7 @@ namespace VAPS.Controller
             }
             catch( System.ArgumentOutOfRangeException)
             {
-                return "An error has occured";
+                return macAddress;
             }
             
             
