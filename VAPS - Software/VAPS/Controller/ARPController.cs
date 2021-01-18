@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace VAPS
+namespace VAPS.Controller
 {
     class ARPController
     {
@@ -47,20 +47,37 @@ namespace VAPS
                 }
             }
         }
-        public String getArpList()
+        private string getMACVendor(String macAddress){
+            webScraper scrape = new webScraper();
+            String webPage = scrape.webScrape("https://www.adminsub.net/mac-address-finder/" + macAddress);
+            String[] webPageLines = Regex.Split(webPage,@"\n");
+            String vendor = Regex.Match(webPageLines[94],@"\?q=(\w|\s)+").Value;
+            return(vendor.Substring(3,vendor.Length - 3));
+        }
+        public string getArpList()
         {
             updateArpList();
             List<List<String>> arpOut = new List<List<string>>();
             string[] headers = {"IP Address","Physical Address","Type"};
             arpOut.Add(headers.ToList());
-            arpOut.AddRange(arpList);
+            // creating new arp list with custom mac addresses
+            foreach(List<String> item in arpList){
+                List<String> newList = new List<string>();
+                for(int i = 0; i < item.Count; i++){
+                    if(i == 1 & item[2] != "static"){
+                        newList.Add(getMACVendor(item[i].Substring(0,8)) + item[i].Substring(8));
+                    }
+                    else{newList.Add(item[i]);}
+                }
+                arpOut.Add(newList);
+            }
             int[] lengths = new int[arpList[0].Count];
             // finding longest item in each column
-            for(int i = 0; i < arpList.Count; i++)
+            for(int i = 0; i < arpOut.Count; i++)
             {
-                for(int j = 0; j < arpList[i].Count; j++)
+                for(int j = 0; j < arpOut[i].Count; j++)
                 {
-                    int size = arpList[i][j].Length;
+                    int size = arpOut[i][j].Length;
                     lengths[j] = size > lengths[j] ? size : lengths[j];
                 }
             }
