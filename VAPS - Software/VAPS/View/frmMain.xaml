@@ -1,0 +1,14 @@
+﻿<Window x:Class="VAPS.View.CoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VAPS.View"
+        mc:Ignorable="d"
+        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="643.511" Width="995.674" ResizeMode="NoResize">
+    <DockPanel HorizontalAlignment="Left" Height="55" LastChildFill="False" VerticalAlignment="Top" Width="990" RenderTransformOrigin="-2.719,-2.83" Background="#FF850505">
+        <DockPanel LastChildFill="False" Width="152" RenderTransformOrigin="0.565,2.262" Margin="0,54,0,-564" Background="#FF363636">
+            <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,522,0,4" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White" DockPanel.Dock="Right" HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39"/>
+        </DockPanel>
+    </DockPanel>
+</Window>
