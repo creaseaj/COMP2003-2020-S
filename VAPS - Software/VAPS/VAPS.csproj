@@ -141,5 +141,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\vaptsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\vaptsSmall.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,5 +19,6 @@
             </TabItem>
             <TabItem Header="TabItem" Background="#FF363636" BorderBrush="{x:Null}" FontSize="22" FontWeight="Bold" Foreground="White" />
         </TabControl>
+        <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="0,1,0,0" VerticalAlignment="Top" Width="202"/>
     </Grid>
 </Window>
