@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\VAPS",
     "\\VAPS - Software",
     "\\VAPS - Software\\VAPS",
-    "\\VAPS - Software\\VAPS\\Controller",
-    "\\VAPS - Software\\VAPS\\Properties",
-    "\\VAPS - Software\\VAPS\\View",
-    "\\VAPTS"
+    "\\VAPS\\VAPS"
   ],
   "SelectedNode": "\\VAPS - Software\\VAPS.sln",
   "PreviewInSolutionExplorer": false
