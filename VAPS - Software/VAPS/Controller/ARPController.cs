@@ -40,24 +40,43 @@ namespace VAPS
             {
                 if (Regex.IsMatch(line, @"^ *\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"))
                 {
-                    arpList.Add(Regex.Split(line, @" +").ToList());
+                    String[] toArpList = Regex.Split(line, @" +");
+                    String[] newArp = new string[3];
+                    Array.Copy(toArpList,1,newArp,0,3);
+                    arpList.Add(newArp.ToList());
                 }
             }
         }
         public String getArpList()
         {
             updateArpList();
-            String stringOut = "";
-            stringOut += "\t\tIP Address\t\tPhysical Address\t\tType\n";
-            foreach (List<String> line in arpList)
+            List<List<String>> arpOut = new List<List<string>>();
+            string[] headers = {"IP Address","Physical Address","Type"};
+            arpOut.Add(headers.ToList());
+            arpOut.AddRange(arpList);
+            int[] lengths = new int[arpList[0].Count];
+            // finding longest item in each column
+            for(int i = 0; i < arpList.Count; i++)
             {
-                foreach (String item in line)
+                for(int j = 0; j < arpList[i].Count; j++)
                 {
-                    stringOut += item + "\t\t";
+                    int size = arpList[i][j].Length;
+                    lengths[j] = size > lengths[j] ? size : lengths[j];
                 }
-                stringOut += "\n";
             }
-            return stringOut;
+            StringBuilder stringOut = new StringBuilder();
+            //String stringOut = "";
+            foreach (List<String> line in arpOut)
+            {
+                for(int i = 0; i < line.Count ; i ++)
+                {
+                    stringOut.Append(line[i] );
+                    for(int j = 0; j < lengths[i] -line[i].Length; j++){stringOut.Append(' ');}
+                    stringOut.Append(" |");
+                }
+                stringOut.Append("\n");
+            }
+            return stringOut.ToString();
         }
     }
 }
