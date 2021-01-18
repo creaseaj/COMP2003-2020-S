@@ -9,11 +9,8 @@ namespace VAPS.Controller
 {
     class webScraper
     {
-        String url;
         public webScraper()
         {
-            //url = urlIn;
-            //webScrape(url);
         }
         public string webScrape(String url)
         {
