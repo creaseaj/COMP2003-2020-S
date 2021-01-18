@@ -47,5 +47,11 @@ namespace VAPS.View
         {
 
         }
+
+        private void btnPortScan_Click(object sender, RoutedEventArgs e)
+        {
+            var PortScan = new PortScan();
+            PortScan.ShowDialog();
+        }
     }
 }

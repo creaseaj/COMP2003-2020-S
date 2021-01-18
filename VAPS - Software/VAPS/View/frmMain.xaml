@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="650" Width="1000" ResizeMode="NoResize">
     <Grid>
+<<<<<<< Updated upstream
         <Rectangle Fill="#FF850505" Height="54" Stroke="Black" VerticalAlignment="Top" Margin="0,1,-0.8,0"/>
         <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,840.6,0"/>
         <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,566,840.2,9.8" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
@@ -20,5 +21,17 @@
             <TabItem Header="TabItem" Background="#FF363636" BorderBrush="{x:Null}" FontSize="22" FontWeight="Bold" Foreground="White" />
         </TabControl>
         <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="0,1,0,0" VerticalAlignment="Top" Width="202"/>
+=======
+        <DockPanel HorizontalAlignment="Left" Height="55" LastChildFill="False" VerticalAlignment="Top" Width="990" RenderTransformOrigin="-2.719,-2.83" Background="#FF850505">
+            <DockPanel LastChildFill="False" Width="152" RenderTransformOrigin="0.565,2.262" Margin="0,54,0,-564" Background="#FF363636">
+            </DockPanel>
+            <DockPanel Height="565" LastChildFill="False" VerticalAlignment="Top" Width="837" Margin="0,54,0,-564">
+                <Button x:Name="btnPortScan" Content="Port Scan" Width="477" Margin="0,10,0,482" RenderTransformOrigin="0.5,0.5" Click="btnPortScan_Click"/>
+            </DockPanel>
+        </DockPanel>
+        <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,566,840.2,9.8" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White" DockPanel.Dock="Right" HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
+        <Button Content="ARP View" HorizontalAlignment="Left" Margin="170,73,0,0" VerticalAlignment="Top" Width="91" Height="68" Click="btnARP_Click"/>
+
+>>>>>>> Stashed changes
     </Grid>
 </Window>
