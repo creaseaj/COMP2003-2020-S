@@ -47,7 +47,7 @@ namespace VAPS
                 }
             }
         }
-        public String getArpList()
+        public string getArpList()
         {
             updateArpList();
             List<List<String>> arpOut = new List<List<string>>();

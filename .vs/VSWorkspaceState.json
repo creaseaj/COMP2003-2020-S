@@ -3,6 +3,9 @@
     "",
     "\\VAPS - Software",
     "\\VAPS - Software\\VAPS",
+    "\\VAPS - Software\\VAPS\\Controller",
+    "\\VAPS - Software\\VAPS\\Properties",
+    "\\VAPS - Software\\VAPS\\View",
     "\\VAPTS"
   ],
   "SelectedNode": "\\VAPS - Software\\VAPS.sln",
