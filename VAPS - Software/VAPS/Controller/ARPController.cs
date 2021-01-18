@@ -10,14 +10,14 @@ using System.Text.RegularExpressions;
 
 namespace VAPS
 {
-    class networking
+    class ARPController
     {
         List<List<String>> arpList;
-        public networking()
+        public ARPController()
         {
             arpList = new List<List<String>>();
         }
-        
+
         private string executeCommand(String command, String args)
         {
             String stringOut = "";
@@ -36,9 +36,9 @@ namespace VAPS
         {
             arpList.Clear();
             String unParsedList = executeCommand("arp", "-a");
-            foreach(String line in Regex.Split(unParsedList,"\r\n"))
+            foreach (String line in Regex.Split(unParsedList, "\r\n"))
             {
-                if(Regex.IsMatch(line, @"^ *\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"))
+                if (Regex.IsMatch(line, @"^ *\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"))
                 {
                     arpList.Add(Regex.Split(line, @" +").ToList());
                 }
@@ -48,11 +48,12 @@ namespace VAPS
         {
             updateArpList();
             String stringOut = "";
-            foreach(List<String> line in arpList)
+            stringOut += "\t\tIP Address\t\tPhysical Address\t\tType\n";
+            foreach (List<String> line in arpList)
             {
-                foreach(String item in line)
+                foreach (String item in line)
                 {
-                    stringOut += item + " ";
+                    stringOut += item + "\t\t";
                 }
                 stringOut += "\n";
             }

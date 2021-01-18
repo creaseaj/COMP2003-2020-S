@@ -13,16 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace VAPTS
+namespace VAPS
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        ARPController network;
         public MainWindow()
         {
             InitializeComponent();
+            network = new ARPController();
+        }
+
+        private void viewNetwork(object sender, RoutedEventArgs e)
+        {
+            localDevices.Text = network.getArpList();
         }
     }
 }
