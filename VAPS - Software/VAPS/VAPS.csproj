@@ -77,16 +77,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< Updated upstream
-=======
-    <Compile Include="Controller\PortScanController.cs" />
-    <Compile Include="View\frmPortScan.xaml.cs">
-      <DependentUpon>frmPortScan.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
-    </Compile>
->>>>>>> Stashed changes
     <Page Include="View\frmMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,17 +97,6 @@
       <DependentUpon>frmARP.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< Updated upstream
-=======
-    <Page Include="View\frmPortScan.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\test.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ARPController.cs" />
