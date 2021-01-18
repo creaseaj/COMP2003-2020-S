@@ -52,7 +52,16 @@ namespace VAPS.Controller
             String webPage = scrape.webScrape("https://www.adminsub.net/mac-address-finder/" + macAddress);
             String[] webPageLines = Regex.Split(webPage,@"\n");
             String vendor = Regex.Match(webPageLines[94],@"\?q=(\w|\s)+").Value;
-            return(vendor.Substring(3,vendor.Length - 3));
+            try
+            {
+                return(vendor.Substring(3,vendor.Length - 3));
+            }
+            catch( System.ArgumentOutOfRangeException)
+            {
+                return "An error has occured";
+            }
+            
+            
         }
         public string getArpList()
         {

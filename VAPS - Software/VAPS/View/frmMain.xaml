@@ -8,7 +8,10 @@
         Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="643.511" Width="995.674" ResizeMode="NoResize">
     <DockPanel HorizontalAlignment="Left" Height="55" LastChildFill="False" VerticalAlignment="Top" Width="990" RenderTransformOrigin="-2.719,-2.83" Background="#FF850505">
         <DockPanel LastChildFill="False" Width="152" RenderTransformOrigin="0.565,2.262" Margin="0,54,0,-564" Background="#FF363636">
-            <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,522,0,4" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White" DockPanel.Dock="Right" HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39"/>
+            <Button x:Name="btnExit" Content="Exit" Width="139" Margin="0,522,0,4" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White" DockPanel.Dock="Right" HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
+        </DockPanel>
+        <DockPanel Height="565" LastChildFill="False" VerticalAlignment="Top" Width="837" Margin="0,54,0,-564">
+            <Button x:Name="btnARP" Content="ARP" Width="90" Click="btnARP_Click" Margin="20,0,0,492"/>
         </DockPanel>
     </DockPanel>
 </Window>

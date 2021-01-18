@@ -22,6 +22,18 @@ namespace VAPS.View
         public CoreWindow()
         {
             InitializeComponent();
+            var mainForm = this;
+        }
+
+        private void btnARP_Click(object sender, RoutedEventArgs e)
+        {
+            var ARPWindow = new ARP();
+            ARPWindow.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

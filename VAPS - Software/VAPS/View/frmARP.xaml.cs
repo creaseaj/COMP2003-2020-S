@@ -20,10 +20,10 @@ namespace VAPS
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ARP : Window
     {
         ARPController network;
-        public MainWindow()
+        public ARP()
         {
             InitializeComponent();
             network = new ARPController();
