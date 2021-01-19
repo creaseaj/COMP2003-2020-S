@@ -21,12 +21,14 @@ namespace VAPS.View
     public partial class CoreWindow : Window
     {
         ARPController network;
+        PortScanController scanController;
         public CoreWindow()
         {
             
             InitializeComponent();
             var mainForm = this;
             network = new ARPController();
+            scanController = new PortScanController();
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
@@ -44,6 +46,16 @@ namespace VAPS.View
         
 
         private void btnARPClk(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnPortScanner_Click(object sender, RoutedEventArgs e)
+        {
+            txtPortOutput.Text = scanController.results();
+        }
+
+        private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
