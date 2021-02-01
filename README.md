@@ -12,7 +12,6 @@ Designed for Small-to-Medium enterprises whose systems may be vulnerable to atta
 * Charlie Grayson
 * Matt Hewitt
 * Kieran Wheatley
-* Callum Willicott
 
 ## Acknowledgements ##
 [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
