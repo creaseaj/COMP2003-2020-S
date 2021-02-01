@@ -59,7 +59,8 @@ namespace VAPS.Controller
             // creating new arp list with custom mac addresses
             foreach(List<String> item in arpList){
                 List<String> newList = new List<string>();
-                for(int i = 0; i < item.Count; i++){
+                for(int i = 0; i < item.Count; i++)
+                {
                     if(i == 1 & item[2] != "static"){
                         newList.Add(getMACVendor(item[i].Substring(0,8)) + item[i].Substring(8));
                     }
