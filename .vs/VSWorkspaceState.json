@@ -1,12 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\VAPS",
     "\\VAPS - Software",
+    "\\VAPS - Software\\packages",
     "\\VAPS - Software\\VAPS",
     "\\VAPS - Software\\VAPS\\Controller",
-    "\\VAPS\\VAPS"
+    "\\VAPS - Software\\VAPS\\Properties",
+    "\\VAPS - Software\\VAPS\\Resources",
+    "\\VAPS - Software\\VAPS\\View",
+    "\\VAPTS"
   ],
-  "SelectedNode": "\\VAPS - Software\\VAPS.sln",
+  "SelectedNode": "\\VAPS - Software\\VAPS\\Controller\\webScraper.cs",
   "PreviewInSolutionExplorer": false
 }

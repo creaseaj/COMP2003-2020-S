@@ -18,24 +18,11 @@ namespace VAPS.Controller
             arpList = new List<List<String>>();
         }
 
-        private string executeCommand(String command, String args)
-        {
-            String stringOut = "";
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.CreateNoWindow = true;
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.FileName = command;
-            startInfo.Arguments = args;
-            Process process = Process.Start(startInfo);
-            stringOut = process.StandardOutput.ReadToEnd();
-            return stringOut;
-        }
+        
         private void updateArpList()
         {
             arpList.Clear();
-            String unParsedList = executeCommand("arp", "-a");
+            String unParsedList = cmdController.executeCommand("arp", "-a");
             foreach (String line in Regex.Split(unParsedList, "\r\n"))
             {
                 if (Regex.IsMatch(line, @"^ *\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"))
@@ -51,10 +38,10 @@ namespace VAPS.Controller
             webScraper scrape = new webScraper();
             String webPage = scrape.webScrape("https://www.adminsub.net/mac-address-finder/" + macAddress);
             String[] webPageLines = Regex.Split(webPage,@"\n");
-            String vendor = Regex.Match(webPageLines[94],@"\?q=(\w|\s)+").Value;
+            String vendor = Regex.Match(webPageLines[94],@"(?!\?q=)(\w|\s)+").Value;
             try
             {
-                return(vendor.Substring(3,vendor.Length - 3));
+                return(vendor);
             }
             catch( System.ArgumentOutOfRangeException)
             {

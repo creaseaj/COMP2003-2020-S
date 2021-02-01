@@ -21,27 +21,13 @@ namespace VAPS.Controller
             args = "-an";
         }
 
-        public string executeCommand(String command, String args)
-        {
-
-            String stringOut = "";
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.CreateNoWindow = true;
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.FileName = command;
-            startInfo.Arguments = args;
-            Process process = Process.Start(startInfo);
-            stringOut = process.StandardOutput.ReadToEnd();
-            return stringOut;
-        }
+       
 
 
         private void refreshList()
         {
             portOutput.Clear();
-            String result = executeCommand(command, args);
+            String result = cmdController.executeCommand(command, args);
             string[] stringSeperator = new string[] { "\r\n" };
             string[] lines = result.Split(stringSeperator, StringSplitOptions.None);
             foreach (string individualResult in lines)
@@ -65,7 +51,7 @@ namespace VAPS.Controller
         public string results()
         {
             refreshList();
-            executeCommand(command, args);
+            cmdController.executeCommand(command, args);
             StringBuilder output = new StringBuilder();
             foreach (string line in portOutput)
             {

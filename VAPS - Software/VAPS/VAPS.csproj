@@ -89,6 +89,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\cmdController.cs" />
     <Compile Include="Controller\PortScanController.cs" />
     <Compile Include="Controller\webScraper.cs" />
     <Compile Include="View\frmMain.xaml.cs">

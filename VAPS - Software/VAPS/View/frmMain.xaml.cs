@@ -45,10 +45,10 @@ namespace VAPS.View
 
         
 
-        private void btnARPClk(object sender, RoutedEventArgs e)
-        {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                private void btnARPClk(object sender, RoutedEventArgs e)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {
 
-        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 
         private void btnPortScanner_Click(object sender, RoutedEventArgs e)
         {
