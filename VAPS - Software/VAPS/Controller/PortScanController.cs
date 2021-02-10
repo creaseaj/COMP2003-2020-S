@@ -16,7 +16,6 @@ namespace VAPS.Controller
         public PortScanController()
         {
             portOutput = new List<string>();
-            Controller.ARPController runCommand = new ARPController();
             command = "netstat";
             args = "-an";
         }

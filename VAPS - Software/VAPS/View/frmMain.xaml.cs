@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,9 +34,22 @@ namespace VAPS.View
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            localDevices.Text = network.getArpList();
-
+            DataTable dataTable = new DataTable();
+            List<List<string>> arpList = network.getARPRaw();
+            for(int i = 0; i < arpList[0].Count; i++) {
+                dataTable.Columns.Add(new DataColumn(arpList[0][i]));            
+            }
             //ARPWindow.ShowDialog();
+            for(int i = 1; i < arpList.Count; i++)
+            {
+                var newRow = dataTable.NewRow();
+                for(int j = 0; j < arpList[i].Count; j++)
+                {
+                    newRow[arpList[0][j]] = arpList[i][j];
+                }
+                dataTable.Rows.Add(newRow);
+            }
+            arpGrid.ItemsSource = dataTable.DefaultView;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

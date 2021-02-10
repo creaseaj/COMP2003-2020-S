@@ -38,10 +38,10 @@ namespace VAPS.Controller
             webScraper scrape = new webScraper();
             String webPage = scrape.webScrape("https://www.adminsub.net/mac-address-finder/" + macAddress);
             String[] webPageLines = Regex.Split(webPage,@"\n");
-            String vendor = Regex.Match(webPageLines[94],@"(?!\?q=)(\w|\s)+").Value;
+            String vendor = Regex.Match(webPageLines[94],@"\?q=(\w|\s)+").Value;
             try
             {
-                return(vendor);
+                return(vendor.Substring(3));
             }
             catch( System.ArgumentOutOfRangeException)
             {
@@ -50,25 +50,32 @@ namespace VAPS.Controller
             
             
         }
-        public string getArpList()
+        private List<List<string>> getVendorsList(List<List<string>> arpList)
         {
-            updateArpList();
             List<List<String>> arpOut = new List<List<string>>();
-            string[] headers = {"IP Address","Physical Address","Type"};
+            string[] headers = { "IP Address", "MAC Address", "Status" };
             arpOut.Add(headers.ToList());
-            // creating new arp list with custom mac addresses
-            foreach(List<String> item in arpList){
+            foreach (List<String> item in arpList)
+            {
                 List<String> newList = new List<string>();
-                for(int i = 0; i < item.Count; i++)
+                for (int i = 0; i < item.Count; i++)
                 {
-                    if(i == 1 & item[2] != "static"){
-                        newList.Add(getMACVendor(item[i].Substring(0,8)) + item[i].Substring(8));
+                    if (i == 1 & item[2] != "static")
+                    {
+                        newList.Add(getMACVendor(item[i].Substring(0, 8)) + item[i].Substring(8));
                     }
-                    else{newList.Add(item[i]);}
+                    else { newList.Add(item[i]); }
                 }
                 arpOut.Add(newList);
             }
-            int[] lengths = new int[arpList[0].Count];
+            return arpOut;
+        }
+        public string getArpList()
+        {
+            updateArpList();
+            // creating new arp list with custom mac addresses
+            List<List<string>> arpOut = getVendorsList(arpList);
+            int[] lengths = new int[arpOut[0].Count];
             // finding longest item in each column
             for(int i = 0; i < arpOut.Count; i++)
             {
@@ -92,5 +99,12 @@ namespace VAPS.Controller
             }
             return stringOut.ToString();
         }
+        public List<List<string>> getARPRaw()
+        {
+            updateArpList();
+            return getVendorsList(arpList);
+        }
+
+        
     }
 }
