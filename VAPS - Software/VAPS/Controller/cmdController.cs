@@ -16,15 +16,23 @@ namespace VAPS.Controller
 
             String stringOut = "";
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.CreateNoWindow = true;
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.FileName = command;
-            startInfo.Arguments = args;
-            Process process = Process.Start(startInfo);
-            stringOut = process.StandardOutput.ReadToEnd();
-            return stringOut;
+            try
+            {
+                startInfo.CreateNoWindow = true;
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                startInfo.UseShellExecute = false;
+                startInfo.RedirectStandardOutput = true;
+                startInfo.FileName = command;
+                startInfo.Arguments = args;
+                Process process = Process.Start(startInfo);
+                stringOut = process.StandardOutput.ReadToEnd();
+                return stringOut;
+            }
+            catch(Exception e)
+            {
+                return e.ToString();
+            }
+            
         }
     }
 }
