@@ -13,16 +13,23 @@
             <TabItem Header="ARP View  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
                 <Grid>
                     <DataGrid x:Name="arpGrid" Margin="208,10,10,10" HeadersVisibility="Column" IsReadOnly="True"/>
-                    <Button x:Name="testBtn" Content="Button" Height="100" Width="75" Margin="17,73,770,388" Click="runNmap"/>
 
                     <Button x:Name="btnRun" FontWeight="Medium" FontSize="12" HorizontalAlignment="Left" Margin="17,10,0,508.6" Width="177" Content="Run ARP Command" Click="btnARP_Click"/>
                 </Grid>
             </TabItem>
             <Grid Height="100" Width="100"/>
-            <TabItem x:Name="tabPortScan" Header="Port Scan" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-2,-2,0,-2" >
+            <TabItem x:Name="tabPortScan" Header="Port Scan  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-2,-2,0,-2" >
                 <Grid>
                     <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
                     <TextBox x:Name="txtPortOutput" HorizontalAlignment="Left" Height="541" Margin="197,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="655" FontSize="12" FontWeight="Normal"/>
+                </Grid>
+            </TabItem>
+            <Grid Height="100" Width="100"/>
+            <TabItem Header="NMap        " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
+                <Grid>
+                    <Button x:Name="scnNtwrkBtn" Content="Check Installed" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Click="scnNtwrkClk"/>
+                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="501" Margin="238,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="440"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

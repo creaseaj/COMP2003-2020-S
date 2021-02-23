@@ -75,10 +75,10 @@ namespace VAPS.View
 
         }
 
-        private void runNmap(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(new nmapController().isInstalled().ToString());
 
+        private void scnNtwrkClk(object sender, RoutedEventArgs e)
+        {
+            nmapOut.Text = new nmapController().scanLocal();
         }
     }
 }
