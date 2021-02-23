@@ -13,6 +13,8 @@
             <TabItem Header="ARP View  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
                 <Grid>
                     <DataGrid x:Name="arpGrid" Margin="208,10,10,10" HeadersVisibility="Column" IsReadOnly="True"/>
+                    <Button x:Name="testBtn" Content="Button" Height="100" Width="75" Margin="17,73,770,388" Click="runNmap"/>
+
                     <Button x:Name="btnRun" FontWeight="Medium" FontSize="12" HorizontalAlignment="Left" Margin="17,10,0,508.6" Width="177" Content="Run ARP Command" Click="btnARP_Click"/>
                 </Grid>
             </TabItem>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,26 @@ namespace VAPS.View
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void runNmap(object sender, RoutedEventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "C:/Users/Adam/Source/Repos/creaseaj/COMP2003-2020-S/VAPS - Software/VAPS/Nmap/nmap.exe";
+            try
+            {
+                // Start the process with the info we specified.
+                // Call WaitForExit and then the using statement will close.
+                using (Process exeProcess = Process.Start(startInfo))
+                {
+                    exeProcess.WaitForExit();
+                }
+            }
+            catch (Exception ef)
+            {
+                MessageBox.Show("Error: \n" + ef.ToString());
+            }
 
         }
     }
