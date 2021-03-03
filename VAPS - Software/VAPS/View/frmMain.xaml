@@ -11,7 +11,50 @@
         <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,840.6,0"/>
         <TabControl x:Name="tabCon" Height="567" Margin="1,54,-1,0" Width="994" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top">
             <TabItem Header="Dashboard" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-2,0,-2" >
-                <Grid/>
+                <Grid Background="White">
+                    <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="109" Margin="52,54,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="109" Margin="52,193,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="109" Margin="52,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="37" Margin="52,307,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="37" Margin="52,168,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="Red" HorizontalAlignment="Left" Height="37" Margin="52,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="98" Margin="52,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="101"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="98" Margin="52,204,0,0" Stroke="Black" VerticalAlignment="Top" Width="101"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="98" Margin="52,343,0,0" Stroke="Black" VerticalAlignment="Top" Width="101"/>
+                    <Label Content="High Risk" HorizontalAlignment="Left" Margin="384,29,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White"/>
+                    <Label Content="Medium Risk" HorizontalAlignment="Left" Margin="368,168,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White"/>
+                    <Label Content="Low Risk" HorizontalAlignment="Left" Margin="392,307,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White"/>
+                    <Label Content="Total" HorizontalAlignment="Left" Margin="37,241,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="16">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label Content="Total" HorizontalAlignment="Left" Margin="36,102,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="16">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label Content="Total" HorizontalAlignment="Left" Margin="36,379,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="16">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </Grid>
             </TabItem>
             <Grid Height="100" Width="100"/>
             <TabItem x:Name="tabPortScan" Header="Port Scan" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,29,0,-32" >
