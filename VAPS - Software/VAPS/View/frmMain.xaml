@@ -7,25 +7,28 @@
         mc:Ignorable="d"
         Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="650" Width="1000" ResizeMode="NoResize">
     <Grid>
-        <Rectangle Fill="#FF850505" Height="54" Stroke="Black" VerticalAlignment="Top" Margin="0,1,-0.8,0"/>
+        <Rectangle Fill="#FF850505" Height="55" Stroke="Black" VerticalAlignment="Top" Margin="-3,0,-1,0"/>
         <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,840.6,0"/>
-        <TabControl x:Name="tabCon" HorizontalAlignment="Left" Height="567" Margin="1,54,-1,0" VerticalAlignment="Top" Width="994" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged">
-            <TabItem Header="ARP View  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
-                <Grid>
-                    <DataGrid x:Name="arpGrid" Margin="208,10,10,10" HeadersVisibility="Column" IsReadOnly="True"/>
-                    <Button x:Name="btnRun" FontWeight="Medium" FontSize="12" HorizontalAlignment="Left" Margin="17,10,0,508.6" Width="177" Content="Run ARP Command" Click="btnARP_Click"/>
-                </Grid>
+        <TabControl x:Name="tabCon" Height="567" Margin="1,54,-1,0" Width="994" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TabItem Header="Dashboard" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-2,0,-2" >
+                <Grid/>
             </TabItem>
             <Grid Height="100" Width="100"/>
-            <TabItem x:Name="tabPortScan" Header="Port Scan" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-2,-2,0,-2" >
+            <TabItem x:Name="tabPortScan" Header="Port Scan" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,29,0,-32" >
                 <Grid>
-                    <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
-                    <TextBox x:Name="txtPortOutput" HorizontalAlignment="Left" Height="541" Margin="197,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="655" FontSize="12" FontWeight="Normal"/>
+                    <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
+                    <TextBox x:Name="txtPortOutput" HorizontalAlignment="Left" Height="541" Margin="197,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="655" FontSize="12" FontWeight="Normal"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ARP View" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-39,0,34" RenderTransformOrigin="0.536,0" >
+                <Grid>
+                    <DataGrid x:Name="arpGrid" Margin="208,10,10,10" HeadersVisibility="Column" IsReadOnly="True"/>
+                    <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP Command" Click="btnARP_Click" Height="32"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="0,2,0,0" VerticalAlignment="Top" Width="202"/>
-        <Button x:Name="btnExit" Content="Exit" Width="80" Margin="0,570,900,0" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
+        <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="3,2,0,0" VerticalAlignment="Top" Width="202"/>
+        <Button x:Name="btnExit" Content="  Exit" Width="126" Margin="0,576,867,1" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="44" Click="btnExit_Click"/>
 
 
     </Grid>
