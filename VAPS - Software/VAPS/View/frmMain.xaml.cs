@@ -25,11 +25,14 @@ namespace VAPS.View
         PortScanController scanController;
         public CoreWindow()
         {
-            
             InitializeComponent();
             var mainForm = this;
             network = new ARPController();
             scanController = new PortScanController();
+
+            //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
+            arpGrid.Visibility = Visibility.Hidden;
+            txtPortOutput.Visibility = Visibility.Hidden;
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
@@ -50,6 +53,7 @@ namespace VAPS.View
                 dataTable.Rows.Add(newRow);
             }
             arpGrid.ItemsSource = dataTable.DefaultView;
+            arpGrid.Visibility = Visibility.Visible;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -67,6 +71,7 @@ namespace VAPS.View
         private void btnPortScanner_Click(object sender, RoutedEventArgs e)
         {
             txtPortOutput.Text = scanController.results();
+            txtPortOutput.Visibility = Visibility.Visible;
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
