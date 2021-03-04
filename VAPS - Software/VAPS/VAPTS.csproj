@@ -92,6 +92,7 @@
     <Compile Include="Controller\cmdController.cs" />
     <Compile Include="Controller\PortScanController.cs" />
     <Compile Include="Controller\webScraper.cs" />
+    <Compile Include="Model\Risk.cs" />
     <Compile Include="View\frmMain.xaml.cs">
       <DependentUpon>frmMain.xaml</DependentUpon>
     </Compile>
@@ -128,9 +129,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

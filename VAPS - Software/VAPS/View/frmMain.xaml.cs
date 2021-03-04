@@ -21,38 +21,39 @@ namespace VAPS.View
     /// </summary>
     public partial class CoreWindow : Window
     {
-        ARPController network;
-        PortScanController scanController;
+        ARPController ARP;
+        PortScanController PortScan;
         public CoreWindow()
         {
             InitializeComponent();
             var mainForm = this;
-            network = new ARPController();
-            scanController = new PortScanController();
+            ARP = new ARPController();
+            PortScan = new PortScanController();
+            
+
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
-            txtPortOutput.Visibility = Visibility.Hidden;
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            DataTable dataTable = new DataTable();
-            List<List<string>> arpList = network.getARPRaw();
+            DataTable ARPTable = new DataTable();
+            List<List<string>> arpList = ARP.getARPRaw();
             for(int i = 0; i < arpList[0].Count; i++) {
-                dataTable.Columns.Add(new DataColumn(arpList[0][i]));            
+                ARPTable.Columns.Add(new DataColumn(arpList[0][i]));            
             }
-            //ARPWindow.ShowDialog();
+
             for(int i = 1; i < arpList.Count; i++)
             {
-                var newRow = dataTable.NewRow();
+                var newRow = ARPTable.NewRow();
                 for(int j = 0; j < arpList[i].Count; j++)
                 {
                     newRow[arpList[0][j]] = arpList[i][j];
                 }
-                dataTable.Rows.Add(newRow);
+                ARPTable.Rows.Add(newRow);
             }
-            arpGrid.ItemsSource = dataTable.DefaultView;
+            arpGrid.ItemsSource = ARPTable.DefaultView;
             arpGrid.Visibility = Visibility.Visible;
         }
 
@@ -60,18 +61,41 @@ namespace VAPS.View
         {
             Environment.Exit(0);
         }
+        private void btnARPClk(object sender, RoutedEventArgs e)
+        {
 
-        
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                private void btnARPClk(object sender, RoutedEventArgs e)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-
+        }
         private void btnPortScanner_Click(object sender, RoutedEventArgs e)
         {
-            txtPortOutput.Text = scanController.results();
-            txtPortOutput.Visibility = Visibility.Visible;
+
+            DataTable PortScannerTable = new DataTable();
+            List<List<string>> portsList = PortScan.generateDataTable();
+            //Delete's initially records 1, 2 as these hold data we don't need
+            portsList.RemoveAt(1);
+            portsList.RemoveAt(1);
+            for (int i = 0; i < portsList[0].Count; i++)
+            {
+                PortScannerTable.Columns.Add(new DataColumn(portsList[0][i]));
+            }
+            //Delete this record after creating columns as it holds their names, and we no longer need this
+            portsList.RemoveAt(0);
+            //Go through remaining records and remove the blank value they contain
+            foreach (var record in portsList)
+            {
+                record.RemoveAt(0);
+            }
+            foreach (var entry in portsList)
+            {
+                var nextRow = PortScannerTable.NewRow();
+                nextRow.SetField(0, entry[0]);
+                nextRow.SetField(1, entry[1]);
+                nextRow.SetField(2, entry[2]);
+                nextRow.SetField(3, entry[3]);
+                PortScannerTable.Rows.Add(nextRow);
+            }
+            PortScannerDataGrid.ItemsSource = PortScannerTable.DefaultView;
+            PortScannerDataGrid.Visibility = Visibility.Visible;
+            
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
