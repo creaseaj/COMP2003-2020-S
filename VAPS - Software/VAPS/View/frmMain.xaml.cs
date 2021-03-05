@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VAPS.Controller;
+using VAPS.Model;
+
 namespace VAPS.View
 {
     /// <summary>
@@ -28,6 +30,7 @@ namespace VAPS.View
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
+            Port.Instance.fileInput();
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
@@ -56,6 +59,8 @@ namespace VAPS.View
             PortScannerTable = PortScan.generateTable(PortScannerTable);
             PortScannerDataGrid.ItemsSource = PortScannerTable.DefaultView;
             PortScannerDataGrid.Visibility = Visibility.Visible;
+            
+            
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)

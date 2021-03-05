@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using VAPS.Model;
 
 namespace VAPS.Controller
 {
@@ -28,7 +29,7 @@ namespace VAPS.Controller
             portOutput.Clear();
             String result = cmdController.executeCommand(command, args);
             String[] toList;
-            string[] headers = { "Protocol", "Local Address", "Foreign Address", "State" };
+            string[] headers = { "Protocol", "Port", "Foreign Address", "State", "Description", "Recommendation"};
             portOutput.Add(headers.ToList());
             foreach (string line in Regex.Split(result, "\r\n"))
             {
@@ -81,13 +82,33 @@ namespace VAPS.Controller
             foreach (var entry in portsList)
             {
                 var nextRow = dataTable.NewRow();
+                String[] splitProtocol = entry[1].Split(':');
                 nextRow.SetField(0, entry[0]);
-                nextRow.SetField(1, entry[1]);
+                nextRow.SetField(1, splitProtocol[1]);
                 nextRow.SetField(2, entry[2]);
                 nextRow.SetField(3, entry[3]);
+                nextRow = checkPort(nextRow);
                 dataTable.Rows.Add(nextRow);
             }
             return dataTable;
+        }
+        public DataRow checkPort(DataRow nextRow)
+        {
+            List<List<String>> tempList = new List<List<String>>();
+            tempList = Port.Instance.getList();
+            int portNumber;
+            int portReference;
+            foreach (var port in tempList)
+            {
+                //portNumber = Convert.ToInt32(nextRow[1]);
+                //portReference = Convert.ToInt32(port[0]);
+                if (nextRow[1].ToString() == port[0])
+                {
+                    nextRow[4] = port[1];
+                    nextRow[5] = port[2];
+                }
+            }
+            return nextRow;
         }
 
     }
