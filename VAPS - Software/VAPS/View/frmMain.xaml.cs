@@ -84,19 +84,18 @@ namespace VAPS.View
 
         private void scnNtwrkClk(object sender, RoutedEventArgs e)
         {
-            //nmapOut.Text = new nmapController().fingerPrint("Test");
-            //ThreadStart childref = new ThreadStart(nmapScanningProgress);
             nmapScanningProgress();
-            //Thread childThread = new Thread(childref);
-            //childThread.Start();
+            
         }
         private async Task nmapScanningProgress()
         {
+            // Task runs in the background which is the nmap function
             Task<string> getNmap = Task.Run(() =>
             {
-                return new nmapController().fingerPrint("192.168.0.0");
+                return new nmapController().fingerPrint("192.168.0.0","255.255.255.0");
             });
             nmapOut.Text = "initialTest";
+            // Runs while nmap command is still running, shows scanning dots
             for (int i = 0; i < 100; i++)
             {
                 await Task.Delay(500);
@@ -113,6 +112,8 @@ namespace VAPS.View
                         nmapOut.Text = "Scanning...";
                         break;
                 }
+
+                // Checks if nmap command is still running
                 if(getNmap.IsCompleted)
                 {
                     break;
