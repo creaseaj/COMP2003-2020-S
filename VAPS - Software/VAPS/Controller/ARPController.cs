@@ -7,15 +7,18 @@ using System.DirectoryServices;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace VAPS.Controller
 {
     class ARPController
     {
         List<List<String>> arpList;
+        ARPController ARP;
         public ARPController()
         {
             arpList = new List<List<String>>();
+            ARP = this;
         }
 
    
@@ -47,8 +50,6 @@ namespace VAPS.Controller
             {
                 return macAddress;
             }
-            
-            
         }
         private List<List<string>> getVendorsList(List<List<string>> arpList)
         {
@@ -104,7 +105,25 @@ namespace VAPS.Controller
             updateArpList();
             return getVendorsList(arpList);
         }
+        public DataTable generateTable(DataTable ARPTable)
+        {
+            List<List<string>> arpList = ARP.getARPRaw();
+            for (int i = 0; i < arpList[0].Count; i++)
+            {
+                ARPTable.Columns.Add(new DataColumn(arpList[0][i]));
+            }
 
+            for (int i = 1; i < arpList.Count; i++)
+            {
+                var newRow = ARPTable.NewRow();
+                for (int j = 0; j < arpList[i].Count; j++)
+                {
+                    newRow[arpList[0][j]] = arpList[i][j];
+                }
+                ARPTable.Rows.Add(newRow);
+            }
+            return ARPTable;
+        }
         
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -14,11 +15,13 @@ namespace VAPS.Controller
         List<List<String>> portOutput;
         string command;
         string args;
+        PortScanController portScan;
         public PortScanController()
         {
             portOutput = new List<List<string>>();
             command = "netstat";
             args = "-an";
+            portScan = this;
         }
         public void generateData()
         {
@@ -42,10 +45,6 @@ namespace VAPS.Controller
                         String[] splitArray = editedLine.Split(',').ToArray<String>();
                         portOutput.Add(splitArray.ToList());
 
-                        //toList = new String[1];
-                        //toList[0] = editedLine;
-                        //portOutput.Add(toList.ToList());
-
                     }
                     else
                     {
@@ -53,71 +52,43 @@ namespace VAPS.Controller
                         toList[0] = line;
                         portOutput.Add(toList.ToList());
                     }
-                    // String[] toList = Regex.Split(line, @" +");
-                    // String[] newPortScan = new string[2];
-                    //Array.Copy(toList, 1, newPortScan, 0, 2);
-                    //portOutput.Add(newPortScan.ToList());
-
-                    //String[] toList = Regex.Split(line, @"[ ]{ 2,}");
-
-                    //string[] toList = new string[1];
-                    
-
                 }
             }
-            /*string[] stringSeperator = new string[] { "\r\n" };
-            string[] lines = result.Split(stringSeperator, StringSplitOptions.None);
-            foreach (string individualResult in lines)
-            {
-                portOutput.Add(individualResult);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                portOutput.RemoveAt(0);
-            }
-            */
+
         }
         public List<List<String>> generateDataTable()
         {
             generateData();
             return portOutput;
-
-
         }
-        /*
-        public string results()
+        public DataTable generateTable(DataTable dataTable)
         {
-            generateData();
-            cmdController.executeCommand(command, args);
-            StringBuilder output = new StringBuilder();
-            foreach (string line in portOutput)
+            List<List<string>> portsList = portScan.generateDataTable();
+            //Delete's initially records 1, 2 as these hold data we don't need
+            portsList.RemoveAt(1);
+            portsList.RemoveAt(1);
+            for (int i = 0; i < portsList[0].Count; i++)
             {
-                output.Append(line);
-                output.Append("\n");
+                dataTable.Columns.Add(new DataColumn(portsList[0][i]));
             }
-            return output.ToString();
+            //Delete this record after creating columns as it holds their names, and we no longer need this
+            portsList.RemoveAt(0);
+            //Go through remaining records and remove the blank value they contain
+            foreach (var record in portsList)
+            {
+                record.RemoveAt(0);
+            }
+            foreach (var entry in portsList)
+            {
+                var nextRow = dataTable.NewRow();
+                nextRow.SetField(0, entry[0]);
+                nextRow.SetField(1, entry[1]);
+                nextRow.SetField(2, entry[2]);
+                nextRow.SetField(3, entry[3]);
+                dataTable.Rows.Add(nextRow);
+            }
+            return dataTable;
         }
-        */
-        /*
-        public List<string> dataPortScan()
-        {
-            portOutput.Clear();
-            String result = cmdController.executeCommand(command, args);
-            string[] stringSeperator = new string[] { "\r\n" };
-            string[] lines = result.Split(stringSeperator, StringSplitOptions.None);
-            foreach (string individualResult in lines)
-            {
-
-                //individualResult.Replace("", "VOID");
-                portOutput.Add(individualResult);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                portOutput.RemoveAt(0);
-            }
-            return portOutput;
-        }
-        */
 
     }
 }
