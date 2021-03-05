@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -83,7 +84,43 @@ namespace VAPS.View
 
         private void scnNtwrkClk(object sender, RoutedEventArgs e)
         {
-            nmapOut.Text = new nmapController().scanLocal();
+            //nmapOut.Text = new nmapController().fingerPrint("Test");
+            //ThreadStart childref = new ThreadStart(nmapScanningProgress);
+            nmapScanningProgress();
+            //Thread childThread = new Thread(childref);
+            //childThread.Start();
         }
+        private async Task nmapScanningProgress()
+        {
+            Task<string> getNmap = Task.Run(() =>
+            {
+                return new nmapController().fingerPrint("192.168.0.0");
+            });
+            nmapOut.Text = "initialTest";
+            for (int i = 0; i < 100; i++)
+            {
+                await Task.Delay(500);
+                nmapOut.Text = i.ToString();
+                switch (i % 3)
+                {
+                    case 0:
+                        nmapOut.Text = "Scanning.";
+                        break;
+                    case 1:
+                        nmapOut.Text = "Scanning..";
+                        break;
+                    case 2:
+                        nmapOut.Text = "Scanning...";
+                        break;
+                }
+                if(getNmap.IsCompleted)
+                {
+                    break;
+                }
+
+            }
+            nmapOut.Text = getNmap.Result;
+        }
+
     }
 }

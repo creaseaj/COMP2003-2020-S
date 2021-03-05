@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -9,6 +10,12 @@ namespace VAPS.Controller
 {
     class nmapController
     {
+        public string fingerPrint(string subnet){
+            string output = "testFail";
+            output = cmdController.executeCommand("nmap", "192.168.0.0/24");
+            return output;
+        }
+        
         private bool isInstalled()
         {
             string output = cmdController.executeCommand("nmap","");
