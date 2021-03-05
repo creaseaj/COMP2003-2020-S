@@ -6,12 +6,17 @@ This repository contains the relevant files for our COMP2003 - Computing Project
 
 ## Product Vision ##
 Designed for Small-to-Medium enterprises whose systems may be vulnerable to attacks without realising, the Vulnerability Analysis and Pen-Testing Suite is a system testing kit. It searches for a range of vulnerabilities using traditional tools wrapped into one, user-friendly environment that outputs any results clearly and effectively.
+
+## Functionality ##
+
+
 ## Authors ##
-* Matt Caine
-* Adam Crease
-* Charlie Grayson
-* Matt Hewitt
-* Kieran Wheatley
+* [Matt Caine](https://github.com/Matt-Caine)
+* [Adam Crease](https://github.com/creaseaj)
+* [Charlie Grayson](https://github.com/charlie-grayson)
+* [Matt Hewitt](https://github.com/mhewitt9pq)
+* [Kieran Wheatley](https://github.com/kieranwheatley)
 
 ## Acknowledgements ##
-[https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
+* [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
+* [https://nmap.org/](https://nmap.org/)
