@@ -83,12 +83,17 @@ namespace VAPS.Controller
             {
                 var nextRow = dataTable.NewRow();
                 String[] splitProtocol = entry[1].Split(':');
-                nextRow.SetField(0, entry[0]);
-                nextRow.SetField(1, splitProtocol[1]);
-                nextRow.SetField(2, entry[2]);
-                nextRow.SetField(3, entry[3]);
-                nextRow = checkPort(nextRow);
-                dataTable.Rows.Add(nextRow);
+                if (splitProtocol[1] != "")
+                {
+                    nextRow.SetField(0, entry[0]);
+                    nextRow.SetField(1, splitProtocol[1]);
+                    nextRow.SetField(2, entry[2]);
+                    nextRow.SetField(3, entry[3]);
+                    nextRow.SetField(4, "Unknown port");
+                    nextRow.SetField(5, "Could be closed");
+                    nextRow = checkPort(nextRow);
+                    dataTable.Rows.Add(nextRow);
+                }
             }
             return dataTable;
         }
@@ -96,8 +101,6 @@ namespace VAPS.Controller
         {
             List<List<String>> tempList = new List<List<String>>();
             tempList = Port.Instance.getList();
-            int portNumber;
-            int portReference;
             foreach (var port in tempList)
             {
                 //portNumber = Convert.ToInt32(nextRow[1]);
@@ -110,6 +113,29 @@ namespace VAPS.Controller
             }
             return nextRow;
         }
-
+        public int[] getValues(DataTable table)
+        {
+            int keepOpen = 0;
+            int couldClose = 0;
+            int shouldClose = 0;
+            
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[5].ToString() == "Keep open")
+                {
+                    keepOpen++;
+                }
+                if (row[5].ToString() == "Could be closed")
+                {
+                    couldClose++;
+                }
+                if (row[5].ToString() == "Should be closed")
+                {
+                    shouldClose++;
+                }
+            }
+            int[] results = new int[] { keepOpen, couldClose, shouldClose };
+            return results;
+        }
     }
 }

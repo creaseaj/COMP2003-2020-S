@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VAPS.View"
         mc:Ignorable="d"
-        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="649" Width="1000" ResizeMode="NoResize" SizeToContent="Width" WindowStartupLocation="Manual" WindowStyle="ToolWindow" Foreground="Black" Background="{x:Null}">
+        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="649" Width="1000" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" WindowStyle="ToolWindow" Foreground="Black" Background="{x:Null}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="423*"/>
@@ -82,7 +82,22 @@
                 <Grid x:Name="gridPortScanner" Background="White">
                     <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
                     <Grid HorizontalAlignment="Left" Height="100" Margin="216,275,0,0" VerticalAlignment="Top" Width="100"/>
-                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="514" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="14"/>
+                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="436" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="14"/>
+                    <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="83" Margin="0,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="83" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="20" Margin="0,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <TextBlock x:Name="blockPortOpen" HorizontalAlignment="Left" Margin="1,479,0,0" TextWrapping="Wrap" Text="Keep open" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    <TextBlock x:Name="blockPortCould" HorizontalAlignment="Left" Margin="281,478,0,0" TextWrapping="Wrap" Text="Could be closed" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    <TextBlock x:Name="blockPortShould" HorizontalAlignment="Left" Margin="561,478,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Should"/><Run Text=" be closed"/></TextBlock>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="228,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="508,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="788,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="1,498,0,0" TextWrapping="Wrap" Text="These ports are likely to be used for critical things (Emails, Web browsing etc.,) which would not work without them." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="281,498,0,0" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="561,498,0,1" TextWrapping="Wrap" Width="227" Foreground="Black" FontSize="9"><Run Text="These ports are either known to be vulnerable without a use anymore or ports which you are unlikely to need (used by game services, streaming services"/><Run Text=" etc.)."/></TextBlock>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy1" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
@@ -114,6 +129,9 @@
             </TabItem>
         </TabControl>
         <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="44" Click="btnExit_Click" HorizontalAlignment="Left" Width="143"/>
+        <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="378,570,2,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="43" TextAlignment="Center" FontSize="18"/>
+        <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="235,570,293,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="43" TextAlignment="Center" Grid.Column="1" FontSize="18"/>
+        <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="515,570,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="43" TextAlignment="Center" Grid.Column="1" FontSize="18"/>
 
 
     </Grid>

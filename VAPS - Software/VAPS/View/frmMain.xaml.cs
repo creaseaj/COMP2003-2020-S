@@ -59,8 +59,13 @@ namespace VAPS.View
             PortScannerTable = PortScan.generateTable(PortScannerTable);
             PortScannerDataGrid.ItemsSource = PortScannerTable.DefaultView;
             PortScannerDataGrid.Visibility = Visibility.Visible;
-            
-            
+            int[] results = PortScan.getValues(PortScannerTable);
+            txtBlockOpenNum.Text = results[0].ToString();
+            txtBlockCouldNum.Text = results[1].ToString();
+            txtBlockShouldNum.Text = results[2].ToString();
+
+
+
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
