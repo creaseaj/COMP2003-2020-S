@@ -84,8 +84,16 @@ namespace VAPS.View
 
         private void scnNtwrkClk(object sender, RoutedEventArgs e)
         {
-            nmapScanningProgress();
-            
+            if (authChkBx.IsChecked.Value)
+            {
+                nmapScanningProgress();
+
+            }
+            else
+            {
+                nmapOut.Text = "You must have permission from the network adminstrator to perform this action";
+            }
+
         }
         private async Task nmapScanningProgress()
         {

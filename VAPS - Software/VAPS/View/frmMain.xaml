@@ -73,7 +73,8 @@
             <TabItem Header="NMap        " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
                 <Grid>
                     <Button x:Name="scnNtwrkBtn" Content="Check Installed" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Click="scnNtwrkClk"/>
-                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="501" Margin="238,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="440"/>
+                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="534" Margin="238,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="614"/>
+                    <CheckBox x:Name="authChkBx" Content="I am the owner &#xD;&#xA;of the network &#xD;&#xA;I am connected &#xD;&#xA;to and have &#xD;&#xA;permission to &#xD;&#xA;scan all devices &#xD;&#xA;on the network." Margin="10,48,629,301.6"/>
 
                 </Grid>
             </TabItem>
