@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,12 @@ namespace VAPS.View
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+
+        private void scnNtwrkClk(object sender, RoutedEventArgs e)
+        {
+            nmapOut.Text = new nmapController().scanLocal();
         }
     }
 }

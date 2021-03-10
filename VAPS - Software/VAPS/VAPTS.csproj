@@ -93,6 +93,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\cmdController.cs" />
+    <Compile Include="Controller\nmapController.cs" />
     <Compile Include="Controller\PortScanController.cs" />
     <Compile Include="Controller\webScraper.cs" />
     <Compile Include="Model\Port.cs" />
