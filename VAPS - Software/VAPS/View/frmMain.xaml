@@ -68,10 +68,22 @@
                 </Grid>
             </TabItem>
             <Grid Height="100" Width="100"/>
-            <TabItem x:Name="tabARP" Header="ARP View" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
+            <TabItem x:Name="tabARP" Header="ARP" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
                 <Grid>
-                    <DataGrid x:Name="arpGrid" Margin="10,37,10,10" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20"/>
-                    <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP Command" Click="btnARP_Click" Height="32"/>
+                    <DataGrid x:Name="arpGrid" Margin="0,37,10,95" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20"/>
+                    <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP" Click="btnARP_Click" Height="32"/>
+                    <Label Content="https://www.adminsub.net/mac-address-finder" HorizontalAlignment="Left" Margin="666,462,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="7" Width="167" Height="22" HorizontalContentAlignment="Center" Foreground="#FFACACAC" FontWeight="Normal"/>
+                    <Grid Height="90" Margin="0,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.4,0.13">
+                        <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="0,7,0,0"/>
+                        <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="280,7,0,0"/>
+                        <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="560,7,0,0"/>
+                        <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="20" Margin="0,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,8,0,0" TextWrapping="Wrap" Text="Registered Devices" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="280,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Known Devices"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock HorizontalAlignment="Left" Margin="560,8,0,0" TextWrapping="Wrap" Text="Unknown Devices" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <Label Content="Label" Height="100" Width="100"/>
@@ -90,13 +102,13 @@
                     <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <TextBlock x:Name="blockPortOpen" HorizontalAlignment="Left" Margin="1,479,0,0" TextWrapping="Wrap" Text="Keep open" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
-                    <TextBlock x:Name="blockPortCould" HorizontalAlignment="Left" Margin="281,478,0,0" TextWrapping="Wrap" Text="Could be closed" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    <TextBlock x:Name="blockPortCould" HorizontalAlignment="Left" Margin="281,478,0,0" TextWrapping="Wrap" Text="Could be closed" VerticalAlignment="Top" Height="18" Width="255" Foreground="White" FontSize="14" TextAlignment="Center"/>
                     <TextBlock x:Name="blockPortShould" HorizontalAlignment="Left" Margin="561,478,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Should"/><Run Text=" be closed"/></TextBlock>
                     <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="228,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
                     <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="508,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
                     <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="788,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
                     <TextBlock HorizontalAlignment="Left" Margin="1,498,0,0" TextWrapping="Wrap" Text="These ports are likely to be used for critical things (Emails, Web browsing etc.,) which would not work without them." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="281,498,0,0" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="281,498,0,1" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." Width="227" Foreground="Black" FontSize="9"/>
                     <TextBlock HorizontalAlignment="Left" Margin="561,498,0,1" TextWrapping="Wrap" Width="227" Foreground="Black" FontSize="9"><Run Text="These ports are either known to be vulnerable without a use anymore or ports which you are unlikely to need (used by game services, streaming services"/><Run Text=" etc.)."/></TextBlock>
                     <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="228,513,570,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                     <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="508,513,290,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>

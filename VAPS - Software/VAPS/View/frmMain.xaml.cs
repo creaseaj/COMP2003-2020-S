@@ -32,6 +32,7 @@ namespace VAPS.View
             ARP = new ARPController();
             PortScan = new PortScanController();
             Port.Instance.fileInput();
+            Device.Instance.fileInput();
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
@@ -39,8 +40,9 @@ namespace VAPS.View
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
+            
             DataTable ARPTable = new DataTable();
-            ARPTable = ARP.generateTable(ARPTable);
+            ARPTable = ARP.formatTable(ARPTable);
             arpGrid.ItemsSource = ARPTable.DefaultView;
             arpGrid.Visibility = Visibility.Visible;
         }

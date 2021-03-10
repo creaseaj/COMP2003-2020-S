@@ -105,7 +105,7 @@ namespace VAPS.Controller
             updateArpList();
             return getVendorsList(arpList);
         }
-        public DataTable generateTable(DataTable ARPTable)
+        public DataTable initialTable(DataTable ARPTable)
         {
             List<List<string>> arpList = ARP.getARPRaw();
             for (int i = 0; i < arpList[0].Count; i++)
@@ -122,6 +122,43 @@ namespace VAPS.Controller
                 }
                 ARPTable.Rows.Add(newRow);
             }
+            return ARPTable;
+        }
+        public DataTable formatTable(DataTable ARPTable)
+        {
+            ARPTable = initialTable(ARPTable);
+            foreach (DataRow entry in ARPTable.Rows)
+            {
+                if (entry[0].ToString().Contains("192.168.0"))
+                {
+                    String[] split = entry[0].ToString().Split('.');
+                    entry[0] = "localhost." + split[3];
+                }
+                /*   Remove broadcast address from table as we don't need it
+                else if (entry[0].ToString() == "255.255.255.255")
+                {
+                    ARPTable.Rows.Remove(entry);
+                }
+                */
+                else if (entry[0].ToString() == "255.255.255.255")
+                {
+                    entry[0] = "Broadcast";
+                }
+                else if (entry[0].ToString() == "239.255.255.250")
+                {
+                    entry[0] = "Local Multicast";
+                }
+                else if (entry[0].ToString().Contains("224.0.0"))
+                {
+                    entry[0] = "System";
+                }
+
+            }
+
+
+
+
+
             return ARPTable;
         }
         
