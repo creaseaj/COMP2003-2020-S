@@ -10,12 +10,17 @@ Designed for Small-to-Medium enterprises whose systems may be vulnerable to atta
 ## Functionality ##
 ### ARP Scan ###
 Our ARP (Address Resolution Protocol) viewer is a low-level network discovery tool, that gives users the ability to see the IP addresses and associated physical (MAC) addresses of devices on the network. In the screenshot below you can see VAPTS on the left giving the users a readout of a recent Arp scan, this can be compared to the default Arp command that ran through the command prompt on a windows machine on the right. You will notice that VAPTS can identify the devices manufacturer, due to our built-in web scraping techniques. We felt it was important for the users to be able to quickly identify the devices and having more detailed information about said devices allows for that to happen. 
-![ARP Scan](https://github.com/creaseaj/COMP2003-2020-S/tree/main/Documentation/Screenshots/ArpScan.png "ARP Scan")
+
+<p align="center">
+  <img src="/Documentation/Screenshots/ArpScan.jpg">
+</p>
 
 ### Port Scan ###
 Our port scanner allows the user to probe their network for open ports and gives a detailed readout of the port number, state, and description of what the port is used for, along with our recommendation on if the port should be open or closed.  This can be seen at the bottom in the screenshot below, with easy to see indicators on security risk and the number of ports within each of the three categories shown clearly. 
-![Port Scan](https://github.com/creaseaj/COMP2003-2020-S/tree/main/Documentation/Screenshots/PortScan.png "Port Scan")
 
+<p align="center">
+  <img src="/Documentation/Screenshots/PortScan.png">
+</p>
 
 ## Authors ##
 * [Matt Caine](https://github.com/Matt-Caine)
