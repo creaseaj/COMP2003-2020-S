@@ -98,6 +98,9 @@
                     <TextBlock HorizontalAlignment="Left" Margin="1,498,0,0" TextWrapping="Wrap" Text="These ports are likely to be used for critical things (Emails, Web browsing etc.,) which would not work without them." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
                     <TextBlock HorizontalAlignment="Left" Margin="281,498,0,0" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
                     <TextBlock HorizontalAlignment="Left" Margin="561,498,0,1" TextWrapping="Wrap" Width="227" Foreground="Black" FontSize="9"><Run Text="These ports are either known to be vulnerable without a use anymore or ports which you are unlikely to need (used by game services, streaming services"/><Run Text=" etc.)."/></TextBlock>
+                    <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="228,513,570,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
+                    <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="508,513,290,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
+                    <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="789,513,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="44" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy1" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
@@ -124,15 +127,8 @@
             <TabItem x:Name="tabHolder_Copy8" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder9" Background="White"/>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy9" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="gridPlaceholder10" Background="White"/>
-            <Grid Height="100" Width="100"/>
-            </TabItem>
         </TabControl>
         <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="44" Click="btnExit_Click" HorizontalAlignment="Left" Width="143"/>
-        <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="378,570,2,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="43" TextAlignment="Center" FontSize="18"/>
-        <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="235,570,293,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="43" TextAlignment="Center" Grid.Column="1" FontSize="18"/>
-        <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="515,570,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="43" TextAlignment="Center" Grid.Column="1" FontSize="18"/>
 
 
     </Grid>

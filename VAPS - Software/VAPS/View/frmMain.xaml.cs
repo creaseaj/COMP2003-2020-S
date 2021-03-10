@@ -74,10 +74,5 @@ namespace VAPS.View
 
         }
 
-
-        private void scnNtwrkClk(object sender, RoutedEventArgs e)
-        {
-            nmapOut.Text = new nmapController().scanLocal();
-        }
     }
 }
