@@ -188,6 +188,26 @@ namespace VAPS.Controller
             temp.Add(input);
             device.setList(temp);
         }
+        public int[] getResults(DataTable table)
+        {
+            int registered = 0;
+            int known = 0;
+            int unknown = 0;
+
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[3].ToString() == "Unknown device.")
+                {
+                    unknown++;
+                }
+                else
+                {
+                    registered++;
+                }
+            }
+            int[] results = new int[] { registered, known, unknown };
+            return results;
+        }
         
     }
 }

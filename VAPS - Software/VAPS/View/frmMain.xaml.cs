@@ -53,6 +53,10 @@ namespace VAPS.View
             txtARPDeviceName.Visibility = Visibility.Visible;
             btnARPAddName.Visibility = Visibility.Visible;
             btnARPAddName.IsEnabled = false;
+            int[] ARPResults = ARP.getResults(ARPTable);
+            blockARPKnown.Text = ARPResults[1].ToString();
+            blockARPRegistered.Text = ARPResults[0].ToString();
+            blockARPUnknown.Text = ARPResults[2].ToString();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
