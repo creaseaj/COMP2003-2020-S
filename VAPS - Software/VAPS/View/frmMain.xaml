@@ -70,7 +70,7 @@
             <Grid Height="100" Width="100"/>
             <TabItem x:Name="tabARP" Header="ARP" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
                 <Grid>
-                    <DataGrid x:Name="arpGrid" Margin="0,37,10,95" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20"/>
+                    <DataGrid x:Name="arpGrid" Margin="0,37,10,95" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20" SelectionChanged="arpGrid_SelectionChanged"/>
                     <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP" Click="btnARP_Click" Height="32"/>
                     <Label Content="https://www.adminsub.net/mac-address-finder" HorizontalAlignment="Left" Margin="666,462,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="7" Width="167" Height="22" HorizontalContentAlignment="Center" Foreground="#FFACACAC" FontWeight="Normal"/>
                     <Grid Height="90" Margin="0,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.4,0.13">
@@ -79,6 +79,9 @@
                         <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="560,7,0,0"/>
                         <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="20" Margin="0,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                         <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <TextBox x:Name="txtARPDeviceName" HorizontalAlignment="Left" Height="30" Margin="482,-463,0,0" TextWrapping="Wrap" Text="Select a device to name" VerticalAlignment="Top" Width="253" Background="White" FontWeight="Normal" FontSize="16" BorderBrush="Black" VerticalContentAlignment="Center" AutomationProperties.HelpText="Register a device name here." TextChanged="txtARPDeviceName_TextChanged"/>
+                        <Button x:Name="btnARPAddName" Content="Add Device name" Height="30" Margin="734,-463,10,0" VerticalAlignment="Top" BorderBrush="Black" FontSize="12" FontWeight="Normal" Click="btnARPAddName_Click"/>
+
                         <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                         <TextBlock HorizontalAlignment="Left" Margin="0,8,0,0" TextWrapping="Wrap" Text="Registered Devices" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Left" Margin="280,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Known Devices"/><LineBreak/><Run/></TextBlock>

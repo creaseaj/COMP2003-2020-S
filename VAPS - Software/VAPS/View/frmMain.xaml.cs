@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -36,6 +37,10 @@ namespace VAPS.View
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
+            txtARPDeviceName.IsEnabled = false;
+            btnARPAddName.IsEnabled = false;
+            txtARPDeviceName.Visibility = Visibility.Hidden;
+            btnARPAddName.Visibility = Visibility.Hidden;
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
@@ -45,6 +50,9 @@ namespace VAPS.View
             ARPTable = ARP.formatTable(ARPTable);
             arpGrid.ItemsSource = ARPTable.DefaultView;
             arpGrid.Visibility = Visibility.Visible;
+            txtARPDeviceName.Visibility = Visibility.Visible;
+            btnARPAddName.Visibility = Visibility.Visible;
+            btnARPAddName.IsEnabled = false;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -76,5 +84,34 @@ namespace VAPS.View
 
         }
 
+        private void arpGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            txtARPDeviceName.IsEnabled = true;
+            btnARPAddName.IsEnabled = true;
+            txtARPDeviceName.Text = "";
+        }
+
+        private void btnARPAddName_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView rowView = arpGrid.SelectedItem as DataRowView;
+            try
+            {
+                
+                string macAddress = rowView.Row[1].ToString();
+                ARP.registerDevice(macAddress, txtARPDeviceName.Text);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a device first.");
+            }
+            DataTable ARPTable = new DataTable();
+            ARPTable = ARP.formatTable(ARPTable);
+            arpGrid.ItemsSource = ARPTable.DefaultView;
+        }
+
+        private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

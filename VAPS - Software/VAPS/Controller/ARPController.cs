@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Data;
+using VAPS.Model;
 
 namespace VAPS.Controller
 {
@@ -15,10 +16,12 @@ namespace VAPS.Controller
     {
         List<List<String>> arpList;
         ARPController ARP;
+        Device device;
         public ARPController()
         {
             arpList = new List<List<String>>();
             ARP = this;
+            device = Device.Instance;
         }
 
    
@@ -31,8 +34,9 @@ namespace VAPS.Controller
                 if (Regex.IsMatch(line, @"^ *\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"))
                 {
                     String[] toArpList = Regex.Split(line, @" +");
-                    String[] newArp = new string[3];
+                    String[] newArp = new string[4];
                     Array.Copy(toArpList,1,newArp,0,3);
+                    newArp[3] = ("Unknown device.");
                     arpList.Add(newArp.ToList());
                 }
             }
@@ -54,7 +58,7 @@ namespace VAPS.Controller
         private List<List<string>> getVendorsList(List<List<string>> arpList)
         {
             List<List<String>> arpOut = new List<List<string>>();
-            string[] headers = { "IP Address", "MAC Address", "Status" };
+            string[] headers = { "IP Address", "MAC Address", "Status", "Friendly Name"};
             arpOut.Add(headers.ToList());
             foreach (List<String> item in arpList)
             {
@@ -120,6 +124,7 @@ namespace VAPS.Controller
                 {
                     newRow[arpList[0][j]] = arpList[i][j];
                 }
+                newRow = checkDevice(newRow);
                 ARPTable.Rows.Add(newRow);
             }
             return ARPTable;
@@ -152,14 +157,36 @@ namespace VAPS.Controller
                 {
                     entry[0] = "System";
                 }
-
+                device.fileOutput();
+                //entry[3] = addRegisteredNames(entry[1].ToString());
             }
 
 
 
-
-
             return ARPTable;
+        }
+        public DataRow checkDevice(DataRow nextRow)
+        {
+            List<List<String>> tempList = new List<List<string>>();
+            tempList = Device.Instance.getList();
+            foreach (var device in tempList)
+            {
+                if (nextRow[1].ToString() == device[0])
+                {
+                    nextRow[3] = device[1];
+                }
+            }
+            return nextRow;
+        }
+        public void registerDevice(string MACAddress, string deviceName)
+        {
+            List<List<String>> temp = new List<List<String>>();
+            List<String> input = new List<String>();
+            input.Add(MACAddress);
+            input.Add(deviceName);
+            temp = device.getList();
+            temp.Add(input);
+            device.setList(temp);
         }
         
     }
