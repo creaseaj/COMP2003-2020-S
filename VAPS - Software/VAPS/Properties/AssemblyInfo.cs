@@ -7,10 +7,10 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VAPS")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("VAPTS")]
+[assembly: AssemblyDescription("A vulernability and pen-testing suite designed to help make you aware of any potential risks within your system.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("COMP2003-2020-S")]
 [assembly: AssemblyProduct("VAPS")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
