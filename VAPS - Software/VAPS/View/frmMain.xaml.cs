@@ -64,9 +64,6 @@ namespace VAPS.View
             txtBlockOpenNum.Text = results[0].ToString();
             txtBlockCouldNum.Text = results[1].ToString();
             txtBlockShouldNum.Text = results[2].ToString();
-
-
-
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -75,9 +72,5 @@ namespace VAPS.View
         }
 
 
-        private void scnNtwrkClk(object sender, RoutedEventArgs e)
-        {
-            nmapOut.Text = new nmapController().scanLocal();
-        }
     }
 }
