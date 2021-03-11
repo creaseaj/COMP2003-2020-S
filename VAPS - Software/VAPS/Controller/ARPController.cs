@@ -17,9 +17,11 @@ namespace VAPS.Controller
         List<List<String>> arpList;
         ARPController ARP;
         Device device;
+        List<String> vendors;
         public ARPController()
         {
             arpList = new List<List<String>>();
+            vendors = new List<String>();
             ARP = this;
             device = Device.Instance;
         }
@@ -48,7 +50,10 @@ namespace VAPS.Controller
             String vendor = Regex.Match(webPageLines[94],@"\?q=(\w|\s)+").Value;
             try
             {
-                return(vendor.Substring(3));
+                string test = vendor.Substring(3);
+                vendors.Add(test);
+                return test;
+                //return(vendor.Substring(3));
             }
             catch( System.ArgumentOutOfRangeException)
             {
@@ -194,8 +199,17 @@ namespace VAPS.Controller
             int known = 0;
             int unknown = 0;
 
+            List<String> noDuplicates = vendors.Distinct().ToList();
+
             foreach (DataRow row in table.Rows)
             {
+                foreach (string vendor in noDuplicates)
+                {
+                    if (row[1].ToString().Contains(vendor))
+                    {
+                        known++;
+                    }
+                }
                 if (row[3].ToString() == "Unknown device.")
                 {
                     unknown++;

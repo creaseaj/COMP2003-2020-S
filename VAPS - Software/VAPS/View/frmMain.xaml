@@ -110,7 +110,7 @@
                 <Grid x:Name="gridPortScanner" Background="White">
                     <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
                     <Grid HorizontalAlignment="Left" Height="100" Margin="216,275,0,0" VerticalAlignment="Top" Width="100"/>
-                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="436" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="14"/>
+                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="436" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="13"/>
                     <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="83" Margin="0,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="83" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
