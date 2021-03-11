@@ -132,6 +132,16 @@ namespace VAPS.Controller
                 newRow = checkDevice(newRow);
                 ARPTable.Rows.Add(newRow);
             }
+            for (int i = ARPTable.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow row = ARPTable.Rows[i];
+                if (row[2].ToString() == "static")
+                {
+                    row.Delete();
+                }
+            }
+            ARPTable.AcceptChanges();
+
             return ARPTable;
         }
         public DataTable formatTable(DataTable ARPTable)
