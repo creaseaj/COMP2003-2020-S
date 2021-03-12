@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -26,12 +26,14 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
+        nmapController nController;
         public CoreWindow()
         {
             InitializeComponent();
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
+            nController = new nmapController();
             Port.Instance.fileInput();
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
@@ -126,5 +128,38 @@ namespace VAPS.View
             nmapOut.Text = getNmap.Result;
         }
 
+        private void ipsubShow_Click(object sender, RoutedEventArgs e)
+        {
+            string ipaddress = nController.GetLocalIPAddress();
+            nmapOut.Text = (ipaddress);
+            
+            /// nController.Subnet();
+
+            string test;
+            test = "192.168";
+
+            if (ipaddress.StartsWith(test))
+            {
+                nmapOut.Text = nmapOut.Text + ("\n255.255.255.0");
+            }
+            test = "172.";
+
+            if (ipaddress.StartsWith(test))
+            {
+                nmapOut.Text = nmapOut.Text + ("\n255.255.0.0");
+            }
+            test = "10.";
+
+            if (ipaddress.StartsWith(test))
+            {
+                nmapOut.Text = nmapOut.Text + ("\n255.0.0.0");
+            }
+
+        }
+
+        private void nmapInstall_Click(object sender, RoutedEventArgs e)
+        {
+            nmapOut.Text = new nmapController().scanLocal();
+        }
     }
 }

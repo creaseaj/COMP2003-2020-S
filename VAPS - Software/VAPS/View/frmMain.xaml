@@ -76,16 +76,11 @@
             </TabItem>
             <Label Content="Label" Height="100" Width="100"/>
             <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="715*"/>
-                        <ColumnDefinition Width="128*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="scnNtwrkBtn" Content="Check Installed" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Click="scnNtwrkClk"/>
-                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="471" Margin="10,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="788" Grid.ColumnSpan="2"/>
-                    <Button x:Name="IPTest" Content="IP and Subnet" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="192" Click="IPTest_Click"/>
-                    <Button x:Name="Subnet" Content="Scan Network" HorizontalAlignment="Left" Margin="404,10,0,0" VerticalAlignment="Top" Width="192" Click="Subnet_Click"/>
-                    <CheckBox x:Name="authChkBx" Content="I have permission to scan this&#xD;&#xA; network" HorizontalAlignment="Left" Margin="601,10,0,0" VerticalAlignment="Top" FontSize="15" Grid.ColumnSpan="2"/>
+                <Grid x:Name="gridPlaceholder" Background="White">
+                    <Button x:Name="nmapInstall" Content="Check NMap Install" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="nmapInstall_Click"/>
+                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click"/>
+                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="454" Margin="314,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="483"/>
+                    <CheckBox x:Name="authChkBx" Content="CheckBox" HorizontalAlignment="Left" Margin="77,143,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabPortScanner" Header="Port Scanner" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
