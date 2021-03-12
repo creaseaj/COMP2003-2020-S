@@ -5,38 +5,136 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VAPS.View"
         mc:Ignorable="d"
-        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="650" Width="1000" ResizeMode="NoResize">
+        Title="Vulnerability Analysis &amp; Pen-Testing Suite" Height="649" Width="1000" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="Manual" WindowStyle="ToolWindow" Foreground="Black" Background="{x:Null}">
     <Grid>
-        <Rectangle Fill="#FF850505" Height="54" Stroke="Black" VerticalAlignment="Top" Margin="0,1,-0.8,0"/>
-        <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,840.6,0"/>
-        <TabControl x:Name="tabCon" HorizontalAlignment="Left" Height="567" Margin="1,54,-1,0" VerticalAlignment="Top" Width="994" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged">
-            <TabItem Header="ARP View  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
-                <Grid>
-                    <DataGrid x:Name="arpGrid" Margin="208,10,10,10" HeadersVisibility="Column" IsReadOnly="True"/>
-
-                    <Button x:Name="btnRun" FontWeight="Medium" FontSize="12" HorizontalAlignment="Left" Margin="17,10,0,508.6" Width="177" Content="Run ARP Command" Click="btnARP_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="423*"/>
+            <ColumnDefinition Width="571*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FF850505" Height="55" Stroke="Black" VerticalAlignment="Top" Margin="-3,0,-1,0" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,270,0"/>
+        <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="3,2,0,0" VerticalAlignment="Top" Width="202"/>
+        <TabControl x:Name="tabCon" Height="567" Margin="0,54,-1,0" Width="995" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <TabItem x:Name="tabDashboard" Header="Dashboard" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-2,0,-2" >
+                <Grid Background="White">
+                    <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="109" Margin="52,54,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="109" Margin="52,193,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="109" Margin="52,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="37" Margin="52,307,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="37" Margin="52,168,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="Red" HorizontalAlignment="Left" Height="37" Margin="52,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="98" Margin="52,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="101"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="98" Margin="52,204,0,0" Stroke="Black" VerticalAlignment="Top" Width="101"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="98" Margin="52,343,0,0" Stroke="Black" VerticalAlignment="Top" Width="101"/>
+                    <Label Content="High Risk" HorizontalAlignment="Left" Margin="52,29,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="769" HorizontalContentAlignment="Center"/>
+                    <Label Content="Medium Risk" HorizontalAlignment="Left" Margin="52,168,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="769" HorizontalContentAlignment="Center"/>
+                    <Label Content="Low Risk" HorizontalAlignment="Left" Margin="52,307,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Width="769" HorizontalContentAlignment="Center"/>
+                    <Label Content="Total" HorizontalAlignment="Left" Margin="19,99,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="16" Width="96" Height="28" HorizontalContentAlignment="Center">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label x:Name="lblHighTotal" Content="0" HorizontalAlignment="Center" Margin="81,66,722,0" VerticalAlignment="Top" RenderTransformOrigin="0.739,0.897" Width="50" HorizontalContentAlignment="Center" Height="97" VerticalContentAlignment="Center"/>
+                    <Label x:Name="lblMediumTotal" Content="0" HorizontalAlignment="Left" Margin="81,205,0,0" VerticalAlignment="Top" Width="50" HorizontalContentAlignment="Center" Height="97" VerticalContentAlignment="Center"/>
+                    <Label x:Name="lblLowTotal" Content="0" HorizontalAlignment="Left" Margin="81,344,0,0" VerticalAlignment="Top" Width="50" HorizontalContentAlignment="Center" Height="97" VerticalContentAlignment="Center"/>
+                    <TextBlock x:Name="txtHighRisk" HorizontalAlignment="Left" Margin="158,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="652" Foreground="Black" FontWeight="Normal" FontSize="14"><Run Text="High r"/><Run Text="isk information will appear here."/></TextBlock>
+                    <TextBlock x:Name="txtMediumRisk" HorizontalAlignment="Left" Margin="158,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="81" Width="652" Foreground="Black" FontSize="14" FontWeight="Normal"><Run Text="Low risk"/><Run Text=" information will appear here."/></TextBlock>
+                    <TextBlock x:Name="txtLowRisk" HorizontalAlignment="Left" Margin="158,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="82" Width="652" Foreground="Black" FontSize="14" FontWeight="Normal"><Run Text="Low"/><Run Text=" r"/><Run Text="isk information will appear here."/></TextBlock>
+                    <Label Content="Total" HorizontalAlignment="Left" Margin="19,239,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="16" Width="96" Height="28" HorizontalContentAlignment="Center">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label Content="Total" HorizontalAlignment="Left" Margin="19,378,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="16" Width="96" Height="28" HorizontalContentAlignment="Center">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
                 </Grid>
             </TabItem>
             <Grid Height="100" Width="100"/>
-            <TabItem x:Name="tabPortScan" Header="Port Scan  " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-2,-2,0,-2" >
+            <TabItem x:Name="tabARP" Header="ARP View" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
                 <Grid>
-                    <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
-                    <TextBox x:Name="txtPortOutput" HorizontalAlignment="Left" Height="541" Margin="197,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="655" FontSize="12" FontWeight="Normal"/>
+                    <DataGrid x:Name="arpGrid" Margin="10,37,10,10" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20"/>
+                    <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP Command" Click="btnARP_Click" Height="32"/>
                 </Grid>
             </TabItem>
-            <Grid Height="100" Width="100"/>
-            <TabItem Header="NMap        " Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" >
-                <Grid>
-                    <Button x:Name="scnNtwrkBtn" Content="Check Installed" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Click="scnNtwrkClk"/>
-                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="501" Margin="238,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="440"/>
-                    <Button x:Name="IPTest" Content="IP and Subnet" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="192" Click="IPTest_Click"/>
-                    <Button x:Name="Subnet" Content="Subnet" HorizontalAlignment="Left" Margin="66,123,0,0" VerticalAlignment="Top" Width="75" Click="Subnet_Click"/>
+            <Label Content="Label" Height="100" Width="100"/>
+            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder" Background="White">
+                    <Button x:Name="nmapInstall" Content="Check NMap Install" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="nmapInstall_Click"/>
+                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click"/>
+                    <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="454" Margin="314,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="483"/>
+                    <CheckBox x:Name="authChkBx" Content="CheckBox" HorizontalAlignment="Left" Margin="77,143,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabPortScanner" Header="Port Scanner" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPortScanner" Background="White">
+                    <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
+                    <Grid HorizontalAlignment="Left" Height="100" Margin="216,275,0,0" VerticalAlignment="Top" Width="100"/>
+                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="436" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="14"/>
+                    <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="83" Margin="0,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="83" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="20" Margin="0,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                    <TextBlock x:Name="blockPortOpen" HorizontalAlignment="Left" Margin="1,479,0,0" TextWrapping="Wrap" Text="Keep open" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    <TextBlock x:Name="blockPortCould" HorizontalAlignment="Left" Margin="281,478,0,0" TextWrapping="Wrap" Text="Could be closed" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    <TextBlock x:Name="blockPortShould" HorizontalAlignment="Left" Margin="561,478,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Should"/><Run Text=" be closed"/></TextBlock>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="228,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="508,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
+                    <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="788,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="1,498,0,0" TextWrapping="Wrap" Text="These ports are likely to be used for critical things (Emails, Web browsing etc.,) which would not work without them." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="281,498,0,0" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="561,498,0,1" TextWrapping="Wrap" Width="227" Foreground="Black" FontSize="9"><Run Text="These ports are either known to be vulnerable without a use anymore or ports which you are unlikely to need (used by game services, streaming services"/><Run Text=" etc.)."/></TextBlock>
+                    <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="228,513,570,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
+                    <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="508,513,290,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
+                    <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="789,513,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="44" TextAlignment="Center" FontSize="18" Foreground="Black"/>
 
                 </Grid>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy1" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder2" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy2" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder3" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder4" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy4" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder5" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy5" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder6" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy6" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder7" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy7" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder8" Background="White"/>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy8" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPlaceholder9" Background="White"/>
             </TabItem>
         </TabControl>
-        <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="0,2,0,0" VerticalAlignment="Top" Width="202"/>
-        <Button x:Name="btnExit" Content="Exit" Width="80" Margin="0,570,900,0" Background="#FF363636" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="39" Click="btnExit_Click"/>
+        <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="44" Click="btnExit_Click" HorizontalAlignment="Left" Width="143"/>
 
 
     </Grid>
