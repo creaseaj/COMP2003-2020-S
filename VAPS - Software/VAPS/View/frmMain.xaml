@@ -101,6 +101,7 @@
                     <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="228,513,570,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                     <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="508,513,290,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                     <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="789,513,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="44" TextAlignment="Center" FontSize="18" Foreground="Black"/>
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy1" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >

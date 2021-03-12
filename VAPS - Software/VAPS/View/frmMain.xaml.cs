@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -72,6 +73,57 @@ namespace VAPS.View
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+
+
+        private void scnNtwrkClk(object sender, RoutedEventArgs e)
+        {
+            if (authChkBx.IsChecked.Value)
+            {
+                nmapScanningProgress();
+
+            }
+            else
+            {
+                nmapOut.Text = "You must have permission from the network adminstrator to perform this action";
+            }
+
+        }
+        private async Task nmapScanningProgress()
+        {
+            // Task runs in the background which is the nmap function
+            Task<string> getNmap = Task.Run(() =>
+            {
+                return new nmapController().fingerPrint("192.168.0.0","255.255.255.0");
+            });
+            nmapOut.Text = "initialTest";
+            // Runs while nmap command is still running, shows scanning dots
+            for (int i = 0; i < 100; i++)
+            {
+                await Task.Delay(500);
+                nmapOut.Text = i.ToString();
+                switch (i % 3)
+                {
+                    case 0:
+                        nmapOut.Text = "Scanning.";
+                        break;
+                    case 1:
+                        nmapOut.Text = "Scanning..";
+                        break;
+                    case 2:
+                        nmapOut.Text = "Scanning...";
+                        break;
+                }
+
+                // Checks if nmap command is still running
+                if(getNmap.IsCompleted)
+                {
+                    break;
+                }
+
+            }
+            nmapOut.Text = getNmap.Result;
         }
 
     }
