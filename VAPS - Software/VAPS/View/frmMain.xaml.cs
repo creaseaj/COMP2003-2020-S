@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,7 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VAPS.Controller;
-//using VAPS.Resources;
+using VAPS.Model;
+
 namespace VAPS.View
 {
     /// <summary>
@@ -22,66 +24,52 @@ namespace VAPS.View
     /// </summary>
     public partial class CoreWindow : Window
     {
-        ARPController network;
-        PortScanController scanController;
+        ARPController ARP;
+        PortScanController PortScan;
         nmapController nController;
-
-
-
-
-
-
         public CoreWindow()
         {
-            
             InitializeComponent();
             var mainForm = this;
-            network = new ARPController();
-            scanController = new PortScanController();
+            ARP = new ARPController();
+            PortScan = new PortScanController();
             nController = new nmapController();
+            Port.Instance.fileInput();
 
-
-
-
+            //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
+            arpGrid.Visibility = Visibility.Hidden;
         }
-
-
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            DataTable dataTable = new DataTable();
-            List<List<string>> arpList = network.getARPRaw();
-            for(int i = 0; i < arpList[0].Count; i++) {
-                dataTable.Columns.Add(new DataColumn(arpList[0][i]));            
-            }
-            //ARPWindow.ShowDialog();
-            for(int i = 1; i < arpList.Count; i++)
-            {
-                var newRow = dataTable.NewRow();
-                for(int j = 0; j < arpList[i].Count; j++)
-                {
-                    newRow[arpList[0][j]] = arpList[i][j];
-                }
-                dataTable.Rows.Add(newRow);
-            }
-            arpGrid.ItemsSource = dataTable.DefaultView;
+            DataTable ARPTable = new DataTable();
+            ARPTable = ARP.generateTable(ARPTable);
+            arpGrid.ItemsSource = ARPTable.DefaultView;
+            arpGrid.Visibility = Visibility.Visible;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
+        private void btnARPClk(object sender, RoutedEventArgs e)
+        {
 
-        
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                private void btnARPClk(object sender, RoutedEventArgs e)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-
+        }
         private void btnPortScanner_Click(object sender, RoutedEventArgs e)
         {
-            txtPortOutput.Text = scanController.results();
+
+            DataTable PortScannerTable = new DataTable();
+            PortScannerTable = PortScan.generateTable(PortScannerTable);
+            PortScannerDataGrid.ItemsSource = PortScannerTable.DefaultView;
+            PortScannerDataGrid.Visibility = Visibility.Visible;
+            int[] results = PortScan.getValues(PortScannerTable);
+            txtBlockOpenNum.Text = results[0].ToString();
+            txtBlockCouldNum.Text = results[1].ToString();
+            txtBlockShouldNum.Text = results[2].ToString();
+
+
+
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,42 +78,88 @@ namespace VAPS.View
         }
 
 
+
         private void scnNtwrkClk(object sender, RoutedEventArgs e)
         {
-            nmapOut.Text = new nmapController().scanLocal();
+            if (authChkBx.IsChecked.Value)
+            {
+                nmapScanningProgress();
+
+            }
+            else
+            {
+                nmapOut.Text = "You must have permission from the network adminstrator to perform this action";
+            }
+
+        }
+        private async Task nmapScanningProgress()
+        {
+            // Task runs in the background which is the nmap function
+            Task<string> getNmap = Task.Run(() =>
+            {
+                return new nmapController().fingerPrint("192.168.0.0","255.255.255.0");
+            });
+            nmapOut.Text = "initialTest";
+            // Runs while nmap command is still running, shows scanning dots
+            for (int i = 0; i < 100; i++)
+            {
+                await Task.Delay(500);
+                nmapOut.Text = i.ToString();
+                switch (i % 3)
+                {
+                    case 0:
+                        nmapOut.Text = "Scanning.";
+                        break;
+                    case 1:
+                        nmapOut.Text = "Scanning..";
+                        break;
+                    case 2:
+                        nmapOut.Text = "Scanning...";
+                        break;
+                }
+
+                // Checks if nmap command is still running
+                if(getNmap.IsCompleted)
+                {
+                    break;
+                }
+
+            }
+            nmapOut.Text = getNmap.Result;
         }
 
-        private void IPTest_Click(object sender, RoutedEventArgs e)
+        private void ipsubShow_Click(object sender, RoutedEventArgs e)
         {
             string ipaddress = nController.GetLocalIPAddress();
-            Console.WriteLine(ipaddress);
-        }
-
-        private void Subnet_Click(object sender, RoutedEventArgs e)
-        {
-            string ipaddress = nController.GetLocalIPAddress();
-            Console.WriteLine(ipaddress);
-           /// nController.Subnet();
+            nmapOut.Text = (ipaddress);
+            
+            /// nController.Subnet();
 
             string test;
             test = "192.168";
-     
+
             if (ipaddress.StartsWith(test))
             {
-                Console.WriteLine("255.255.255.0");
+                nmapOut.Text = nmapOut.Text + ("\n255.255.255.0");
             }
             test = "172.";
 
             if (ipaddress.StartsWith(test))
             {
-                Console.WriteLine("255.255.0.0");
+                nmapOut.Text = nmapOut.Text + ("\n255.255.0.0");
             }
             test = "10.";
 
             if (ipaddress.StartsWith(test))
             {
-                Console.WriteLine("255.0.0.0");
+                nmapOut.Text = nmapOut.Text + ("\n255.0.0.0");
             }
+
+        }
+
+        private void nmapInstall_Click(object sender, RoutedEventArgs e)
+        {
+            nmapOut.Text = new nmapController().scanLocal();
         }
     }
 }
