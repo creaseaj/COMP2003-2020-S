@@ -11,34 +11,35 @@ body,h1,h2,h3,h4,h5 {font-family: "Arial", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
+.w3-theme {color:#fff !important; background-color:#850504 !important}
 </style>
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-win8-crimson w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-theme w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
     <h3 class="w3-padding-64 w3-xxlarge"><b>VΛPTS</b></h3>
   </div>
   <div class="w3-bar-block">
     <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Introduction</a>
+    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Introduction</a>
     <a href="#Functionality" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Functionality</a>
-    <a href="#ARP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">ARP Scan</a>
-    <a href="#Port" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Port Scan</a>
-    <a href="#function0" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Function 0 </a>
-    <a href="#function1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Function 1 </a>
-    <a href="#function2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Function 2 </a>
+    <a href="#ARP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- ARP Scan</a>
+    <a href="#Port" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Port Scan</a>
+    <a href="#function0" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Function 0 </a>
+    <a href="#function1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Function 1 </a>
+    <a href="#function2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Function 2 </a>
     <a href="#Miscellaneous" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Miscellaneous</a>
-    <a href="#Nmap Install" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Nmap Install</a>
+    <a href="#Nmap Install" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Nmap Install</a>
 
 
   </div>
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-win8-crimson w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-win8-crimson w3-margin-right" onclick="w3_open()">☰</a>
+<header class="w3-container w3-top w3-hide-large w3-theme w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-theme w3-margin-right" onclick="w3_open()">☰</a>
   <span>VΛPTS</span>
 </header>
 
@@ -53,7 +54,7 @@ body {font-size:16px;}
     <h1 class="w3-xxxlarge"><b>Vulnerability Analysis and Pen-Testing Suite</b></h1>
 
     <h1 class="w3-xxlarge"><b>Introduction</b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
     <p>
       Designed for Small-to-Medium enterprises whose systems may be vulnerable to attacks without realising, the Vulnerability Analysis and Pen-Testing
       Suite is a system testing kit. It searches for a range of vulnerabilities using traditional tools wrapped into one, user-friendly environment that
@@ -71,7 +72,7 @@ body {font-size:16px;}
   <!-- ARP Scan -->
   <div class="w3-container" id="ARP" style="margin-top:20px">
     <h1 class="w3-xlarge"><b>ARP Scan</b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
     <p>Our ARP (Address Resolution Protocol) viewer is a low-level network discovery tool, that gives users the ability to see the IP addresses
     and associated physical (MAC) addresses of devices on the network. In the screenshot below you can see VAPTS on the left giving the users
     a readout of a recent Arp scan, this can be compared to the default Arp command that ran through the command prompt on a windows machine on
@@ -84,7 +85,7 @@ body {font-size:16px;}
   <!-- Port Scan  -->
   <div class="w3-container" id="Port" style="margin-top:20px">
     <h1 class="w3-xlarge"><b>Port Scan</b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
     <p>Our port scanner allows the user to probe their network for open ports and gives a detailed readout of the port number, state, and description
       of what the port is used for, along with our recommendation on if the port should be open or closed. This can be seen at the bottom in the screenshot
       below, with easy to see indicators on security risk and the number of ports within each of the three categories shown clearly.
@@ -95,7 +96,7 @@ body {font-size:16px;}
   <!-- Function  -->
   <div class="w3-container" id="function0" style="margin-top:20px">
     <h1 class="w3-xlarge"><b>Function 0</b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
     <p>
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
       nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -106,7 +107,7 @@ body {font-size:16px;}
   <!-- Function  -->
   <div class="w3-container" id="function1" style="margin-top:20px">
     <h1 class="w3-xlarge"><b>Function 1 </b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
     <p>
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
       nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -132,7 +133,7 @@ body {font-size:16px;}
   <!-- Nmap Install  -->
   <div class="w3-container" id="Nmap Install" style="margin-top:20px">
     <h1 class="w3-xlarge"><b>Nmap Install</b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
     <p>
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
       nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
