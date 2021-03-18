@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -122,7 +124,30 @@ namespace VAPS.Controller
                 return "";
             }
         }
-        
+        public string getSubnetFromIP(string ipIn)
+        {
+            string test;
+            test = "192.168";
+            string stringOut = "";
+            if (ipIn.StartsWith(test))
+            {
+                stringOut = ("\n255.255.255.0");
+            }
+            test = "172.";
+
+            if (ipIn.StartsWith(test))
+            {
+                stringOut =  ("\n255.255.0.0");
+            }
+            test = "10.";
+
+            if (ipIn.StartsWith(test))
+            {
+                stringOut =  ("\n255.0.0.0");
+            }
+
+            return stringOut;
+        }
         public string GetLocalIPAddress()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());

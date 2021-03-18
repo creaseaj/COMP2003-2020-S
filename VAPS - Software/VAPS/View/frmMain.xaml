@@ -77,7 +77,7 @@
             <Label Content="Label" Height="100" Width="100"/>
             <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder" Background="White">
-                    <Button x:Name="nmapInstall" Content="Check NMap Install" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="nmapInstall_Click"/>
+                    <Button x:Name="nmapInstall" Content="Run Nmap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk"/>
                     <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click"/>
                     <TextBox x:Name="nmapOut" HorizontalAlignment="Left" Height="454" Margin="314,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="483"/>
                     <CheckBox x:Name="authChkBx" Content="CheckBox" HorizontalAlignment="Left" Margin="77,143,0,0" VerticalAlignment="Top"/>

@@ -34,7 +34,7 @@ namespace VAPS.View
             ARP = new ARPController();
             PortScan = new PortScanController();
             nController = new nmapController();
-            Port.Instance.fileInput();
+            //Port.Instance.fileInput();
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
@@ -42,10 +42,10 @@ namespace VAPS.View
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            DataTable ARPTable = new DataTable();
-            ARPTable = ARP.generateTable(ARPTable);
-            arpGrid.ItemsSource = ARPTable.DefaultView;
-            arpGrid.Visibility = Visibility.Visible;
+            //DataTable ARPTable = new DataTable();
+            //ARPTable = ARP.generateTable(ARPTable);
+            //arpGrid.ItemsSource = ARPTable.DefaultView;
+            //arpGrid.Visibility = Visibility.Visible;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,7 @@ namespace VAPS.View
             // Task runs in the background which is the nmap function
             Task<string> getNmap = Task.Run(() =>
             {
-                return new nmapController().fingerPrint("192.168.0.0","255.255.255.0");
+                return new nmapController().fingerPrint(nController.GetLocalIPAddress(),nController.getSubnetFromIP(nController.GetLocalIPAddress()));
             });
             nmapOut.Text = "initialTest";
             // Runs while nmap command is still running, shows scanning dots
@@ -132,28 +132,12 @@ namespace VAPS.View
         {
             string ipaddress = nController.GetLocalIPAddress();
             nmapOut.Text = (ipaddress);
-            
+
             /// nController.Subnet();
 
-            string test;
-            test = "192.168";
+            nmapOut.Text += nController.getSubnetFromIP(ipaddress);
 
-            if (ipaddress.StartsWith(test))
-            {
-                nmapOut.Text = nmapOut.Text + ("\n255.255.255.0");
-            }
-            test = "172.";
 
-            if (ipaddress.StartsWith(test))
-            {
-                nmapOut.Text = nmapOut.Text + ("\n255.255.0.0");
-            }
-            test = "10.";
-
-            if (ipaddress.StartsWith(test))
-            {
-                nmapOut.Text = nmapOut.Text + ("\n255.0.0.0");
-            }
 
         }
 
