@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>VΛPTS - Help Page</title>
+<link rel="icon" href="Assets/logoV.png" type="image/gif" sizes="16x16">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Arial", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-win8-crimson w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64 w3-xxlarge"><b>VΛPTS</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Introduction</a>
+    <a href="#Functionality" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Functionality</a>
+    <a href="#ARP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">ARP Scan</a>
+    <a href="#Port" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Port Scan</a>
+    <a href="#function0" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Function 0 </a>
+    <a href="#function1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Function 1 </a>
+    <a href="#function2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Function 2 </a>
+    <a href="#Miscellaneous" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Miscellaneous</a>
+    <a href="#Nmap Install" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Nmap Install</a>
+
+
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-win8-crimson w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-win8-crimson w3-margin-right" onclick="w3_open()">☰</a>
+  <span>VΛPTS</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <!-- introduction -->
+
+  <div class="w3-container" style="margin-top:80px" id="introduction">
+    <h1 class="w3-xxxlarge"><b>Vulnerability Analysis and Pen-Testing Suite</b></h1>
+
+    <h1 class="w3-xxlarge"><b>Introduction</b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>
+      Designed for Small-to-Medium enterprises whose systems may be vulnerable to attacks without realising, the Vulnerability Analysis and Pen-Testing
+      Suite is a system testing kit. It searches for a range of vulnerabilities using traditional tools wrapped into one, user-friendly environment that
+      outputs any results clearly and effectively.<br><br>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+
+  <div class="w3-container" style="margin-top:40px" id="Functionality">
+    <h1 class="w3-xxlarge"><b>Functionality</b></h1>
+  </div>
+
+  <!-- ARP Scan -->
+  <div class="w3-container" id="ARP" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>ARP Scan</b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>Our ARP (Address Resolution Protocol) viewer is a low-level network discovery tool, that gives users the ability to see the IP addresses
+    and associated physical (MAC) addresses of devices on the network. In the screenshot below you can see VAPTS on the left giving the users
+    a readout of a recent Arp scan, this can be compared to the default Arp command that ran through the command prompt on a windows machine on
+    the right. You will notice that VAPTS can identify the devices manufacturer, due to our built-in web scraping techniques. We felt it was
+    important for the users to be able to quickly identify the devices and having more detailed information about said devices allows for that to happen.
+    </p>
+    <img src="assets/img/arpScan.jpg">
+  </div>
+
+  <!-- Port Scan  -->
+  <div class="w3-container" id="Port" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Port Scan</b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>Our port scanner allows the user to probe their network for open ports and gives a detailed readout of the port number, state, and description
+      of what the port is used for, along with our recommendation on if the port should be open or closed. This can be seen at the bottom in the screenshot
+      below, with easy to see indicators on security risk and the number of ports within each of the three categories shown clearly.
+    </p>
+    <img src="assets/img/PortScan.png">
+  </div>
+
+  <!-- Function  -->
+  <div class="w3-container" id="function0" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Function 0</b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+  <!-- Function  -->
+  <div class="w3-container" id="function1" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Function 1 </b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+  <!-- Function  -->
+  <div class="w3-container" id="function2" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Function 2 </b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+  <div class="w3-container" style="margin-top:40px" id="Miscellaneous">
+    <h1 class="w3-xxlarge"><b>Miscellaneous</b></h1>
+  </div>
+
+  <!-- Nmap Install  -->
+  <div class="w3-container" id="Nmap Install" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Nmap Install</b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a> template</p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
