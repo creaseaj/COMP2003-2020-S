@@ -16,7 +16,7 @@ namespace VAPS.Controller
         public string fingerPrint(string ip, string subnet){
             // find range of ip addresses using the subnet and ip address
             string[] ipRange = getIPRange(ipToBinary(ip), ipToBinary(subnet));
-            string output = cmdController.executeCommand("nmap",  ipRange[0] + "-" + ipRange[1].Substring(ipRange[1].Length - 3, 3));
+            string output = cmdController.executeCommand("nmap", "-O " +  ipRange[0] + "-" + ipRange[1].Substring(ipRange[1].Length - 3, 3));
             return output;
         }
         private string[] getIPRange(string ip, string subnet)
