@@ -26,12 +26,14 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
+        PasswordTesterController PasswordTesting;
         public CoreWindow()
         {
             InitializeComponent();
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
+            PasswordTesting = new PasswordTesterController();
             Port.Instance.fileInput();
             Device.Instance.fileInput();
 
@@ -132,6 +134,22 @@ namespace VAPS.View
             DataTable ARPTable = new DataTable();
             ARPTable = ARP.formatTable(ARPTable);
             arpGrid.ItemsSource = ARPTable.DefaultView;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (pwdPasswordInput.Password.Length != 0)
+            {
+                txtTimeToCrack.Text = "Time to crack: " + PasswordTesting.timeToCrack(pwdPasswordInput.Password);
+            }
+            else
+            {
+                txtTimeToCrack.Text = "";
+            }
+        }
+        private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

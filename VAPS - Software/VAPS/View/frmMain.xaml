@@ -132,8 +132,14 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy1" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="gridPlaceholder2" Background="White"/>
+            <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPasswordTester" Background="White">
+                    <PasswordBox x:Name="pwdPasswordInput" HorizontalAlignment="Left" Margin="200,186,0,0" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" Height="46" FontSize="20" PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock x:Name="header" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Password Strength Tester" VerticalAlignment="Top" Width="820" Foreground="#FF850505" FontSize="28" TextAlignment="Center"/>
+                    <Rectangle Fill="#FF575757" HorizontalAlignment="Left" Height="100" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
+                    <Label Content="Enter a password:" HorizontalAlignment="Left" Margin="200,157,0,0" VerticalAlignment="Top" Width="440" FontWeight="Normal"/>
+                    <TextBlock x:Name="txtTimeToCrack" HorizontalAlignment="Left" Margin="200,237,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy2" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder3" Background="White"/>
