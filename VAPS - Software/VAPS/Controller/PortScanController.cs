@@ -103,8 +103,6 @@ namespace VAPS.Controller
             tempList = Port.Instance.getList();
             foreach (var port in tempList)
             {
-                //portNumber = Convert.ToInt32(nextRow[1]);
-                //portReference = Convert.ToInt32(port[0]);
                 if (nextRow[1].ToString() == port[0])
                 {
                     nextRow[4] = port[1];
