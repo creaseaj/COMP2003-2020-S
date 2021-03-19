@@ -18,3 +18,4 @@ Designed for Small-to-Medium enterprises whose systems may be vulnerable to atta
 ## Acknowledgements ##
 * [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
 * [https://nmap.org/](https://nmap.org/)
+* [https://www.ncsc.gov.uk/information/ncsc-glossary](https://www.ncsc.gov.uk/information/ncsc-glossary)
