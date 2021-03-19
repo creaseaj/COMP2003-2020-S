@@ -96,6 +96,7 @@
     <Compile Include="Controller\nmapController.cs" />
     <Compile Include="Controller\PortScanController.cs" />
     <Compile Include="Controller\webScraper.cs" />
+    <Compile Include="Model\Device.cs" />
     <Compile Include="Model\Port.cs" />
     <Compile Include="Model\Risk.cs" />
     <Compile Include="View\frmMain.xaml.cs">
