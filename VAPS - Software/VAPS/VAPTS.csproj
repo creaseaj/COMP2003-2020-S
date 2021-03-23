@@ -164,5 +164,9 @@
   <ItemGroup>
     <Resource Include="Resources\vaptsSmall.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\cancel.png" />
+    <Resource Include="Resources\Icons\check.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

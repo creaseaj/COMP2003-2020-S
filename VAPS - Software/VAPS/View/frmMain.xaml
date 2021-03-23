@@ -136,9 +136,22 @@
                 <Grid x:Name="gridPasswordTester" Background="White">
                     <PasswordBox x:Name="pwdPasswordInput" HorizontalAlignment="Left" Margin="200,186,0,0" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" Height="46" FontSize="20" PasswordChanged="PasswordBox_PasswordChanged"/>
                     <TextBlock x:Name="header" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Password Strength Tester" VerticalAlignment="Top" Width="820" Foreground="#FF850505" FontSize="28" TextAlignment="Center"/>
-                    <Rectangle Fill="#FF575757" HorizontalAlignment="Left" Height="100" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
+                    <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="100" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
                     <Label Content="Enter a password:" HorizontalAlignment="Left" Margin="200,157,0,0" VerticalAlignment="Top" Width="440" FontWeight="Normal"/>
-                    <TextBlock x:Name="txtTimeToCrack" HorizontalAlignment="Left" Margin="200,237,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="txtTimeToCrack" HorizontalAlignment="Left" Margin="200,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Text="      "/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="820" FontWeight="Normal" TextAlignment="Center" Height="35" FontSize="26" Foreground="#FF850505"><Run Text="Password Guidance"/><LineBreak/><Run/></TextBlock>
+                    <TextBlock x:Name="blockLowerCase" HorizontalAlignment="Left" Margin="119,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal"><Run Text="Has a lower case character"/><Run Text=" (a-z)"/></TextBlock>
+                    <TextBlock x:Name="blockUpper" HorizontalAlignment="Left" Margin="440,454,0,0" TextWrapping="Wrap" Text="Has an upper case character (A-Z)" VerticalAlignment="Top" RenderTransformOrigin="0.707,-2.542" Height="24" Width="273" FontWeight="Normal" TextAlignment="Right"/>
+                    <TextBlock x:Name="blockNumber" HorizontalAlignment="Left" Margin="119,483,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal"><Run Text="Has a number"/><Run Text=" (0-9)"/></TextBlock>
+                    <TextBlock x:Name="blockSpecial" HorizontalAlignment="Left" Margin="440,483,0,0" TextWrapping="Wrap" Text="Has a special character" VerticalAlignment="Top" FontWeight="Normal" Width="273" TextAlignment="Right"/>
+                    <TextBlock x:Name="blockLength" HorizontalAlignment="Left" Margin="119,512,0,0" TextWrapping="Wrap" Text="Is longer than 9 characters" VerticalAlignment="Top" Width="273" FontWeight="Normal"/>
+                    <TextBlock x:Name="blockDoesNotContain" HorizontalAlignment="Left" Margin="440,512,0,0" TextWrapping="Wrap" Text="Does not contain &quot;password&quot;" VerticalAlignment="Top" Width="273" FontWeight="Normal" TextAlignment="Right"/>
+                    <Image x:Name="imgLower" HorizontalAlignment="Left" Height="19" Margin="91,459,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgNumber" HorizontalAlignment="Left" Height="19" Margin="91,488,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgLength" HorizontalAlignment="Left" Height="19" Margin="91,517,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgUpper" HorizontalAlignment="Left" Height="19" Margin="717,459,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgSpecial" HorizontalAlignment="Left" Height="19" Margin="717,488,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgPassword" HorizontalAlignment="Left" Height="19" Margin="717,517,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy2" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >

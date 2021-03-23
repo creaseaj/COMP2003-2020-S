@@ -27,6 +27,7 @@ namespace VAPS.View
         ARPController ARP;
         PortScanController PortScan;
         PasswordTesterController PasswordTesting;
+        Image[] passwordImages;
         public CoreWindow()
         {
             InitializeComponent();
@@ -43,6 +44,8 @@ namespace VAPS.View
             btnARPAddName.IsEnabled = false;
             txtARPDeviceName.Visibility = Visibility.Hidden;
             btnARPAddName.Visibility = Visibility.Hidden;
+
+            passwordImages = new Image[] { imgLength, imgLower, imgNumber, imgPassword, imgSpecial, imgUpper };
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
@@ -141,6 +144,7 @@ namespace VAPS.View
             if (pwdPasswordInput.Password.Length != 0)
             {
                 txtTimeToCrack.Text = "Time to crack: " + PasswordTesting.timeToCrack(pwdPasswordInput.Password);
+                passwordImages = PasswordTesting.passwordGuidance(pwdPasswordInput.Password, passwordImages);
             }
             else
             {
