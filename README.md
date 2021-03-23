@@ -30,7 +30,8 @@ Our port scanner allows the user to probe their network for open ports and gives
 * [Kieran Wheatley](https://github.com/kieranwheatley)
 
 ## Acknowledgements ##
-* [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
+* Vendor ID's for MAC Addresses - [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
 * [https://nmap.org/](https://nmap.org/)
 * Tick Icon (Password guidance) - Icons made by <a href="https://www.flaticon.com/authors/alfredo-hernandez" title="Alfredo Hernandez">Alfredo Hernandez</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
 * Cross Icon (Password guidance) - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
+* Password strength estimation - https://github.com/hexasoftuk/Hexasoft.Zxcvbn
