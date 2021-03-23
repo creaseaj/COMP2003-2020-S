@@ -1,0 +1,122 @@
+Antivirus
+Software that is designed to detect, stop and remove viruses and other kinds of malicious software.
+App
+Short for Application, typically refers to a software program for a smartphone or tablet.
+Attacker
+Malicious actor who seeks to exploit computer systems with the intent to change, destroy, steal or disable their information, and then exploit the outcome.
+Breach
+An incident in which data, computer systems or networks are accessed or affected in a non-authorised way.
+Browser
+A software application which presents information and services from the web.
+Brute force attack
+Using a computational power to automatically enter a huge number of combination of values, usually in order to discover passwords and gain access.
+Bring your own device (BYOD)
+An organisation's strategy or policy that allows employees to use their own personal devices for work purposes.
+Certificate
+A form of digital identity for a computer, user or organisation to allow the authentication and secure exchange of information.
+Cloud
+Where shared compute and storage resources are accessed as a service (usually online), instead of hosted locally on physical services.
+Resources can include infrastructure, platform or software services.
+Credentials
+A user's authentication information used to verify identity - typically one, or more, of password, token, certificate.
+Cyber attack
+Malicious attempts to damage, disrupt or gain unauthorised access to computer systems, networks or devices, via cyber means.
+Cyber incident
+A breach of the security rules for a system or service - most commonly; Attempts to gain unauthorised access to a system and/or to data. Unauthorised use of systems for the processing or storing of data. Changes to a systems firmware, software or hardware without the system owners consent. Malicious disruption and/or denial of service.
+Cyber security
+The protection of devices, services and networks — and the information on them — from theft or damage.
+Data at rest
+Describes data in persistent storage such as hard disks, removable media or backups.
+Deny list
+An access control mechanism that blocks named entities from communicating with a computer, site or network. Can also be known as 'blacklisting' across the industry.
+Dictionary attack
+A type of brute force attack in which the attacker uses known dictionary words, phrases or common passwords as their guesses.
+Digital footprint
+A 'footprint' of digital information that a user's online activity leaves behind.
+Denial of service (dos)
+When legitimate users are denied access to computer services (or resources), usually by overloading the service with requests.
+Download attack
+The unintentional installation of malicious software or virus onto a device without the users knowledge or consent. May also be known as a drive-by download.
+Encryption
+A mathematical function that protects information by making it unreadable by everyone except those with the key to decode it.
+Firewall
+Hardware or software which uses a defined rule set to constrain network traffic to prevent unauthorised access to or from a network.
+Hacker
+In mainstream use as being someone with some computer skills who uses them to break into computers, systems and networks.
+Honeypot (honeynet)
+Decoy system or network to attract potential attackers that helps limit access to actual systems by detecting and deflecting or learning from an attack. Multiple honeypots form a honeynet.
+Internet of things (iot)
+Refers to the ability of everyday objects (rather than computers and devices) to connect to the Internet. Examples include kettles, fridges and televisions.
+Macro
+A small program that can automate tasks in applications (such as Microsoft Office) which attackers can use to gain access to (or harm) a system.
+Malvertising
+Using online advertising as a delivery method for malware.
+Malware
+Malicious software - a term that includes viruses, trojans, worms or any code or content that could have an adverse impact on organisations or individuals.
+Mitigation
+Steps that organisations and individuals can take to minimise and address risks.
+Network
+Two or more computers linked in order to share resources.
+Patching
+Applying updates to firmware or software to improve security and/or enhance functionality.
+Pentest
+Short for penetration test. An authorised test of a computer network or system designed to look for security weaknesses so that they can be fixed.
+Pharming
+An attack on network infrastructure that results in a user being redirected to an illegitimate website despite the user having entered the correct address.
+Phishing
+Untargeted, mass emails sent to many people asking for sensitive information (such as bank details) or encouraging them to visit a fake website.
+Platform
+The basic hardware (device) and software (operating system) on which applications can be run.
+Ransomware
+Malicious software that makes data or systems unusable until the victim makes a payment.
+Router
+A network device which sends data packets from one network to another based on the destination address. May also be called a gateway.
+Software as a service (saas)
+Describes a business model where consumers access centrally-hosted software applications over the Internet.
+Sanitisation
+Using electronic or physical destruction methods to securely erase or remove data from memory.
+Smishing
+Phishing via SMS: mass text messages sent to users asking for sensitive information (eg bank details) or encouraging them to visit a fake website.
+Social engineering
+Manipulating people into carrying out specific actions, or divulging information, that's of use to an attacker.
+Spear-phishing
+A more targeted form of phishing, where the email is designed to look like it's from a person the recipient knows and/or trusts.
+Trojan
+A type of malware or virus disguised as legitimate software, that is used to hack into the victim's computer.
+Two-factor authentication (2FA)
+The use of two different components to verify a user's claimed identity. Also known as multi-factor authentication.
+Virus
+Programs which can self-replicate and are designed to infect legitimate software programs or systems. A form of malware.
+Virtual Private Network (VPN)
+An encrypted network often created to allow secure connections for remote users, for example in an organisation with offices in multiple locations.
+Vulnerability
+A weakness, or flaw, in software, a system or process. An attacker may seek to exploit a vulnerability to gain unauthorised access to a system.
+Water-holing (watering hole attack)
+Setting up a fake website (or compromising a real one) in order to exploit visiting users.
+Whaling
+Highly targeted phishing attacks (masquerading as a legitimate emails) that are aimed at senior executives.
+Zero-day
+Recently discovered vulnerabilities (or bugs), not yet known to vendors or antivirus companies, that hackers can exploit.
+Internet Protocol (IP) Address
+An internet version of a home address for your computer, which is identified when it communicates over a network; For example, connecting to the internet (a network of networks).
+Exploit
+A malicious application or script that can be used to take advantage of a computer’s vulnerability.
+Trojan horse
+A piece of malware that often allows a hacker to gain remote access to a computer through a “back door”.
+Worm
+A piece of malware that can replicate itself in order to spread the infection to other connected computers.
+Bot/Botnet
+A type of software application or script that performs tasks on command, allowing an attacker to take complete control remotely of an affected computer. A collection of these infected computers is known as a “botnet” and is controlled by the hacker or “bot-herder”.
+Spyware
+A type of malware that functions by spying on user activity without their knowledge. The capabilities include activity monitoring,
+collecting keystrokes, data harvesting (account information, logins, financial data), and more.
+Rootkit
+Another kind of malware that allows cybercriminals to remotely control your computer. Rootkits are especially damaging because they are hard to detect, making it likely that this type of malware could live on your computer for a long time.
+Ddos
+An acronym that stands for distributed denial of service – a form of cyber attack. This attack aims to make a service such as a website unusable by “flooding” it with malicious traffic or data from multiple sources (often botnets).
+Nmap
+Nmap is used to discover hosts and services on a computer network by sending packets and analyzing the responses.
+Address Resolution Protocol (Arp)
+The Address Resolution Protocol is a communication protocol used for discovering the link layer address, such as a MAC address, associated with a given internet layer address,
+
+

@@ -26,7 +26,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   overflow-y:scroll;
-  height:609px;
+  height:600px;
   display:block;
 }
 
@@ -50,22 +50,24 @@ tr:nth-child(even) {
   </div>
   <div class="w3-bar-block">
     <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Introduction</a>
-    <a href="#Glossary" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Glossary</a>
+    <a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Introduction</a>
 
     <a href="#Functionality" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">VAPTS Functionality</a>
-    <a href="#ARP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- ARP Scan</a>
-    <a href="#Port" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Port Scan</a>
-    <a href="#function0" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Function 0 </a>
-    <a href="#function1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Function 1 </a>
-    <a href="#function2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Function 2 </a>
+    <a href="#ARP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">ARP Scan</a>
+    <a href="#Nmap" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Nmap</a>
+    <a href="#Port" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Port Scanner</a>
+    <a href="#Password" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Password Strength Tester</a>
+    <a href="#Placeholderfunction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">[Placeholder]</a>
+    <a href="#Placeholderfunction" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">[Placeholder]</a>
 
     <a href="#Miscellaneous" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Miscellaneous</a>
-    <a href="#Nmap Install" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">- Nmap Install</a>
+    <a href="https://github.com/creaseaj/COMP2003-2020-S" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">GitHub Repository</a>
+    <a href="#Glossary" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white w3-small">Cyber Security Glossary</a>
 
 
   </div>
 </nav>
+
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-theme w3-xlarge w3-padding">
@@ -92,15 +94,85 @@ tr:nth-child(even) {
     </p>
   </div>
 
+  <!--- Functionality Section -->
+  <div class="w3-container" style="margin-top:40px" id="Functionality">
+    <h1 class="w3-xxlarge"><b>VAPTS Functionality</b></h1>
+  </div>
+
+  <!-- ARP Scan -->
+  <div class="w3-container" id="ARP" style="margin-top:1px">
+    <h1 class="w3-xlarge"><b>ARP Scan</b></h1>
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
+    <p>Our ARP (Address Resolution Protocol) viewer is a low-level network discovery tool, that gives users the ability to see the IP addresses
+    and associated physical (MAC) addresses of devices on the network. In the screenshot below you can see VAPTS on the left giving the users
+    a readout of a recent Arp scan, this can be compared to the default Arp command that ran through the command prompt on a windows machine on
+    the right. You will notice that VAPTS can identify the devices manufacturer, due to our built-in web scraping techniques. We felt it was
+    important for the users to be able to quickly identify the devices and having more detailed information about said devices allows for that to happen.
+    </p>
+    <img src="Assets/img/ArpScan.jpg" alt="ArpScan">
+  </div>
+
+  <!-- Nmap  -->
+  <div class="w3-container" id="Nmap" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Nmap</b></h1>
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+  <!-- Port Scan  -->
+  <div class="w3-container" id="Port" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Port Scan</b></h1>
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
+    <p>Our port scanner allows the user to probe their network for open ports and gives a detailed readout of the port number, state, and description
+      of what the port is used for, along with our recommendation on if the port should be open or closed. This can be seen at the bottom in the screenshot
+      below, with easy to see indicators on security risk and the number of ports within each of the three categories shown clearly.
+    </p>
+    <img src="Assets/img/PortScan.png" alt="Port Scan">
+  </div>
+
+  <!-- password  -->
+  <div class="w3-container" id="Password" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Password Strength Tester</b></h1>
+    <hr style="width:50px;border:5px solid #850504" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+    <img src="Assets/img/PasswordTester.png" alt="ArpScan">
+  </div>
+
+  <!-- Function  -->
+  <div class="w3-container" id="Placeholderfunction" style="margin-top:20px">
+    <h1 class="w3-xlarge"><b>Placeholder</b></h1>
+    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+
+  <!--- Miscellaneous Sections -->
+  <div class="w3-container" style="margin-top:40px" id="Miscellaneous">
+    <h1 class="w3-xxlarge"><b>Miscellaneous</b></h1>
+  </div>
+
   <!-- Glossary -->
   <div class="w3-container" id="Glossary" style="margin-top:20px">
-    <h1 class="w3-xlarge"><b>Glossary</b></h1>
+    <h1 class="w3-xlarge"><b>Cyber Security Glossary</b></h1>
     <hr style="width:50px;border:5px solid #850504" class="w3-round">
-    <p>Below you can read a set of straight forward definitions for common cyber security terms provided by NCSC, feel free to us ethe search function to filter  the list</p>
+    <p>Below you can read a set of straight forward definitions for common cyber security terms from reliable sources such as the National Cyber Security Centre (NCSC).</p>
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+    <label for="myInput"></label><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
 
     <table id="myTable">
+      <body onload="sortTable()"></body>
       <tr class="header">
         <td><b>Term</b></td>
         <td><b>Definition</b></td>
@@ -334,11 +406,6 @@ tr:nth-child(even) {
           to detect, making it likely that this type of malware could live on your computer for a long time.</td>
       </tr>
       <tr>
-        <td>DDoS</td>
-        <td>An acronym that stands for distributed denial of service – a form of cyber attack. This attack aims to make a service such as a website
-          unusable by “flooding” it with malicious traffic or data from multiple sources (often botnets).</td>
-      </tr>
-      <tr>
         <td>Nmap</td>
         <td>Nmap is used to discover hosts and services on a computer network by sending packets and analyzing the responses.</td>
       </tr>
@@ -347,27 +414,12 @@ tr:nth-child(even) {
         <td>The Address Resolution Protocol is a communication protocol used for discovering the link layer address,
           such as a MAC address, associated with a given internet layer address,</td>
       </tr>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
     </table>
 
     <script>
+
       function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
+        let input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
@@ -384,98 +436,40 @@ tr:nth-child(even) {
           }
         }
       }
+
+      function sortTable() {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("myTable");
+        switching = true;
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[0];
+            y = rows[i + 1].getElementsByTagName("TD")[0];
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }
     </script>
   </div>
 
 
 
 
-  <!--- Tool Sections -->
-  <div class="w3-container" style="margin-top:40px" id="Functionality">
-    <h1 class="w3-xxlarge"><b>VAPTS Functionality</b></h1>
-  </div>
-
-  <!-- ARP Scan -->
-  <div class="w3-container" id="ARP" style="margin-top:1px">
-    <h1 class="w3-xlarge"><b>ARP Scan</b></h1>
-    <hr style="width:50px;border:5px solid #850504" class="w3-round">
-    <p>Our ARP (Address Resolution Protocol) viewer is a low-level network discovery tool, that gives users the ability to see the IP addresses
-    and associated physical (MAC) addresses of devices on the network. In the screenshot below you can see VAPTS on the left giving the users
-    a readout of a recent Arp scan, this can be compared to the default Arp command that ran through the command prompt on a windows machine on
-    the right. You will notice that VAPTS can identify the devices manufacturer, due to our built-in web scraping techniques. We felt it was
-    important for the users to be able to quickly identify the devices and having more detailed information about said devices allows for that to happen.
-    </p>
-    <img src="Assets/img/ArpScan.jpg" alt="ArpScan">
-  </div>
-
-  <!-- Port Scan  -->
-  <div class="w3-container" id="Port" style="margin-top:20px">
-    <h1 class="w3-xlarge"><b>Port Scan</b></h1>
-    <hr style="width:50px;border:5px solid #850504" class="w3-round">
-    <p>Our port scanner allows the user to probe their network for open ports and gives a detailed readout of the port number, state, and description
-      of what the port is used for, along with our recommendation on if the port should be open or closed. This can be seen at the bottom in the screenshot
-      below, with easy to see indicators on security risk and the number of ports within each of the three categories shown clearly.
-    </p>
-    <img src="Assets/img/PortScan.png" alt="Port Scan">
-  </div>
-
-  <!-- Function  -->
-  <div class="w3-container" id="function0" style="margin-top:20px">
-    <h1 class="w3-xlarge"><b>Function 0</b></h1>
-    <hr style="width:50px;border:5px solid #850504" class="w3-round">
-    <p>
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </p>
-  </div>
-
-  <!-- Function  -->
-  <div class="w3-container" id="function1" style="margin-top:20px">
-    <h1 class="w3-xlarge"><b>Function 1 </b></h1>
-    <hr style="width:50px;border:5px solid #850504" class="w3-round">
-    <p>
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </p>
-  </div>
-
-  <!-- Function  -->
-  <div class="w3-container" id="function2" style="margin-top:20px">
-    <h1 class="w3-xlarge"><b>Function 2 </b></h1>
-    <hr style="width:50px;border:5px solid #a20025" class="w3-round">
-    <p>
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </p>
-  </div>
-
-
-
-  <!--- Miscellaneous Sections -->
-  <div class="w3-container" style="margin-top:40px" id="Miscellaneous">
-    <h1 class="w3-xxlarge"><b>Miscellaneous</b></h1>
-  </div>
-
-  <!-- Nmap Install  -->
-  <div class="w3-container" id="Nmap Install" style="margin-top:20px">
-    <h1 class="w3-xlarge"><b>Nmap Install</b></h1>
-    <hr style="width:50px;border:5px solid #850504" class="w3-round">
-    <p>
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </p>
-  </div>
-
-
-<!-- End page content -->
+  <!-- End page content -->
 </div>
 
 <!-- W3.CSS Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a> template</p></div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a> site template</p></div>
 
 <script>
 // Script to open and close sidebar
