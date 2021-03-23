@@ -145,6 +145,7 @@ namespace VAPS.View
             {
                 txtTimeToCrack.Text = "Time to crack: " + PasswordTesting.timeToCrack(pwdPasswordInput.Password);
                 passwordImages = PasswordTesting.passwordGuidance(pwdPasswordInput.Password, passwordImages);
+                txtBlockCleartext.Text = pwdPasswordInput.Password;
             }
             else
             {
@@ -153,6 +154,22 @@ namespace VAPS.View
         }
         private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+        }
+
+        private void btnShowClear_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBlockCleartext.Visibility == Visibility.Hidden)
+            {
+                txtBlockCleartext.Visibility = Visibility.Visible;
+                pwdPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFABADB3"));
+            }
+            else if (txtBlockCleartext.Visibility == Visibility.Visible)
+            {
+                txtBlockCleartext.Visibility = Visibility.Hidden;
+                pwdPasswordInput.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            
 
         }
     }

@@ -35,7 +35,7 @@ namespace VAPS.Controller
             //double average = Queryable.Average(times.AsQueryable());
 
             string time = "";
-
+            /*
             if (offlineFastHash < 0.1)
             {
                 time = "under a second.";
@@ -43,7 +43,19 @@ namespace VAPS.Controller
             else
             {
                 time = (Math.Round(offlineFastHash, 2)).ToString();
-            }     
+            }
+            */
+
+
+            try
+            {
+                var timeFormatted = TimeSpan.FromDays(offlineFastHash);
+                time = timeFormatted.Hours.ToString() + " Hours " + ", Minutes: " + timeFormatted.Minutes.ToString();
+            }
+            catch (Exception)
+            {
+                time = "A long time!";
+            }
 
             return time;
         }
@@ -51,16 +63,7 @@ namespace VAPS.Controller
 
         public Image[] passwordGuidance(string password, Image[] icons)
         {
-            /*
-            if (Regex.IsMatch(password, "/[^a - z] / g;"))
-            {
-                icons[1].Source = new BitmapImage(new Uri(@"/VAPTS;Resources/Icons/check.png"));
-            }
-            else
-            {
-                icons[1].Source = new BitmapImage(new Uri(@"/VAPS;component/Resources/Icons/cancel.png", UriKind.RelativeOrAbsolute));
-            }
-            */
+
             //Check length is greater than 9 characters
             _ = password.Length > 9 ? icons[0].Source = new BitmapImage(new Uri(@"/VAPS;component/Resources/Icons/check.png", UriKind.RelativeOrAbsolute)) : icons[0].Source = new BitmapImage(new Uri(@"/VAPS;component/Resources/Icons/cancel.png", UriKind.RelativeOrAbsolute));
 
