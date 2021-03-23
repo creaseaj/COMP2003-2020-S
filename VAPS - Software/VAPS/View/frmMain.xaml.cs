@@ -26,12 +26,15 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
+        PasswordTesterController PasswordTesting;
+        Image[] passwordImages;
         public CoreWindow()
         {
             InitializeComponent();
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
+            PasswordTesting = new PasswordTesterController();
             Port.Instance.fileInput();
             Device.Instance.fileInput();
 
@@ -41,6 +44,8 @@ namespace VAPS.View
             btnARPAddName.IsEnabled = false;
             txtARPDeviceName.Visibility = Visibility.Hidden;
             btnARPAddName.Visibility = Visibility.Hidden;
+
+            passwordImages = new Image[] { imgLength, imgLower, imgNumber, imgPassword, imgSpecial, imgUpper };
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
@@ -134,8 +139,37 @@ namespace VAPS.View
             arpGrid.ItemsSource = ARPTable.DefaultView;
         }
 
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (pwdPasswordInput.Password.Length != 0)
+            {
+                txtTimeToCrack.Text = "Time to crack: " + PasswordTesting.timeToCrack(pwdPasswordInput.Password);
+                passwordImages = PasswordTesting.passwordGuidance(pwdPasswordInput.Password, passwordImages);
+                txtBlockCleartext.Text = pwdPasswordInput.Password;
+            }
+            else
+            {
+                txtTimeToCrack.Text = "";
+            }
+        }
         private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+        }
+
+        private void btnShowClear_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBlockCleartext.Visibility == Visibility.Hidden)
+            {
+                txtBlockCleartext.Visibility = Visibility.Visible;
+                pwdPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFABADB3"));
+            }
+            else if (txtBlockCleartext.Visibility == Visibility.Visible)
+            {
+                txtBlockCleartext.Visibility = Visibility.Hidden;
+                pwdPasswordInput.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            
 
         }
     }
