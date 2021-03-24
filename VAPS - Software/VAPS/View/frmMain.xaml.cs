@@ -164,10 +164,7 @@ namespace VAPS.View
                 txtTimeToCrack.Text = "";
             }
         }
-        private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
 
 
         private void btnShowClear_Click(object sender, RoutedEventArgs e)
@@ -182,8 +179,8 @@ namespace VAPS.View
                 txtBlockCleartext.Visibility = Visibility.Hidden;
                 pwdPasswordInput.Foreground = new SolidColorBrush(Colors.Black);
             }
-            
 
+        }
 
 
         private void scnNtwrkClk(object sender, RoutedEventArgs e)
