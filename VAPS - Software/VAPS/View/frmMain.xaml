@@ -68,10 +68,38 @@
                 </Grid>
             </TabItem>
             <Grid Height="100" Width="100"/>
-            <TabItem x:Name="tabARP" Header="ARP View" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
+            <TabItem x:Name="tabARP" Header="ARP" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
                 <Grid>
-                    <DataGrid x:Name="arpGrid" Margin="10,37,10,10" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20"/>
-                    <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP Command" Click="btnARP_Click" Height="32"/>
+                    <DataGrid x:Name="arpGrid" Margin="0,37,10,95" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20" SelectionChanged="arpGrid_SelectionChanged"/>
+                    <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP" Click="btnARP_Click" Height="32"/>
+                    <Label Content="https://www.adminsub.net/mac-address-finder" HorizontalAlignment="Left" Margin="666,462,0,0" VerticalAlignment="Top" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" FontSize="7" Width="167" Height="22" HorizontalContentAlignment="Center" Foreground="#FFACACAC" FontWeight="Normal"/>
+                    <Grid Height="90" Margin="0,471,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.4,0.13">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="11*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="0,7,0,0" Grid.RowSpan="2"/>
+                        <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="280,7,0,0" Grid.RowSpan="2"/>
+                        <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="560,7,0,0" Grid.RowSpan="2"/>
+                        <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="20" Margin="0,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <TextBox x:Name="txtARPDeviceName" HorizontalAlignment="Left" Height="30" Margin="482,-463,0,0" TextWrapping="Wrap" Text="Select a device to name" VerticalAlignment="Top" Width="253" Background="White" FontWeight="Normal" FontSize="16" BorderBrush="Black" VerticalContentAlignment="Center" AutomationProperties.HelpText="Register a device name here." TextChanged="txtARPDeviceName_TextChanged"/>
+                        <Button x:Name="btnARPAddName" Content="Add Device name" Height="30" Margin="734,-463,10,0" VerticalAlignment="Top" BorderBrush="Black" FontSize="12" FontWeight="Normal" Click="btnARPAddName_Click"/>
+
+                        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,8,0,0" TextWrapping="Wrap" Text="Registered Devices" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="280,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Known Devices"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock HorizontalAlignment="Left" Margin="560,8,0,0" TextWrapping="Wrap" Text="Unknown Devices" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                        <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="228,26,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Grid.RowSpan="2"/>
+                        <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="508,26,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Grid.RowSpan="2"/>
+                        <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="788,26,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Grid.RowSpan="2"/>
+                        <TextBlock Margin="1,27,615,0" TextWrapping="Wrap" Text="These devices have been registered with a friendly name and are known, and can be trusted." VerticalAlignment="Top" Height="62" Grid.RowSpan="2" FontSize="11" FontWeight="Normal" Foreground="Black"/>
+                        <TextBlock Margin="281,27,335,0" TextWrapping="Wrap" Text="These devices have not been registered but the company which made the device is known, making these devices to have a low chance of risk." VerticalAlignment="Top" Height="62" Grid.RowSpan="2" Foreground="Black" FontSize="11" FontWeight="Normal"/>
+                        <TextBlock Margin="0,27,54,0" TextWrapping="Wrap" Text="These devices have not been registered and the manufacturer was not found. These devices have potential to be dangerous." VerticalAlignment="Top" Height="62" Grid.RowSpan="2" FontSize="11" Foreground="Black" FontWeight="Normal" HorizontalAlignment="Right" Width="228"/>
+                        <TextBlock x:Name="blockARPRegistered" HorizontalAlignment="Center" Margin="229,41,571,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" Height="48" TextAlignment="Center" Grid.RowSpan="2" Foreground="Black"/>
+                        <TextBlock x:Name="blockARPKnown" HorizontalAlignment="Left" Margin="509,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" Height="48" TextAlignment="Center" Grid.RowSpan="2" Foreground="Black"/>
+                        <TextBlock x:Name="blockARPUnknown" Margin="789,41,0,1" TextWrapping="Wrap" Grid.RowSpan="2" Foreground="Black" HorizontalAlignment="Left" TextAlignment="Center"  Width="43"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <Label Content="Label" Height="100" Width="100"/>
@@ -87,7 +115,7 @@
                 <Grid x:Name="gridPortScanner" Background="White">
                     <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
                     <Grid HorizontalAlignment="Left" Height="100" Margin="216,275,0,0" VerticalAlignment="Top" Width="100"/>
-                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="436" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="14"/>
+                    <DataGrid x:Name="PortScannerDataGrid" HorizontalAlignment="Left" Height="436" Margin="0,37,0,0" VerticalAlignment="Top" Width="833" BorderBrush="Black" FontWeight="Normal" FontSize="13"/>
                     <Rectangle Fill="#FFC7FFD4" HorizontalAlignment="Left" Height="83" Margin="0,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="83" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
@@ -95,22 +123,44 @@
                     <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                     <TextBlock x:Name="blockPortOpen" HorizontalAlignment="Left" Margin="1,479,0,0" TextWrapping="Wrap" Text="Keep open" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
-                    <TextBlock x:Name="blockPortCould" HorizontalAlignment="Left" Margin="281,478,0,0" TextWrapping="Wrap" Text="Could be closed" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"/>
+                    <TextBlock x:Name="blockPortCould" HorizontalAlignment="Left" Margin="281,478,0,0" TextWrapping="Wrap" Text="Could be closed" VerticalAlignment="Top" Height="18" Width="255" Foreground="White" FontSize="14" TextAlignment="Center"/>
                     <TextBlock x:Name="blockPortShould" HorizontalAlignment="Left" Margin="561,478,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="272" Foreground="White" FontSize="14" TextAlignment="Center"><Run Text="Should"/><Run Text=" be closed"/></TextBlock>
                     <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="228,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
                     <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="508,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
                     <Rectangle Fill="White" HorizontalAlignment="Left" Height="64" Margin="788,497,0,0" Stroke="Black" VerticalAlignment="Top" Width="45"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="1,498,0,0" TextWrapping="Wrap" Text="These ports are likely to be used for critical things (Emails, Web browsing etc.,) which would not work without them." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="281,498,0,0" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="561,498,0,1" TextWrapping="Wrap" Width="227" Foreground="Black" FontSize="9"><Run Text="These ports are either known to be vulnerable without a use anymore or ports which you are unlikely to need (used by game services, streaming services"/><Run Text=" etc.)."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="1,498,0,0" TextWrapping="Wrap" Text="These ports are likely to be used for critical things (Emails, Web browsing etc.,) which would not work without them." VerticalAlignment="Top" Height="62" Width="227" Foreground="Black" FontSize="9" FontWeight="Normal"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="281,498,0,1" TextWrapping="Wrap" Text="These ports may be in used by an unidentified process. If they are required for software not in use, they should be closed. If you're unsure if they're in use, consider closing them and checking if anything is affected. If not, keep closed." Width="227" Foreground="Black" FontSize="9" FontWeight="Normal"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="561,498,0,1" TextWrapping="Wrap" Width="227" Foreground="Black" FontSize="9" FontWeight="Normal"><Run Text="These ports are either known to be vulnerable without a use anymore or ports which you are unlikely to need (used by game services, streaming services"/><Run Text=" etc.)."/></TextBlock>
                     <TextBlock x:Name="txtBlockOpenNum" HorizontalAlignment="Center" Margin="228,513,570,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                     <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="508,513,290,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                     <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="789,513,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="44" TextAlignment="Center" FontSize="18" Foreground="Black"/>
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy1" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="gridPlaceholder2" Background="White"/>
+            <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridPasswordTester" Background="White">
+                    <PasswordBox x:Name="pwdPasswordInput" HorizontalAlignment="Left" Margin="201,254,0,0" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" Height="46" FontSize="20" PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBlock x:Name="header" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Password Strength Tester" VerticalAlignment="Top" Width="820" Foreground="#FF850505" FontSize="28" TextAlignment="Center"/>
+                    <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="147" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
+                    <Label Content="Enter a password:" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="151" FontWeight="Normal"/>
+                    <TextBlock x:Name="txtTimeToCrack" HorizontalAlignment="Left" Margin="201,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Text="      " Width="440" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="820" FontWeight="Normal" TextAlignment="Center" Height="35" FontSize="26" Foreground="#FF850505"><Run Text="Password Guidance"/><LineBreak/><Run/></TextBlock>
+                    <TextBlock x:Name="blockLowerCase" HorizontalAlignment="Left" Margin="119,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal"><Run Text="Has a lower case character"/><Run Text=" (a-z)"/></TextBlock>
+                    <TextBlock x:Name="blockUpper" HorizontalAlignment="Left" Margin="440,402,0,0" TextWrapping="Wrap" Text="Has an upper case character (A-Z)" VerticalAlignment="Top" RenderTransformOrigin="0.707,-2.542" Height="24" Width="273" FontWeight="Normal" TextAlignment="Right"/>
+                    <TextBlock x:Name="blockNumber" HorizontalAlignment="Left" Margin="119,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal"><Run Text="Has a number"/><Run Text=" (0-9)"/></TextBlock>
+                    <TextBlock x:Name="blockSpecial" HorizontalAlignment="Left" Margin="440,431,0,0" TextWrapping="Wrap" Text="Has a special character" VerticalAlignment="Top" FontWeight="Normal" Width="273" TextAlignment="Right"/>
+                    <TextBlock x:Name="blockLength" HorizontalAlignment="Left" Margin="119,460,0,0" TextWrapping="Wrap" Text="Is longer than 9 characters" VerticalAlignment="Top" Width="273" FontWeight="Normal"/>
+                    <TextBlock x:Name="blockDoesNotContain" HorizontalAlignment="Left" Margin="440,460,0,0" TextWrapping="Wrap" Text="Does not contain &quot;password&quot;" VerticalAlignment="Top" Width="273" FontWeight="Normal" TextAlignment="Right"/>
+                    <Image x:Name="imgLower" HorizontalAlignment="Left" Height="24" Margin="91,402,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgNumber" HorizontalAlignment="Left" Height="24" Margin="91,431,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgLength" HorizontalAlignment="Left" Height="24" Margin="91,460,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgUpper" HorizontalAlignment="Left" Height="24" Margin="717,402,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgSpecial" HorizontalAlignment="Left" Height="24" Margin="717,431,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <Image x:Name="imgPassword" HorizontalAlignment="Left" Height="24" Margin="717,460,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="147" Width="640" Foreground="Black" FontWeight="Normal" FontSize="12" TextAlignment="Center"><Run Text="This tool will test a potential password and offer an estimation of how long it "/><Run FontStyle="Italic" Text="could"/><Run Text=" take a malicious user to break through. Whilst you may get a time result which is high, this doesn't mean you should be relaxed with password security. Remember to change them often and don't reuse them on all sites/applications."/><LineBreak/><Run Text="The password guidance below will check the given password against a set of commonly used rules for creating a strong password."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="DISCLAIMER"/><LineBreak/><Run FontWeight="Bold" FontStyle="Italic" Text="No password information is stored by VAPTS at any time."/><Run FontWeight="Bold" Text=" Never enter your actual password but a similar one, just in case your system has any key logging malware."/></TextBlock>
+                    <TextBlock x:Name="txtBlockCleartext" HorizontalAlignment="Left" Margin="212,260,0,0" TextWrapping="Wrap" Text="                       " VerticalAlignment="Top" Width="417" FontWeight="Normal" Foreground="Black" Height="34" FontSize="24" Visibility="Hidden"/>
+                    <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy2" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder3" Background="White"/>

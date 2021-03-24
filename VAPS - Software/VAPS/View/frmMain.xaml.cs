@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -26,33 +27,61 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
+
+        PasswordTesterController PasswordTesting;
+        Image[] passwordImages;
+
         nmapController nController;
+
         public CoreWindow()
         {
             InitializeComponent();
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
+
+            PasswordTesting = new PasswordTesterController();
+            Port.Instance.fileInput();
+            Device.Instance.fileInput();
+
             nController = new nmapController();
             //Port.Instance.fileInput();
 
+
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
+            txtARPDeviceName.IsEnabled = false;
+            btnARPAddName.IsEnabled = false;
+            txtARPDeviceName.Visibility = Visibility.Hidden;
+            btnARPAddName.Visibility = Visibility.Hidden;
+
+            passwordImages = new Image[] { imgLength, imgLower, imgNumber, imgPassword, imgSpecial, imgUpper };
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
             
+
+            DataTable ARPTable = new DataTable();
+            ARPTable = ARP.formatTable(ARPTable);
+            arpGrid.ItemsSource = ARPTable.DefaultView;
+            arpGrid.Visibility = Visibility.Visible;
+            txtARPDeviceName.Visibility = Visibility.Visible;
+            btnARPAddName.Visibility = Visibility.Visible;
+            btnARPAddName.IsEnabled = false;
+            int[] ARPResults = ARP.getResults(ARPTable);
+            blockARPKnown.Text = ARPResults[1].ToString();
+            blockARPRegistered.Text = ARPResults[0].ToString();
+            blockARPUnknown.Text = ARPResults[2].ToString();
+
         }
+      
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
-        private void btnARPClk(object sender, RoutedEventArgs e)
-        {
 
-        }
         private void btnPortScanner_Click(object sender, RoutedEventArgs e)
         {
 
@@ -64,15 +93,96 @@ namespace VAPS.View
             txtBlockOpenNum.Text = results[0].ToString();
             txtBlockCouldNum.Text = results[1].ToString();
             txtBlockShouldNum.Text = results[2].ToString();
-
-
-
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            /*         This causes the ARP tab to run incredibly slow
+            if (tabARP != null && tabARP.IsSelected)
+            {
+                DataTable ARPTable = new DataTable();
+                ARPTable = ARP.formatTable(ARPTable);
+                arpGrid.ItemsSource = ARPTable.DefaultView;
+                arpGrid.Visibility = Visibility.Visible;
+                txtARPDeviceName.Visibility = Visibility.Visible;
+                btnARPAddName.Visibility = Visibility.Visible;
+                btnARPAddName.IsEnabled = false;
+                int[] ARPResults = ARP.getResults(ARPTable);
+                blockARPKnown.Text = ARPResults[1].ToString();
+                blockARPRegistered.Text = ARPResults[0].ToString();
+                blockARPUnknown.Text = ARPResults[2].ToString();
+            }
+            */
+            if (tabPortScanner != null && tabPortScanner.IsSelected)
+            {
+                DataTable PortScannerTable = new DataTable();
+                PortScannerTable = PortScan.generateTable(PortScannerTable);
+                PortScannerDataGrid.ItemsSource = PortScannerTable.DefaultView;
+                PortScannerDataGrid.Visibility = Visibility.Visible;
+                int[] results = PortScan.getValues(PortScannerTable);
+                txtBlockOpenNum.Text = results[0].ToString();
+                txtBlockCouldNum.Text = results[1].ToString();
+                txtBlockShouldNum.Text = results[2].ToString();
+            }
+        }
+
+        private void arpGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            txtARPDeviceName.IsEnabled = true;
+            btnARPAddName.IsEnabled = true;
+            txtARPDeviceName.Text = "";
+        }
+
+        private void btnARPAddName_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView rowView = arpGrid.SelectedItem as DataRowView;
+            try
+            {
+                
+                string macAddress = rowView.Row[1].ToString();
+                ARP.registerDevice(macAddress, txtARPDeviceName.Text);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a device first.");
+            }
+            DataTable ARPTable = new DataTable();
+            ARPTable = ARP.formatTable(ARPTable);
+            arpGrid.ItemsSource = ARPTable.DefaultView;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (pwdPasswordInput.Password.Length != 0)
+            {
+                txtTimeToCrack.Text = "Time to crack: " + PasswordTesting.timeToCrack(pwdPasswordInput.Password);
+                passwordImages = PasswordTesting.passwordGuidance(pwdPasswordInput.Password, passwordImages);
+                txtBlockCleartext.Text = pwdPasswordInput.Password;
+            }
+            else
+            {
+                txtTimeToCrack.Text = "";
+            }
+        }
+        private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
+
+
+        private void btnShowClear_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBlockCleartext.Visibility == Visibility.Hidden)
+            {
+                txtBlockCleartext.Visibility = Visibility.Visible;
+                pwdPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFABADB3"));
+            }
+            else if (txtBlockCleartext.Visibility == Visibility.Visible)
+            {
+                txtBlockCleartext.Visibility = Visibility.Hidden;
+                pwdPasswordInput.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            
 
 
 
@@ -139,6 +249,7 @@ namespace VAPS.View
         private void nmapInstall_Click(object sender, RoutedEventArgs e)
         {
             //nmapOut.Text = new nmapController().scanLocal();
+
         }
     }
 }
