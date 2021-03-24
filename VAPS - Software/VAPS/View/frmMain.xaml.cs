@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,17 +27,26 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
+
         PasswordTesterController PasswordTesting;
         Image[] passwordImages;
+
+        nmapController nController;
+
         public CoreWindow()
         {
             InitializeComponent();
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
+
             PasswordTesting = new PasswordTesterController();
             Port.Instance.fileInput();
             Device.Instance.fileInput();
+
+            nController = new nmapController();
+            //Port.Instance.fileInput();
+
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
@@ -51,6 +61,7 @@ namespace VAPS.View
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
             
+
             DataTable ARPTable = new DataTable();
             ARPTable = ARP.formatTable(ARPTable);
             arpGrid.ItemsSource = ARPTable.DefaultView;
@@ -62,6 +73,7 @@ namespace VAPS.View
             blockARPKnown.Text = ARPResults[1].ToString();
             blockARPRegistered.Text = ARPResults[0].ToString();
             blockARPUnknown.Text = ARPResults[2].ToString();
+
         }
       
 
@@ -152,10 +164,8 @@ namespace VAPS.View
                 txtTimeToCrack.Text = "";
             }
         }
-        private void txtARPDeviceName_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        
 
-        }
 
         private void btnShowClear_Click(object sender, RoutedEventArgs e)
         {
@@ -169,7 +179,73 @@ namespace VAPS.View
                 txtBlockCleartext.Visibility = Visibility.Hidden;
                 pwdPasswordInput.Foreground = new SolidColorBrush(Colors.Black);
             }
-            
+
+        }
+
+
+        private void scnNtwrkClk(object sender, RoutedEventArgs e)
+        {
+            if (authChkBx.IsChecked.Value)
+            {
+                nmapScanningProgress();
+
+            }
+            else
+            {
+                //nmapOut.Text = "You must have permission from the network adminstrator to perform this action";
+            }
+
+        }
+        private async Task nmapScanningProgress()
+        {
+           
+            // Task runs in the background which is the nmap function
+            Task<DataTable> nmapTable = Task.Run(() =>
+            {
+                return nController.fingerPrint(nController.GetLocalIPAddress(),nController.getSubnetFromIP(nController.GetLocalIPAddress()));
+            });
+            int counter = 0;
+            // Runs while nmap command is still running, shows scanning dots
+            while (!nmapTable.IsCompleted)
+            {
+                await Task.Delay(500);
+                switch(counter % 3)
+                {
+                    case 0:
+                        nmapInstall.Content = "Scanning.";
+                    break;
+                    case 1:
+                        nmapInstall.Content = "Scanning..";
+                    break;
+                    case 2:
+                        nmapInstall.Content = "Scanning...";
+                    break;
+                }
+                counter++;
+
+            }
+                    
+            nmapOutGrid.ItemsSource = nmapTable.Result.DefaultView;
+            nmapOutGrid.Visibility = Visibility.Visible;
+            nmapInstall.Content = "Run Nmap Scan";
+        }
+
+        private void ipsubShow_Click(object sender, RoutedEventArgs e)
+        {
+            string ipaddress = nController.GetLocalIPAddress();
+            //nmapOut.Text = (ipaddress);
+
+            /// nController.Subnet();
+
+            //nmapOut.Text += nController.getSubnetFromIP(ipaddress);
+
+
+
+        }
+
+        private void nmapInstall_Click(object sender, RoutedEventArgs e)
+        {
+            //nmapOut.Text = new nmapController().scanLocal();
 
         }
     }

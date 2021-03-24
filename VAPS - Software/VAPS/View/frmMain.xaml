@@ -83,7 +83,7 @@
                         <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="83" Stroke="Black" VerticalAlignment="Top" Width="273" Margin="560,7,0,0" Grid.RowSpan="2"/>
                         <Rectangle Fill="#FF058522" HorizontalAlignment="Left" Height="20" Margin="0,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
                         <Rectangle Fill="#FFFF8B00" HorizontalAlignment="Left" Height="20" Margin="280,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
-                        <TextBox x:Name="txtARPDeviceName" HorizontalAlignment="Left" Height="30" Margin="482,-463,0,0" TextWrapping="Wrap" Text="Select a device to name" VerticalAlignment="Top" Width="253" Background="White" FontWeight="Normal" FontSize="16" BorderBrush="Black" VerticalContentAlignment="Center" AutomationProperties.HelpText="Register a device name here." TextChanged="txtARPDeviceName_TextChanged"/>
+                        <TextBox x:Name="txtARPDeviceName" HorizontalAlignment="Left" Height="30" Margin="482,-463,0,0" TextWrapping="Wrap" Text="Select a device to name" VerticalAlignment="Top" Width="253" Background="White" FontWeight="Normal" FontSize="16" BorderBrush="Black" VerticalContentAlignment="Center" AutomationProperties.HelpText="Register a device name here."/>
                         <Button x:Name="btnARPAddName" Content="Add Device name" Height="30" Margin="734,-463,10,0" VerticalAlignment="Top" BorderBrush="Black" FontSize="12" FontWeight="Normal" Click="btnARPAddName_Click"/>
 
                         <Rectangle Fill="Red" HorizontalAlignment="Left" Height="20" Margin="560,7,0,0" Stroke="Black" VerticalAlignment="Top" Width="273"/>
@@ -104,7 +104,12 @@
             </TabItem>
             <Label Content="Label" Height="100" Width="100"/>
             <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="gridPlaceholder" Background="White"/>
+                <Grid x:Name="gridPlaceholder" Background="White">
+                    <Button x:Name="nmapInstall" Content="Run Nmap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk" FontWeight="Normal"/>
+                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="292,10,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click" FontWeight="Normal"/>
+                    <CheckBox x:Name="authChkBx" Content="I have permission from the &#xD;&#xA;network administrator" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Normal"/>
+                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,54,0,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="tabPortScanner" Header="Port Scanner" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPortScanner" Background="White">
