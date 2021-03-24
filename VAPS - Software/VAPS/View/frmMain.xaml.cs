@@ -42,10 +42,7 @@ namespace VAPS.View
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            //DataTable ARPTable = new DataTable();
-            //ARPTable = ARP.generateTable(ARPTable);
-            //arpGrid.ItemsSource = ARPTable.DefaultView;
-            //arpGrid.Visibility = Visibility.Visible;
+            
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -88,54 +85,52 @@ namespace VAPS.View
             }
             else
             {
-                nmapOut.Text = "You must have permission from the network adminstrator to perform this action";
+                //nmapOut.Text = "You must have permission from the network adminstrator to perform this action";
             }
 
         }
         private async Task nmapScanningProgress()
         {
+           
             // Task runs in the background which is the nmap function
-            Task<string> getNmap = Task.Run(() =>
+            Task<DataTable> nmapTable = Task.Run(() =>
             {
-                return new nmapController().fingerPrint(nController.GetLocalIPAddress(),nController.getSubnetFromIP(nController.GetLocalIPAddress()));
+                return nController.fingerPrint(nController.GetLocalIPAddress(),nController.getSubnetFromIP(nController.GetLocalIPAddress()));
             });
-            nmapOut.Text = "initialTest";
+            int counter = 0;
             // Runs while nmap command is still running, shows scanning dots
-            for (int i = 0; i < 100; i++)
+            while (!nmapTable.IsCompleted)
             {
                 await Task.Delay(500);
-                nmapOut.Text = i.ToString();
-                switch (i % 3)
+                switch(counter % 3)
                 {
                     case 0:
-                        nmapOut.Text = "Scanning.";
-                        break;
+                        nmapInstall.Content = "Scanning.";
+                    break;
                     case 1:
-                        nmapOut.Text = "Scanning..";
-                        break;
+                        nmapInstall.Content = "Scanning..";
+                    break;
                     case 2:
-                        nmapOut.Text = "Scanning...";
-                        break;
-                }
-
-                // Checks if nmap command is still running
-                if(getNmap.IsCompleted)
-                {
+                        nmapInstall.Content = "Scanning...";
                     break;
                 }
+                counter++;
 
             }
-            nmapOut.Text = getNmap.Result;
+                    
+            nmapOutGrid.ItemsSource = nmapTable.Result.DefaultView;
+            nmapOutGrid.Visibility = Visibility.Visible;
+            nmapInstall.Content = "Run Nmap Scan";
         }
 
         private void ipsubShow_Click(object sender, RoutedEventArgs e)
         {
             string ipaddress = nController.GetLocalIPAddress();
-            nmapOut.Text = (ipaddress);
+            //nmapOut.Text = (ipaddress);
 
             /// nController.Subnet();
 
-            nmapOut.Text += nController.getSubnetFromIP(ipaddress);
+            //nmapOut.Text += nController.getSubnetFromIP(ipaddress);
 
 
 
@@ -143,7 +138,7 @@ namespace VAPS.View
 
         private void nmapInstall_Click(object sender, RoutedEventArgs e)
         {
-            nmapOut.Text = new nmapController().scanLocal();
+            //nmapOut.Text = new nmapController().scanLocal();
         }
     }
 }
