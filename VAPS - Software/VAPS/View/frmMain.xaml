@@ -12,7 +12,7 @@
             <ColumnDefinition Width="571*"/>
         </Grid.ColumnDefinitions>
         <Rectangle Fill="#FF850505" Height="55" Stroke="Black" VerticalAlignment="Top" Margin="-3,0,-1,0" Grid.ColumnSpan="2"/>
-        <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,270,0"/>
+        <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,251,0"/>
         <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="3,2,0,0" VerticalAlignment="Top" Width="202"/>
         <TabControl x:Name="tabCon" Height="567" Margin="0,54,-1,0" Width="995" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <TabItem x:Name="tabDashboard" Header="Dashboard" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-2,0,-2" >
@@ -145,12 +145,12 @@
                     <Label Content="Enter a password:" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="151" FontWeight="Normal"/>
                     <TextBlock x:Name="txtTimeToCrack" HorizontalAlignment="Left" Margin="201,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Text="      " Width="440" TextAlignment="Center"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="820" FontWeight="Normal" TextAlignment="Center" Height="35" FontSize="26" Foreground="#FF850505"><Run Text="Password Guidance"/><LineBreak/><Run/></TextBlock>
-                    <TextBlock x:Name="blockLowerCase" HorizontalAlignment="Left" Margin="119,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal"><Run Text="Has a lower case character"/><Run Text=" (a-z)"/></TextBlock>
-                    <TextBlock x:Name="blockUpper" HorizontalAlignment="Left" Margin="440,402,0,0" TextWrapping="Wrap" Text="Has an upper case character (A-Z)" VerticalAlignment="Top" RenderTransformOrigin="0.707,-2.542" Height="24" Width="273" FontWeight="Normal" TextAlignment="Right"/>
-                    <TextBlock x:Name="blockNumber" HorizontalAlignment="Left" Margin="119,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal"><Run Text="Has a number"/><Run Text=" (0-9)"/></TextBlock>
-                    <TextBlock x:Name="blockSpecial" HorizontalAlignment="Left" Margin="440,431,0,0" TextWrapping="Wrap" Text="Has a special character" VerticalAlignment="Top" FontWeight="Normal" Width="273" TextAlignment="Right"/>
-                    <TextBlock x:Name="blockLength" HorizontalAlignment="Left" Margin="119,460,0,0" TextWrapping="Wrap" Text="Is longer than 9 characters" VerticalAlignment="Top" Width="273" FontWeight="Normal"/>
-                    <TextBlock x:Name="blockDoesNotContain" HorizontalAlignment="Left" Margin="440,460,0,0" TextWrapping="Wrap" Text="Does not contain &quot;password&quot;" VerticalAlignment="Top" Width="273" FontWeight="Normal" TextAlignment="Right"/>
+                    <TextBlock x:Name="blockLowerCase" HorizontalAlignment="Left" Margin="119,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal" Foreground="Black"><Run Text="Has a lower case character"/><Run Text=" (a-z)"/></TextBlock>
+                    <TextBlock x:Name="blockUpper" HorizontalAlignment="Left" Margin="440,402,0,0" TextWrapping="Wrap" Text="Has an upper case character (A-Z)" VerticalAlignment="Top" RenderTransformOrigin="0.707,-2.542" Height="24" Width="273" FontWeight="Normal" TextAlignment="Right" Foreground="Black"/>
+                    <TextBlock x:Name="blockNumber" HorizontalAlignment="Left" Margin="119,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" FontWeight="Normal" Foreground="Black"><Run Text="Has a number"/><Run Text=" (0-9)"/></TextBlock>
+                    <TextBlock x:Name="blockSpecial" HorizontalAlignment="Left" Margin="440,431,0,0" TextWrapping="Wrap" Text="Has a special character" VerticalAlignment="Top" FontWeight="Normal" Width="273" TextAlignment="Right" Foreground="Black"/>
+                    <TextBlock x:Name="blockLength" HorizontalAlignment="Left" Margin="119,460,0,0" TextWrapping="Wrap" Text="Is longer than 9 characters" VerticalAlignment="Top" Width="273" FontWeight="Normal" Foreground="Black"/>
+                    <TextBlock x:Name="blockDoesNotContain" HorizontalAlignment="Left" Margin="440,460,0,0" TextWrapping="Wrap" Text="Does not contain &quot;password&quot;" VerticalAlignment="Top" Width="273" FontWeight="Normal" TextAlignment="Right" Foreground="Black"/>
                     <Image x:Name="imgLower" HorizontalAlignment="Left" Height="24" Margin="91,402,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
                     <Image x:Name="imgNumber" HorizontalAlignment="Left" Height="24" Margin="91,431,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
                     <Image x:Name="imgLength" HorizontalAlignment="Left" Height="24" Margin="91,460,0,0" VerticalAlignment="Top" Width="23" Source="/VAPS;component/Resources/Icons/cancel.png"/>
@@ -162,8 +162,16 @@
                     <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy2" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
+            <TabItem x:Name="tabUsername" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="gridUsername" Background="White">
+                    <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
+                    <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="66" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="640" Foreground="Black" FontWeight="Normal" FontSize="12" TextAlignment="Center"><Run Text="This tool will take the username you provide and search against a list of different websites to see if an account with that username exists. This is useful for highlighting how easy it can be to quickly find any sites you're apart of. With more common usernames, they're less likely to all be linked to one person but the more unique it, the more likely they are to be the same."/></TextBlock>
+                    <Label Content="Enter a username:" HorizontalAlignment="Left" Margin="202,169,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="46" Margin="201,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" FontSize="30" BorderBrush="Gray" FontWeight="Normal"/>
+                    <Button x:Name="btnUsernameSearch" Content="Search" HorizontalAlignment="Left" Margin="346,247,0,0" VerticalAlignment="Top" Width="137" Height="27" FontWeight="Normal" Click="btnUsernameSearch_Click"/>
+                    <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="272" Margin="10,279,0,0" VerticalAlignment="Top" Width="371" FontWeight="Normal"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder4" Background="White"/>

@@ -249,5 +249,20 @@ namespace VAPS.View
             //nmapOut.Text = new nmapController().scanLocal();
 
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void btnUsernameSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtUsername.Text.Length > 2)
+            {
+                DataTable UsernameTable = new DataTable();
+                UsernameTable = usernameSearch.generateResults(UsernameTable, txtUsername.Text);
+                dtGrdUsernames.ItemsSource = UsernameTable.DefaultView;
+            }
+        }
     }
 }

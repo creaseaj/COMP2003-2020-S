@@ -154,12 +154,6 @@ namespace VAPS.Controller
                     String[] split = entry[0].ToString().Split('.');
                     entry[0] = "localhost." + split[3];
                 }
-                /*   Remove broadcast address from table as we don't need it
-                else if (entry[0].ToString() == "255.255.255.255")
-                {
-                    ARPTable.Rows.Remove(entry);
-                }
-                */
                 else if (entry[0].ToString() == "255.255.255.255")
                 {
                     entry[0] = "Broadcast";
@@ -173,11 +167,7 @@ namespace VAPS.Controller
                     entry[0] = "System";
                 }
                 device.fileOutput();
-                //entry[3] = addRegisteredNames(entry[1].ToString());
             }
-
-
-
             return ARPTable;
         }
         public DataRow checkDevice(DataRow nextRow)
