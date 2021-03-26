@@ -34,7 +34,7 @@ namespace VAPS.Model
         }
         public void fileInput()
         {
-           string filepath = ("Resources/Ports List.csv");
+            string filepath = ("Resources/Ports List.csv");
             var fileReader = new StreamReader(File.OpenRead(filepath));
             fileReader.ReadLine();
             while (!fileReader.EndOfStream)

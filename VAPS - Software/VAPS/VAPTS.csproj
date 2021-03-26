@@ -103,10 +103,12 @@
     <Compile Include="Controller\nmapController.cs" />
     <Compile Include="Controller\PasswordTesterController.cs" />
     <Compile Include="Controller\PortScanController.cs" />
+    <Compile Include="Controller\UsernameSearchController.cs" />
     <Compile Include="Controller\webScraper.cs" />
     <Compile Include="Model\Device.cs" />
     <Compile Include="Model\Port.cs" />
     <Compile Include="Model\Risk.cs" />
+    <Compile Include="Model\WebAddress.cs" />
     <Compile Include="View\frmMain.xaml.cs">
       <DependentUpon>frmMain.xaml</DependentUpon>
     </Compile>
@@ -167,6 +169,9 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\cancel.png" />
     <Resource Include="Resources\Icons\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WebAddresses.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,6 +27,7 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
+        UsernameSearchController usernameSearch;
 
         PasswordTesterController PasswordTesting;
         Image[] passwordImages;
@@ -39,14 +40,14 @@ namespace VAPS.View
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
-
+            usernameSearch = new UsernameSearchController();
             PasswordTesting = new PasswordTesterController();
             Port.Instance.fileInput();
             Device.Instance.fileInput();
+            usernameSearch.fileInput();
 
             nController = new nmapController();
             //Port.Instance.fileInput();
-
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;

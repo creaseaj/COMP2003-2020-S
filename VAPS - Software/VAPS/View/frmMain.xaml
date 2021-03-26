@@ -140,7 +140,7 @@
             <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPasswordTester" Background="White">
                     <PasswordBox x:Name="pwdPasswordInput" HorizontalAlignment="Left" Margin="201,254,0,0" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" Height="46" FontSize="20" PasswordChanged="PasswordBox_PasswordChanged"/>
-                    <TextBlock x:Name="header" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Password Strength Tester" VerticalAlignment="Top" Width="820" Foreground="#FF850505" FontSize="28" TextAlignment="Center"/>
+                    <TextBlock x:Name="header" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Password Strength Tester" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"/>
                     <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="147" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
                     <Label Content="Enter a password:" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="151" FontWeight="Normal"/>
                     <TextBlock x:Name="txtTimeToCrack" HorizontalAlignment="Left" Margin="201,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Text="      " Width="440" TextAlignment="Center"/>
@@ -162,8 +162,8 @@
                     <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy2" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="gridPlaceholder3" Background="White"/>
+            <TabItem x:Name="tabHolder_Copy2" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder4" Background="White"/>
