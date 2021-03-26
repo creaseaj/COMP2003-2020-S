@@ -24,8 +24,9 @@ namespace VAPS.Controller
             WebAddress.Instance.addWebAddresses(newAddresses);
             fileReader.Close();
         }
-        public DataTable generateResults(DataTable UsernameTable, string username)
+        public DataTable generateResults(string username)
         {
+            DataTable UsernameTable = new DataTable();
             UsernameTable.Columns.Add("Username exists");
             foreach (var url in WebAddress.Instance.getWebAddresses())
             {
@@ -67,6 +68,11 @@ namespace VAPS.Controller
                 returnResult = "Not found.";
             }
             return returnResult;
+        }
+
+        internal DataTable generateResults(Task<DataTable> usernameTable, string text)
+        {
+            throw new NotImplementedException();
         }
     }
 }

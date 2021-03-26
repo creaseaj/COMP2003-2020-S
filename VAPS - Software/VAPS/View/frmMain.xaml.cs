@@ -257,12 +257,43 @@ namespace VAPS.View
 
         private void btnUsernameSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (txtUsername.Text.Length > 2)
+            _ = searchUsername();
+
+        }
+        private async Task searchUsername()
+        {
+            /*
+            //DataTable UsernameTable = new DataTable();
+            Task<DataTable> UsernameTable = Task.Run(() =>
             {
-                DataTable UsernameTable = new DataTable();
-                UsernameTable = usernameSearch.generateResults(UsernameTable, txtUsername.Text);
-                dtGrdUsernames.ItemsSource = UsernameTable.DefaultView;
+                return usernameSearch.generateResults(txtUsername.Text);
+            });
+            int counter = 0;
+            // Runs while nmap command is still running, shows scanning dots
+            while (!UsernameTable.IsCompleted)
+            {
+                await Task.Delay(500);
+                switch (counter % 3)
+                {
+                    case 0:
+                        btnUsernameSearch.Content = ("Searching.");
+                        break;
+                    case 1:
+                        btnUsernameSearch.Content = ("Searching..");
+                        break;
+                    case 2:
+                        btnUsernameSearch.Content = ("Searching...");
+                        break;
+                }
+                counter++;
             }
+            */
+
+            DataTable UsernameTable = new DataTable();
+            UsernameTable = usernameSearch.generateResults(txtUsername.Text);
+            btnUsernameSearch.Content = ("Search");
+            dtGrdUsernames.ItemsSource = UsernameTable.DefaultView;
+            //dtGrdUsernames.ItemsSource = UsernameTable.Result.DefaultView;
         }
     }
 }

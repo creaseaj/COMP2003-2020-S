@@ -205,7 +205,7 @@ namespace VAPS.Controller
             {
                 foreach (string vendor in noDuplicates)
                 {
-                    if (row[1].ToString().Contains(vendor))
+                    if (row[1].ToString().Contains(vendor) && row[3].ToString() == "Unknown device.")
                     {
                         known++;
                     }
