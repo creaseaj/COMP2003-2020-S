@@ -62,20 +62,7 @@ namespace VAPS.View
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            DataTable ARPTable = new DataTable();
-            ARPTable = ARP.formatTable(ARPTable);
-            arpGrid.ItemsSource = ARPTable.DefaultView;
-            arpGrid.Visibility = Visibility.Visible;
-            txtARPDeviceName.Visibility = Visibility.Visible;
-            btnARPAddName.Visibility = Visibility.Visible;
-            btnARPAddName.IsEnabled = false;
-            int[] ARPResults = ARP.getResults(ARPTable);
-            blockARPKnown.Text = ARPResults[1].ToString();
-            blockARPRegistered.Text = ARPResults[0].ToString();
-            blockARPUnknown.Text = ARPResults[2].ToString();
-
+            ARPScan();
         }
       
 
@@ -99,22 +86,15 @@ namespace VAPS.View
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*         This causes the ARP tab to run incredibly slow
             if (tabARP != null && tabARP.IsSelected)
             {
-                DataTable ARPTable = new DataTable();
-                ARPTable = ARP.formatTable(ARPTable);
-                arpGrid.ItemsSource = ARPTable.DefaultView;
-                arpGrid.Visibility = Visibility.Visible;
-                txtARPDeviceName.Visibility = Visibility.Visible;
-                btnARPAddName.Visibility = Visibility.Visible;
-                btnARPAddName.IsEnabled = false;
-                int[] ARPResults = ARP.getResults(ARPTable);
-                blockARPKnown.Text = ARPResults[1].ToString();
-                blockARPRegistered.Text = ARPResults[0].ToString();
-                blockARPUnknown.Text = ARPResults[2].ToString();
+                if (arpGrid.Items.Count <= 0)
+                {
+                    ARPScan();
+                }
+                
             }
-            */
+            
             if (tabPortScanner != null && tabPortScanner.IsSelected)
             {
                 DataTable PortScannerTable = new DataTable();
@@ -261,7 +241,7 @@ namespace VAPS.View
         }
         private async Task searchUsername(string username)
         {
-            // Use threading to allow the user to od other things whilst searching. Search time grows as the websites to search does
+            // Use threading to allow the user to do other things whilst searching. Search time grows as the websites to search does
             Task<DataTable> UsernameTable = Task.Run(() =>
             {
                 Task.Delay(5000).Wait();
@@ -289,6 +269,45 @@ namespace VAPS.View
             dtGrdUsernames.ItemsSource = UsernameTable.Result.DefaultView;
             dtGrdUsernames.Visibility = Visibility.Visible;
             btnUsernameSearch.Content = "Search";
+        }
+        private async Task ARPScan()
+        {
+            // Use threading to allow the user to do other things whilst searching. Search time grows as the websites to search does
+            Task<DataTable> ARPTable = Task.Run(() =>
+            {
+                Task.Delay(5000).Wait();
+                return ARP.formatTable(ARP.initialTable());
+            });
+            int counter = 0;
+            // Show the user that it is searching, but it takes some time
+            while (!ARPTable.IsCompleted)
+            {
+                await Task.Delay(500);
+                switch (counter % 3)
+                {
+                    case 0:
+                        btnRun1.Content = "Running.";
+                        break;
+                    case 1:
+                        btnRun1.Content = "Running..";
+                        break;
+                    case 2:
+                        btnRun1.Content = "Running...";
+                        break;
+                }
+                counter++;
+            }
+            arpGrid.ItemsSource = ARPTable.Result.DefaultView;
+            arpGrid.Visibility = Visibility.Visible;
+            btnRun1.Content = "Run ARP";
+            int[] ARPResults = ARP.getResults(ARPTable.Result);
+            blockARPKnown.Text = ARPResults[1].ToString();
+            blockARPRegistered.Text = ARPResults[0].ToString();
+            blockARPUnknown.Text = ARPResults[2].ToString();
+            txtARPDeviceName.Visibility = Visibility.Visible;
+            btnARPAddName.Visibility = Visibility.Visible;
+            btnARPAddName.IsEnabled = false;
+
         }
     }
 }

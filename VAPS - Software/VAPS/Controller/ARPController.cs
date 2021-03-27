@@ -114,8 +114,9 @@ namespace VAPS.Controller
             updateArpList();
             return getVendorsList(arpList);
         }
-        public DataTable initialTable(DataTable ARPTable)
+        public DataTable initialTable()
         {
+            DataTable ARPTable = new DataTable();
             List<List<string>> arpList = ARP.getARPRaw();
             for (int i = 0; i < arpList[0].Count; i++)
             {
@@ -146,7 +147,7 @@ namespace VAPS.Controller
         }
         public DataTable formatTable(DataTable ARPTable)
         {
-            ARPTable = initialTable(ARPTable);
+            //ARPTable = initialTable(ARPTable);
             foreach (DataRow entry in ARPTable.Rows)
             {
                 if (entry[0].ToString().Contains("192.168.0"))
