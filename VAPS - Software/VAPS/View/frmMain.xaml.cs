@@ -55,6 +55,7 @@ namespace VAPS.View
             btnARPAddName.IsEnabled = false;
             txtARPDeviceName.Visibility = Visibility.Hidden;
             btnARPAddName.Visibility = Visibility.Hidden;
+            dtGrdUsernames.Visibility = Visibility.Hidden;
 
             passwordImages = new Image[] { imgLength, imgLower, imgNumber, imgPassword, imgSpecial, imgUpper };
         }
@@ -223,9 +224,7 @@ namespace VAPS.View
                     break;
                 }
                 counter++;
-
             }
-                    
             nmapOutGrid.ItemsSource = nmapTable.Result.DefaultView;
             nmapOutGrid.Visibility = Visibility.Visible;
             nmapInstall.Content = "Run Nmap Scan";
@@ -257,43 +256,39 @@ namespace VAPS.View
 
         private void btnUsernameSearch_Click(object sender, RoutedEventArgs e)
         {
-            _ = searchUsername();
-
+            dtGrdUsernames.Visibility = Visibility.Hidden;
+            searchUsername(txtUsername.Text);
         }
-        private async Task searchUsername()
+        private async Task searchUsername(string username)
         {
-            /*
-            //DataTable UsernameTable = new DataTable();
+            // Use threading to allow the user to od other things whilst searching. Search time grows as the websites to search does
             Task<DataTable> UsernameTable = Task.Run(() =>
             {
-                return usernameSearch.generateResults(txtUsername.Text);
+                Task.Delay(5000).Wait();
+                return usernameSearch.generateResults(username.ToLower());
             });
             int counter = 0;
-            // Runs while nmap command is still running, shows scanning dots
+            // Show the user that it is searching, but it takes some time
             while (!UsernameTable.IsCompleted)
             {
                 await Task.Delay(500);
                 switch (counter % 3)
                 {
                     case 0:
-                        btnUsernameSearch.Content = ("Searching.");
+                        btnUsernameSearch.Content = "Searching.";
                         break;
                     case 1:
-                        btnUsernameSearch.Content = ("Searching..");
+                        btnUsernameSearch.Content = "Searching..";
                         break;
                     case 2:
-                        btnUsernameSearch.Content = ("Searching...");
+                        btnUsernameSearch.Content = "Searching...";
                         break;
                 }
                 counter++;
             }
-            */
-
-            DataTable UsernameTable = new DataTable();
-            UsernameTable = usernameSearch.generateResults(txtUsername.Text);
-            btnUsernameSearch.Content = ("Search");
-            dtGrdUsernames.ItemsSource = UsernameTable.DefaultView;
-            //dtGrdUsernames.ItemsSource = UsernameTable.Result.DefaultView;
+            dtGrdUsernames.ItemsSource = UsernameTable.Result.DefaultView;
+            dtGrdUsernames.Visibility = Visibility.Visible;
+            btnUsernameSearch.Content = "Search";
         }
     }
 }
