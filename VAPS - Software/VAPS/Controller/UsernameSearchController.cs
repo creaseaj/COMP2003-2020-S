@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using VAPS.Model;
 
 namespace VAPS.Controller
@@ -70,9 +72,37 @@ namespace VAPS.Controller
             return returnResult;
         }
 
-        internal DataTable generateResults(Task<DataTable> usernameTable, string text)
+        public async Task runUsernameSearch(string username, Button btnUsernameSearch, DataGrid dtGrdUsernames)
         {
-            throw new NotImplementedException();
+            dtGrdUsernames.Visibility = Visibility.Hidden;
+            // Use threading to allow the user to do other things whilst searching. Search time grows as the websites to search does
+            Task<DataTable> UsernameTable = Task.Run(() =>
+            {
+                Task.Delay(5000).Wait();
+                return generateResults(username.ToLower());
+            });
+            int counter = 0;
+            // Show the user that it is searching, but it takes some time
+            while (!UsernameTable.IsCompleted)
+            {
+                await Task.Delay(500);
+                switch (counter % 3)
+                {
+                    case 0:
+                        btnUsernameSearch.Content = "Searching.";
+                        break;
+                    case 1:
+                        btnUsernameSearch.Content = "Searching..";
+                        break;
+                    case 2:
+                        btnUsernameSearch.Content = "Searching...";
+                        break;
+                }
+                counter++;
+            }
+            dtGrdUsernames.ItemsSource = UsernameTable.Result.DefaultView;
+            dtGrdUsernames.Visibility = Visibility.Visible;
+            btnUsernameSearch.Content = "Search";
         }
     }
 }

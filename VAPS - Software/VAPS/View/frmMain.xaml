@@ -15,7 +15,7 @@
         <Rectangle Fill="#FF363636" Height="567" Stroke="Black" VerticalAlignment="Top" Margin="-3,54,251,0"/>
         <Image x:Name="logoImg" Source="/Resources/vaptsSmall.png"  HorizontalAlignment="Left" Height="54" Margin="3,2,0,0" VerticalAlignment="Top" Width="202"/>
         <TabControl x:Name="tabCon" Height="567" Margin="0,54,-1,0" Width="995" TabStripPlacement="Left" SelectionChanged="tabCon_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <TabItem x:Name="tabDashboard" Header="Dashboard" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-2,0,-2" >
+            <TabItem x:Name="tabDashboard" Header="Dashboard" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-2,0,2" Height="38" >
                 <Grid Background="White">
                     <Rectangle Fill="#FFFFB0B0" HorizontalAlignment="Left" Height="109" Margin="52,54,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
                     <Rectangle Fill="#FFFFE0BA" HorizontalAlignment="Left" Height="109" Margin="52,193,0,0" Stroke="Black" VerticalAlignment="Top" Width="769"/>
@@ -68,7 +68,7 @@
                 </Grid>
             </TabItem>
             <Grid Height="100" Width="100"/>
-            <TabItem x:Name="tabARP" Header="ARP" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-5,0,0" RenderTransformOrigin="0.536,0" >
+            <TabItem x:Name="tabARP" Header="ARP" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-6,-7,0,7" RenderTransformOrigin="0.536,0" Height="38" >
                 <Grid>
                     <DataGrid x:Name="arpGrid" Margin="0,37,10,95" HeadersVisibility="Column" IsReadOnly="True" BorderBrush="Black" Background="{x:Null}" FontWeight="Normal" FontSize="20" SelectionChanged="arpGrid_SelectionChanged"/>
                     <Button x:Name="btnRun1" FontWeight="Normal" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,529" Width="169" Content="Run ARP" Click="btnARP_Click" Height="32"/>
@@ -103,15 +103,15 @@
                 </Grid>
             </TabItem>
             <Label Content="Label" Height="100" Width="100"/>
-            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPlaceholder" Background="White">
                     <Button x:Name="nmapInstall" Content="Run Nmap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk" FontWeight="Normal"/>
                     <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="292,10,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click" FontWeight="Normal"/>
                     <CheckBox x:Name="authChkBx" Content="I have permission from the &#xD;&#xA;network administrator" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Normal"/>
-                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,54,0,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
+                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,52,-4,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabPortScanner" Header="Port Scanner" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabPortScanner" Header="Port Scanner" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPortScanner" Background="White">
                     <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
                     <Grid HorizontalAlignment="Left" Height="100" Margin="216,275,0,0" VerticalAlignment="Top" Width="100"/>
@@ -137,7 +137,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPasswordTester" Background="White">
                     <PasswordBox x:Name="pwdPasswordInput" HorizontalAlignment="Left" Margin="201,254,0,0" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" Height="46" FontSize="20" PasswordChanged="PasswordBox_PasswordChanged"/>
                     <TextBlock x:Name="header" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Password Strength Tester" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"/>
@@ -162,7 +162,7 @@
                     <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabUsername" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabUsername" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridUsername" Background="White">
                     <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
                     <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="66" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
@@ -173,26 +173,26 @@
                     <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="319" Margin="281,232,0,0" VerticalAlignment="Top" Width="267" FontWeight="Normal" FontSize="24"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPlaceholder4" Background="White"/>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy4" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabHolder_Copy4" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPlaceholder5" Background="White"/>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy5" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabHolder_Copy5" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPlaceholder6" Background="White"/>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy6" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabHolder_Copy6" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPlaceholder7" Background="White"/>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy7" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabHolder_Copy7" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,6" >
                 <Grid x:Name="gridPlaceholder8" Background="White"/>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy8" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+            <TabItem x:Name="tabHolder_Copy8" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,6" Height="38" >
                 <Grid x:Name="gridPlaceholder9" Background="White"/>
             </TabItem>
         </TabControl>
-        <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="44" Click="btnExit_Click" HorizontalAlignment="Left" Width="143"/>
+        <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="38" Click="btnExit_Click" HorizontalAlignment="Left" Width="153"/>
 
 
     </Grid>

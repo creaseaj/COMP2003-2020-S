@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Data;
 using VAPS.Model;
+using System.Windows.Controls;
+using System.Windows;
 
 namespace VAPS.Controller
 {
@@ -223,6 +225,61 @@ namespace VAPS.Controller
             int[] results = new int[] { registered, known, unknown };
             return results;
         }
-        
+        public async Task ARPScan(Button btnRun1, DataGrid arpGrid, TextBlock[] ARPTextBlocks, TextBox txtARPDeviceName, Button btnARPAddName)
+        {
+            // Use threading to allow the user to do other things whilst searching. Search time grows as the websites to search does
+            Task<DataTable> ARPTable = Task.Run(() =>
+            {
+                Task.Delay(5000).Wait();
+                return ARP.formatTable(ARP.initialTable());
+            });
+            int counter = 0;
+            // Show the user that it is searching, but it takes some time
+            while (!ARPTable.IsCompleted)
+            {
+                await Task.Delay(500);
+                switch (counter % 3)
+                {
+                    case 0:
+                        btnRun1.Content = "Running.";
+                        break;
+                    case 1:
+                        btnRun1.Content = "Running..";
+                        break;
+                    case 2:
+                        btnRun1.Content = "Running...";
+                        break;
+                }
+                counter++;
+            }
+            arpGrid.ItemsSource = ARPTable.Result.DefaultView;
+            arpGrid.Visibility = Visibility.Visible;
+            btnRun1.Content = "Run ARP";
+            int[] ARPResults = ARP.getResults(ARPTable.Result);
+            ARPTextBlocks[0].Text = ARPResults[1].ToString();
+            ARPTextBlocks[1].Text = ARPResults[0].ToString();
+            ARPTextBlocks[2].Text = ARPResults[2].ToString();
+            txtARPDeviceName.Visibility = Visibility.Visible;
+            btnARPAddName.Visibility = Visibility.Visible;
+            btnARPAddName.IsEnabled = false;
+        }
+        public void addDeviceName(DataGrid arpGrid, TextBox txtARPDeviceName)
+        {
+            DataRowView rowView = arpGrid.SelectedItem as DataRowView;
+            try
+            {
+
+                string macAddress = rowView.Row[1].ToString();
+                ARP.registerDevice(macAddress, txtARPDeviceName.Text);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("You must select a device first.");
+            }
+            DataTable ARPTable = new DataTable();
+            ARPTable = ARP.formatTable(ARPTable);
+            arpGrid.ItemsSource = ARPTable.DefaultView;
+        }
+
     }
 }

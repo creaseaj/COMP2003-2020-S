@@ -9,6 +9,8 @@ using System.IO;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using System.Windows.Media.Imaging;
+using System.Windows;
+using System.Windows.Media;
 
 namespace VAPS.Controller
 {
@@ -35,17 +37,6 @@ namespace VAPS.Controller
             //double average = Queryable.Average(times.AsQueryable());
 
             string time = "";
-            /*
-            if (offlineFastHash < 0.1)
-            {
-                time = "under a second.";
-            }
-            else
-            {
-                time = (Math.Round(offlineFastHash, 2)).ToString();
-            }
-            */
-
 
             try
             {
@@ -83,6 +74,33 @@ namespace VAPS.Controller
             _ = upper.IsMatch(password) ? icons[5].Source = new BitmapImage(new Uri(@"/VAPS;component/Resources/Icons/check.png", UriKind.RelativeOrAbsolute)) : icons[5].Source = new BitmapImage(new Uri(@"/VAPS;component/Resources/Icons/cancel.png", UriKind.RelativeOrAbsolute));
 
             return icons;
+        }
+        public void passwordDisplay(PasswordBox pwdPasswordInput, TextBlock txtTimeToCrack, Image[] passwordImages, TextBlock txtBlockCleartext)
+        {
+            if (pwdPasswordInput.Password.Length != 0)
+            {
+                txtTimeToCrack.Text = "Time to crack: " + timeToCrack(pwdPasswordInput.Password);
+                passwordImages = passwordGuidance(pwdPasswordInput.Password, passwordImages);
+                txtBlockCleartext.Text = pwdPasswordInput.Password;
+            }
+            else
+            {
+                txtTimeToCrack.Text = "";
+            }
+        }
+        public void displayCleartext(TextBlock txtBlockCleartext, PasswordBox pwdPasswordInput)
+        {
+            if (txtBlockCleartext.Visibility == Visibility.Hidden)
+            {
+                txtBlockCleartext.Visibility = Visibility.Visible;
+                pwdPasswordInput.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFABADB3"));
+            }
+            else if (txtBlockCleartext.Visibility == Visibility.Visible)
+            {
+                txtBlockCleartext.Visibility = Visibility.Hidden;
+                pwdPasswordInput.Foreground = new SolidColorBrush(Colors.Black);
+            }
+
         }
     }
 }

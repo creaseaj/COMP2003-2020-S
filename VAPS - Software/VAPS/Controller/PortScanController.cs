@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using VAPS.Model;
 
 namespace VAPS.Controller
@@ -134,6 +135,17 @@ namespace VAPS.Controller
             }
             int[] results = new int[] { keepOpen, couldClose, shouldClose };
             return results;
+        }
+        public void runPortScan(DataGrid PortScannerDataGrid, TextBlock[] PortScannerBlocks)
+        {
+            DataTable PortScannerTable = new DataTable();
+            PortScannerTable = generateTable(PortScannerTable);
+            PortScannerDataGrid.ItemsSource = PortScannerTable.DefaultView;
+            PortScannerDataGrid.Visibility = Visibility.Visible;
+            int[] results = getValues(PortScannerTable);
+            PortScannerBlocks[0].Text = results[0].ToString();
+            PortScannerBlocks[1].Text = results[1].ToString();
+            PortScannerBlocks[2].Text = results[2].ToString();
         }
     }
 }
