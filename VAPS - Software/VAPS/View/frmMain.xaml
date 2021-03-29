@@ -162,8 +162,12 @@
                     <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy2" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="gridPlaceholder3" Background="White"/>
+            <TabItem x:Name="tabHolder_Copy2" Header="Graphs" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="graphGrid" Background="White">
+                    <Button Content="Button" Click="graphGrid_Initialized" Margin="743,0,0,499.6"/>
+                    <Canvas x:Name="graphCanvas" Margin="0,0,0,0">
+                    </Canvas>
+                </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="gridPlaceholder4" Background="White"/>

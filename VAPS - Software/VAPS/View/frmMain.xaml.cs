@@ -27,7 +27,7 @@ namespace VAPS.View
     {
         ARPController ARP;
         PortScanController PortScan;
-
+        graphController graphControl;
         PasswordTesterController PasswordTesting;
         Image[] passwordImages;
 
@@ -39,10 +39,10 @@ namespace VAPS.View
             var mainForm = this;
             ARP = new ARPController();
             PortScan = new PortScanController();
-
+            graphControl = new graphController();
             PasswordTesting = new PasswordTesterController();
-            Port.Instance.fileInput();
-            Device.Instance.fileInput();
+            //Port.Instance.fileInput();
+            //Device.Instance.fileInput();
 
             nController = new nmapController();
             //Port.Instance.fileInput();
@@ -246,6 +246,13 @@ namespace VAPS.View
         private void nmapInstall_Click(object sender, RoutedEventArgs e)
         {
             //nmapOut.Text = new nmapController().scanLocal();
+
+        }
+
+    
+        private void graphGrid_Initialized(object sender, RoutedEventArgs e)
+        {
+            graphControl.testGraph(graphCanvas);
 
         }
     }
