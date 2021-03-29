@@ -14,7 +14,8 @@ namespace VAPS.Resources
     class graph
     {
         private List<String> ColumnsName = new List<string>();      // List of column names
-        private List<int> ColumnsVal = new List<int>();             // List of column values    
+        private List<int> ColumnsVal = new List<int>();             // List of column values
+        private List<Brush> ColumnsColour = new List<Brush>();      // List of column colours
         public graph()
         {
 
@@ -26,7 +27,7 @@ namespace VAPS.Resources
         }
         public void drawGraph(bool animate, Canvas canvas, Brush colour)
         {
-            int colWidth = 40;
+            //int colWidth = 40;
             int spacing = 20;
             int x = 0;
             int y = 0;
@@ -66,7 +67,7 @@ namespace VAPS.Resources
                 Canvas.SetLeft(textBlock, x);
 
                 Rectangle rect = new Rectangle { Height = (Convert.ToDouble(ColumnsVal[i])/ Convert.ToDouble(max)) * canvas.ActualHeight * 0.8, Width = MeasureString(textBlock).Width };
-                rect.Fill = colour;
+                rect.Fill = ColumnsColour[i] == null ? colour : ColumnsColour[i];
                 canvas.Children.Add(rect);
                 Canvas.SetTop(rect, (canvas.ActualHeight * 0.8) - rect.Height);
                 Canvas.SetLeft(rect, x);
@@ -99,15 +100,17 @@ namespace VAPS.Resources
             xLine.Stroke = Brushes.Black;
             canvas.Children.Add(xLine);
         }
-        public void addColumn(List<string> columnsName, List<int> columnsVal)
+        public void addColumn(List<string> columnsName, List<int> columnsVal, List<Brush> columnsColour)
         {
             ColumnsName.AddRange(columnsName);
             ColumnsVal.AddRange(columnsVal);
+            ColumnsColour.AddRange(columnsColour);
         }
-        public void addColumn(string columnName, int columnVal)
+        public void addColumn(string columnName, int columnVal, Brush columnColour)
         {
             ColumnsName.Add(columnName);
             ColumnsVal.Add(columnVal);
+            ColumnsColour.Add(columnColour);
         }
         private Size MeasureString(TextBlock text)
         {

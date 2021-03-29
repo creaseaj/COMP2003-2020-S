@@ -14,10 +14,11 @@ namespace VAPS.Controller
         public void testGraph(Canvas canvas)
         {
             canvas.Children.Clear();
-            graph.addColumn("Test1", 15);
-            graph.addColumn("Long Test 1", 10);
-            graph.addColumn("Second Test", 30);
-            graph.addColumn("Test 3", 40);
+            graph = new graph();
+            graph.addColumn("Test1", 15, Brushes.Red);
+            graph.addColumn("Long Test 1", 10, null);
+            graph.addColumn("Second Test", 30, Brushes.Aqua);
+            graph.addColumn("Test 3", 40, Brushes.DarkTurquoise);
             graph.drawGraph(false, canvas, Brushes.Black);
         }
     }
