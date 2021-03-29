@@ -15,11 +15,11 @@ namespace VAPS.Controller
         {
             canvas.Children.Clear();
             graph = new graph();
-            graph.addColumn("Test1", 15, Brushes.Red);
-            graph.addColumn("Long Test 1", 10, null);
-            graph.addColumn("Second Test", 30, Brushes.Aqua);
-            graph.addColumn("Test 3", 40, Brushes.DarkTurquoise);
-            graph.drawGraph(false, canvas, Brushes.Black);
+            graph.addColumn("Registered", 15, Brushes.Green);
+            graph.addColumn("Known", 10, Brushes.Orange);
+            graph.addColumn("Unknown", 30, Brushes.Red);
+            graph.addColumn("Other", 40, null);
+            graph.drawGraph(true, canvas, Brushes.Black);
         }
     }
 }
