@@ -255,5 +255,10 @@ namespace VAPS.View
             graphControl.testGraph(graphCanvas);
 
         }
+
+        private void graphGrid_Initialized(object sender, MouseEventArgs e)
+        {
+            graphControl.testGraph(graphCanvas);
+        }
     }
 }
