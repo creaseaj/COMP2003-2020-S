@@ -170,7 +170,10 @@
                     <Label Content="Enter a username:" HorizontalAlignment="Left" Margin="201,123,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
                     <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="46" Margin="201,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" FontSize="30" BorderBrush="Gray" FontWeight="Normal"/>
                     <Button x:Name="btnUsernameSearch" Content="Search" HorizontalAlignment="Left" Margin="346,200,0,0" VerticalAlignment="Top" Width="137" Height="27" FontWeight="Normal" Click="btnUsernameSearch_Click"/>
-                    <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="319" Margin="281,232,0,0" VerticalAlignment="Top" Width="267" FontWeight="Normal" FontSize="24"/>
+                    <TextBlock x:Name="txBlockUsernameResult" HorizontalAlignment="Left" Margin="303,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Normal" Foreground="Black"><Run Text="Number of sites matched:"/><LineBreak/><Run Text="Number of sites searched:"/></TextBlock>
+                    <Viewbox HorizontalAlignment="Left" Height="236" Margin="229,262,0,0" VerticalAlignment="Top" Width="374" OpacityMask="#FFFB1010">
+                        <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="497" VerticalAlignment="Top" Width="789" FontWeight="Normal" FontSize="48" Background="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
+                    </Viewbox>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabHolder_Copy3" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >

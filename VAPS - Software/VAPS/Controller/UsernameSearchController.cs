@@ -72,9 +72,10 @@ namespace VAPS.Controller
             return returnResult;
         }
 
-        public async Task runUsernameSearch(string username, Button btnUsernameSearch, DataGrid dtGrdUsernames)
+        public async Task runUsernameSearch(string username, Button btnUsernameSearch, DataGrid dtGrdUsernames, TextBlock txBlockUsernameResult)
         {
             dtGrdUsernames.Visibility = Visibility.Hidden;
+            txBlockUsernameResult.Visibility = Visibility.Hidden;
             // Use threading to allow the user to do other things whilst searching. Search time grows as the websites to search does
             Task<DataTable> UsernameTable = Task.Run(() =>
             {
@@ -100,9 +101,13 @@ namespace VAPS.Controller
                 }
                 counter++;
             }
+            int numResults = UsernameTable.Result.Rows.Count;
+            int numSearched = WebAddress.Instance.numberOfAddresses();
+            txBlockUsernameResult.Text = "Number of sites matched: " + numResults + "\nNumber of sites searched: " + numSearched;
             dtGrdUsernames.ItemsSource = UsernameTable.Result.DefaultView;
             dtGrdUsernames.Visibility = Visibility.Visible;
             btnUsernameSearch.Content = "Search";
+            txBlockUsernameResult.Visibility = Visibility.Visible;
         }
     }
 }

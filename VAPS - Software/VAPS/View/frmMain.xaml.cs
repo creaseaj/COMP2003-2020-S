@@ -64,6 +64,7 @@ namespace VAPS.View
             txtARPDeviceName.Visibility = Visibility.Hidden;
             btnARPAddName.Visibility = Visibility.Hidden;
             dtGrdUsernames.Visibility = Visibility.Hidden;
+            txBlockUsernameResult.Visibility = Visibility.Hidden;
         }
 
         private void btnARP_Click(object sender, RoutedEventArgs e)
@@ -146,7 +147,7 @@ namespace VAPS.View
 
         private void btnUsernameSearch_Click(object sender, RoutedEventArgs e)
         {
-            usernameSearch.runUsernameSearch(txtUsername.Text, btnUsernameSearch, dtGrdUsernames);
+            usernameSearch.runUsernameSearch(txtUsername.Text, btnUsernameSearch, dtGrdUsernames, txBlockUsernameResult);
         }
     }
 }

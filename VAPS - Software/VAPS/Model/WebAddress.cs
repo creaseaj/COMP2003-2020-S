@@ -39,5 +39,9 @@ namespace VAPS.Model
         {
             instance.webAddresses = newAddresses;
         }
+        public int numberOfAddresses()
+        {
+            return instance.webAddresses.Count;
+        }
     }
 }
