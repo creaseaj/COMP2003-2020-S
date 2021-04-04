@@ -260,5 +260,10 @@ namespace VAPS.View
         {
             graphControl.testGraph(graphCanvas);
         }
+
+        private void graphMove(object sender, MouseButtonEventArgs e)
+        {
+            graphControl.buttonPressed(e);
+        }
     }
 }
