@@ -28,7 +28,6 @@ namespace VAPS.Resources
         public void drawGraph(bool animate, Canvas canvas, Brush colour)
         {
             Double CanvasHeight = canvas.ActualHeight;
-            //int colWidth = 40;
             int spacing = 20;
             int x = 0;
             int y = 0;
@@ -47,7 +46,7 @@ namespace VAPS.Resources
             maxTxt.Foreground = colour;
             double maxWidth = MeasureString(maxTxt).Width;
             maxWidth = 40;
-            // Draw Axis Labels
+                // Draw Axis Labels
             int axisSpacing = findAxisSpacing(max);
             int newMax = 0;
             while(newMax < max)
@@ -79,45 +78,14 @@ namespace VAPS.Resources
                 axisLine.Stroke = Brushes.Black;
                 canvas.Children.Add(axisLine);
             }
-           
-            //canvas.Children.Add(maxTxt);
-            //Canvas.SetLeft(maxTxt, 0);
-            //Canvas.SetTop(maxTxt, 0);
 
-            TextBlock minTxt = new TextBlock();
-            minTxt.Text = "0";
-            minTxt.Foreground = colour;
-            //canvas.Children.Add(minTxt);
-            //Canvas.SetLeft(minTxt, 0);
-            //Canvas.SetTop(minTxt, (canvas.ActualHeight *multiplier) - MeasureString(minTxt).Height);
             x = Convert.ToInt32(maxWidth);
             x += spacing;
 
             // Draw graph labels & values
-            for (int i = 0; i < ColumnsName.Count(); i++)
-            {
-                TextBlock textBlock = new TextBlock();
-                textBlock.Text = ColumnsName[i];
-                textBlock.Foreground = colour;
-                canvas.Children.Add(textBlock);
-                Canvas.SetLeft(textBlock, x);
-                double speed = animate ? 0.2 : 0;
-                int columnMaxHeight = Convert.ToInt32(canvas.ActualHeight * multiplier);
-                int currentColumnHeight = Convert.ToInt32((Convert.ToDouble(ColumnsVal[i]) / Convert.ToDouble(max)) * columnMaxHeight);
-                int columnWidth = Convert.ToInt32(MeasureString(textBlock).Width);
-                Brush columnColour = ColumnsColour[i] == null ? colour : ColumnsColour[i];
-                drawColumn(columnMaxHeight + spacing, x, currentColumnHeight, columnWidth , columnColour,speed,canvas);
-                x += Convert.ToInt32(MeasureString(textBlock).Width);
-                x += spacing;
-              
-                if (i == 0) { y = Convert.ToInt32(canvas.ActualHeight * multiplier); }
-                Canvas.SetTop(textBlock, y + spacing);
-
-            }
+            drawColumns(colour, canvas, animate, spacing, spacing, spacing + Convert.ToInt32(canvas.ActualHeight * multiplier), x, canvas.Width,max);
 
             x = Convert.ToInt32(maxWidth) + 5;
-            
-
             // draw axis lines
             Line yLine = new Line();
             yLine.X1 = x;
@@ -136,6 +104,101 @@ namespace VAPS.Resources
             xLine.StrokeThickness = 4;
             xLine.Stroke = Brushes.Black;
             canvas.Children.Add(xLine);
+
+            Rectangle test = new Rectangle { Height = 50, Width = 50 };                    //  box test
+            test.Name = "Left";
+            test.Fill = Brushes.Green;
+            canvas.Children.Add(test);
+
+            Rectangle right = new Rectangle { Height = 50, Width = 50 };
+            right.Name = "Right";
+            right.Fill = Brushes.Red;
+            canvas.Children.Add(right);
+            Canvas.SetLeft(right, 50);
+            //test.MouseLeftButtonDown = rotateColumns();
+        }
+        public void itemClicked(Rectangle objectClicked, Canvas canvas)
+        {
+            if(objectClicked.Name == "Left")
+            {
+                rotateLeft(canvas);
+            }
+            else if(objectClicked.Name == "Right")
+            {
+                rotateRight(canvas);
+            }
+        }
+        private void rotateRight(Canvas canvas)
+        {
+            for(int i = 1; i < ColumnsName.Count; i++)
+            {
+                rotateGraphs(canvas);
+            }
+            canvas.Children.Clear();
+            drawGraph(false, canvas, Brushes.Black);
+        }
+        private void rotateLeft(Canvas canvas)
+        {
+            rotateGraphs(canvas);
+            canvas.Children.Clear();
+            drawGraph(false, canvas, Brushes.Black);
+        }
+        private void rotateGraphs( Canvas canvas)
+        {
+            string spacerName = "";
+            int spacerVal = 0 ;
+            int movement = -1;
+            Brush spacerColour = Brushes.Black;
+            for(int i = 0; i < ColumnsName.Count; i++)
+            {
+                
+                 if (i + movement < 0)
+                    {
+                    spacerName = ColumnsName[ColumnsName.Count + (i + movement)];
+                    spacerVal = ColumnsVal[ColumnsName.Count + (i + movement)];
+                    spacerColour = ColumnsColour[ColumnsName.Count + (i + movement)];
+
+                    ColumnsName[ColumnsName.Count + (i + movement)] = ColumnsName[i];
+                    ColumnsVal[ColumnsName.Count + (i + movement)] = ColumnsVal[i];
+                    ColumnsColour[ColumnsName.Count + (i + movement)] = ColumnsColour[i];
+                }
+                else if (i == ColumnsName.Count - 1)
+                {
+                    
+                        ColumnsName[i + movement] = spacerName;
+                        ColumnsVal[i + movement] = spacerVal;
+                        ColumnsColour[i + movement] = spacerColour;
+                }
+                else
+                {
+                    ColumnsName[i + movement] = ColumnsName[i];
+                    ColumnsVal[i + movement] = ColumnsVal[i];
+                    ColumnsColour[i + movement] = ColumnsColour[i];
+                }
+            }
+        }
+        private void drawColumns(Brush colour, Canvas canvas, Boolean animate , double spacing, double top, double bottom, double left, double right, double highestVal )
+        { 
+            for (int i = 0; i < ColumnsName.Count(); i++)
+            {
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = ColumnsName[i];
+                textBlock.Foreground = colour;
+                canvas.Children.Add(textBlock);
+                Canvas.SetLeft(textBlock, left);
+                double speed = animate ? 0.2 : 0;
+                double columnMaxHeight = bottom - top;
+                double currentColumnHeight = ColumnsVal[i] / highestVal * columnMaxHeight;
+                int columnWidth = Convert.ToInt32(MeasureString(textBlock).Width);
+                Brush columnColour = ColumnsColour[i] == null ? colour : ColumnsColour[i];
+                drawColumn(bottom, left, currentColumnHeight, columnWidth, columnColour, speed, canvas);
+                left += Convert.ToInt32(MeasureString(textBlock).Width);
+                left += spacing;
+
+                //if (i == 0) { y = Convert.ToInt32(canvas.ActualHeight * multiplier); }
+                Canvas.SetTop(textBlock, bottom);
+
+            }
         }
         public void addColumn(List<string> columnsName, List<int> columnsVal, List<Brush> columnsColour)
         {

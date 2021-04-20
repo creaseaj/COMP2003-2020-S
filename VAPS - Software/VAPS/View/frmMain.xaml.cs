@@ -260,5 +260,10 @@ namespace VAPS.View
         {
             graphControl.createARPGraph(ARPgraphCanvas, ARP, ARP.formatTable(new DataTable()));
         }
+
+        private void graphMove(object sender, MouseButtonEventArgs e)
+        {
+            graphControl.buttonPressed(e);
+        }
     }
 }
