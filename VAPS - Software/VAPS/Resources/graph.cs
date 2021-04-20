@@ -151,13 +151,13 @@ namespace VAPS.Resources
         }
         private int findAxisSpacing(int maxValue)
         {
-            int[] spaceValues = {1,2, 5 };
-            int bestSpacing = 0;
+            float[] spaceValues = {0.1f,0.2f, 0.5f };
+            int bestSpacing = 1;
             int unrounded = maxValue / 15;
             int counter = 0;
             while (bestSpacing < unrounded)
             {
-                bestSpacing = Convert.ToInt32(Math.Pow(10,counter / 3)) * spaceValues[counter % 3];
+                bestSpacing = Convert.ToInt32(Math.Pow(10,counter / 3) * spaceValues[counter % 3]);
                 counter++;
             }
 

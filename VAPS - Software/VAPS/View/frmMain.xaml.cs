@@ -252,13 +252,13 @@ namespace VAPS.View
     
         private void graphGrid_Initialized(object sender, RoutedEventArgs e)
         {
-            graphControl.testGraph(graphCanvas);
-
+            //graphControl.testGraph(graphCanvas);
+            graphControl.createPortGraph(PORTgraphCanvas, PortScan, PortScan.generateTable(new DataTable()));
         }
 
-        private void graphGrid_Initialized(object sender, MouseEventArgs e)
+        private void arpGraphClick(object sender, RoutedEventArgs e)
         {
-            graphControl.testGraph(graphCanvas);
+            graphControl.createARPGraph(ARPgraphCanvas, ARP, ARP.formatTable(new DataTable()));
         }
     }
 }
