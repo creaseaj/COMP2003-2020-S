@@ -40,9 +40,29 @@ namespace VAPS.Controller
             graph.drawGraph(false, canvas, Brushes.Black);
 
         }
+        public async Task runUpdates(Canvas arpCanvas, Canvas portCanvas, ARPController ARPScn, DataTable arpScanTable)
+        {
+            int counter = 0;
+            // Task runs in the background which is the nmap function
+            while (true)
+            {
+                // Runs while nmap command is still running, shows scanning dots
+
+                await Task.Delay(1000);
+                if (counter % 60 == 59)
+                {
+                    Task.Run(() =>
+                    {
+                        createARPGraph(arpCanvas, ARPScn, arpScanTable);
+                    });
+                }
+                counter++;
+            }
+           
+        }
         public void createARPGraph(Canvas canvas, ARPController ARPScn, DataTable arpScanTable)
         {
-            canvas.Children.Clear();
+            //canvas.Children.Clear();
             graph = new graph();
             int[] arp = ARPScn.getResults(arpScanTable);
             //List<string> safety = new List<string>();
@@ -54,6 +74,7 @@ namespace VAPS.Controller
             graph.drawGraph(false, canvas, Brushes.Black);
 
         }
+        
 
     }
 }

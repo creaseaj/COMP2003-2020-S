@@ -46,7 +46,7 @@ namespace VAPS.View
 
             nController = new nmapController();
             //Port.Instance.fileInput();
-
+            graphControl.runUpdates(ARPgraphCanvas, PORTgraphCanvas, ARP, ARP.formatTable(new DataTable()));
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
             arpGrid.Visibility = Visibility.Hidden;
@@ -239,31 +239,27 @@ namespace VAPS.View
 
             //nmapOut.Text += nController.getSubnetFromIP(ipaddress);
 
-
-
         }
 
-        private void nmapInstall_Click(object sender, RoutedEventArgs e)
-        {
-            //nmapOut.Text = new nmapController().scanLocal();
-
-        }
 
     
         private void graphGrid_Initialized(object sender, RoutedEventArgs e)
         {
-            //graphControl.testGraph(graphCanvas);
-            graphControl.createPortGraph(PORTgraphCanvas, PortScan, PortScan.generateTable(new DataTable()));
+           // graphControl.createPortGraph(PORTgraphCanvas, PortScan, PortScan.generateTable(new DataTable()));
         }
 
-        private void arpGraphClick(object sender, RoutedEventArgs e)
+        
+
+       
+        private void arpGraph(object sender, RoutedEventArgs e)
         {
-            graphControl.createARPGraph(ARPgraphCanvas, ARP, ARP.formatTable(new DataTable()));
+            //graphControl.createARPGraph(ARPgraphCanvas, ARP, ARP.formatTable(new DataTable()));
+
         }
 
-        private void graphMove(object sender, MouseButtonEventArgs e)
+        private void portGraph(object sender, RoutedEventArgs e)
         {
-            graphControl.buttonPressed(e);
+            //graphControl.createPortGraph(PORTgraphCanvas, PortScan, PortScan.generateTable(new DataTable()));
         }
     }
 }
