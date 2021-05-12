@@ -162,15 +162,14 @@
                     <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabHolder_Copy2" Header="Ports Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" GotFocus="portGraph" >
+            <TabItem x:Name="tabHolder_Copy2" Header="Ports Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
                 <Grid x:Name="PORTgraphGrid" Background="White">
-                    <Button Content="Button" Click="graphGrid_Initialized" Margin="743,0,0,499.6"/>
-                    <Canvas x:Name="PORTgraphCanvas" Margin="0,0,0,0">
+                    <Canvas x:Name="portCanvas" Margin="0,0,0,0">
                     </Canvas>
                 </Grid>
             </TabItem>
             
-            <TabItem x:Name="tabHolder_Copy3" Header="ARP Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" GotFocus="arpGraph" >
+            <TabItem x:Name="tabHolder_Copy3" Header="ARP Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3">
                 <Grid x:Name="ARPgraphGrid" Background="White">
                     <Canvas x:Name="ARPgraphCanvas" Margin="0,0,0,0"/>
                 </Grid>

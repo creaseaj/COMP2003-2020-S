@@ -105,16 +105,16 @@ namespace VAPS.Resources
             xLine.Stroke = Brushes.Black;
             canvas.Children.Add(xLine);
 
-            Rectangle test = new Rectangle { Height = 50, Width = 50 };                    //  box test
-            test.Name = "Left";
-            test.Fill = Brushes.Green;
-            canvas.Children.Add(test);
+            //Rectangle test = new Rectangle { Height = 50, Width = 50 };                    //  box test
+            //test.Name = "Left";
+            //test.Fill = Brushes.Green;
+            //canvas.Children.Add(test);
 
-            Rectangle right = new Rectangle { Height = 50, Width = 50 };
-            right.Name = "Right";
-            right.Fill = Brushes.Red;
-            canvas.Children.Add(right);
-            Canvas.SetLeft(right, 50);
+            //Rectangle right = new Rectangle { Height = 50, Width = 50 };
+            //right.Name = "Right";
+            //right.Fill = Brushes.Red;
+            //canvas.Children.Add(right);
+            //Canvas.SetLeft(right, 50);
             //test.MouseLeftButtonDown = rotateColumns();
         }
         public void itemClicked(Rectangle objectClicked, Canvas canvas)

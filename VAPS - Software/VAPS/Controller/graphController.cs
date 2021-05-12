@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 using VAPS.Resources;
 namespace VAPS.Controller
 {
@@ -40,38 +41,44 @@ namespace VAPS.Controller
             graph.drawGraph(false, canvas, Brushes.Black);
 
         }
-        public async Task runUpdates(Canvas arpCanvas, Canvas portCanvas, ARPController ARPScn, DataTable arpScanTable)
+        public async Task runUpdates(Canvas arpCanvas, Canvas portCanvas, ARPController ARPScn, PortScanController PORTScn, DataTable arpScanTable)
         {
             int counter = 0;
             // Task runs in the background which is the nmap function
             while (true)
             {
-                // Runs while nmap command is still running, shows scanning dots
+                //Runs while nmap command is still running, shows scanning dots
 
                 await Task.Delay(1000);
-                if (counter % 60 == 59)
+                if (counter % 60 == 10)
                 {
-                    Task.Run(() =>
+                    arpCanvas.Children.Clear();
+                    Task<int[]> arp = Task.Run(() =>
                     {
-                        createARPGraph(arpCanvas, ARPScn, arpScanTable);
+                        return ARPScn.getResults(arpScanTable);
                     });
+                    Task<int[]> port = Task.Run(() =>
+                    {
+                        return PORTScn.getValues(PORTScn.generateTable(new DataTable()));
+                    });
+                    port.Wait();
+                    arp.Wait();
+                    arpCanvas.Children.Clear();
+                    graph arpGraph = new graph();
+                    arpGraph.addColumn("Safe", arp.Result[0], Brushes.Green);
+                    arpGraph.addColumn("Medium", arp.Result[1], Brushes.Orange);
+                    arpGraph.addColumn("Unsafe", arp.Result[2], Brushes.Red);
+                    arpGraph.drawGraph(false, arpCanvas, Brushes.Black);
+                    portCanvas.Children.Clear();
+
+                    graph PortGraph = new graph();
+                    PortGraph.addColumn("Safe", port.Result[0], Brushes.Green);
+                    PortGraph.addColumn("Medium", port.Result[1], Brushes.Orange);
+                    PortGraph.addColumn("Unsafe", port.Result[2], Brushes.Red);
+                    PortGraph.drawGraph(false, portCanvas, Brushes.Black);
                 }
                 counter++;
             }
-           
-        }
-        public void createARPGraph(Canvas canvas, ARPController ARPScn, DataTable arpScanTable)
-        {
-            //canvas.Children.Clear();
-            graph = new graph();
-            int[] arp = ARPScn.getResults(arpScanTable);
-            //List<string> safety = new List<string>();
-            graph.addColumn("Safe", arp[0], Brushes.Green);
-            graph.addColumn("Medium", arp[1], Brushes.Orange);
-            graph.addColumn("Dangerous", arp[2], Brushes.Red);
-            //List<Brush> brushes = new List<Brush>();
-            // graph.addColumn(safety, arpPorts, brushes);
-            graph.drawGraph(false, canvas, Brushes.Black);
 
         }
         
