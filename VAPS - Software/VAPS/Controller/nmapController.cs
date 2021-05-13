@@ -27,13 +27,14 @@ namespace VAPS.Controller
             string[] ipRange = new string[2];
             for(int i = 0; i < ip.Length; i++)
             {
-                if (ip[i] == '1' & subnet[i] == '1'){
-                    stringOut.Append("1");
-                }
-                else if(subnet[i] == '1')
-                {
-                    stringOut.Append("0");
-                }
+                stringOut.Append(ip[i] == '1' && subnet[i] == '1' ? "1" : subnet[i] =='1' ? "0" : "");
+                //if (ip[i] == '1' & subnet[i] == '1'){
+                //    stringOut.Append("1");
+                //}
+                //else
+                //{
+                //    stringOut.Append("0");
+                //}
             }
             ipRange[0] = stringOut.ToString();
             ipRange[1] = stringOut.ToString();
@@ -122,11 +123,12 @@ namespace VAPS.Controller
             {
                 string nextSec = "";
                 nextSec = Convert.ToString(Convert.ToInt32(octet),2);
-                binaryIP += nextSec;
+                
                 for(int i = 0; i < 8 - nextSec.Length ; i++)
                 {
                     binaryIP += "0";
                 }
+                binaryIP += nextSec;
             }
             return binaryIP;
         }
