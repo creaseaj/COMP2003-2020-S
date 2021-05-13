@@ -47,15 +47,15 @@ namespace VAPS.Controller
             webScraper scrape = new webScraper();
             String webPage = scrape.webScrape("https://www.adminsub.net/mac-address-finder/" + macAddress);
             String[] webPageLines = Regex.Split(webPage,@"\n");
-            String vendor = Regex.Match(webPageLines[94],@"\?q=(\w|\s)+").Value;
             try
             {
+                String vendor = Regex.Match(webPageLines[94], @"\?q=(\w|\s)+").Value;
                 string test = vendor.Substring(3);
                 vendors.Add(test);
                 return test;
                 //return(vendor.Substring(3));
             }
-            catch( System.ArgumentOutOfRangeException)
+            catch(Exception e)
             {
                 return macAddress;
             }

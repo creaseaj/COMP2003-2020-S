@@ -44,39 +44,50 @@ namespace VAPS.Controller
         public async Task runUpdates(Canvas arpCanvas, Canvas portCanvas, ARPController ARPScn, PortScanController PORTScn, DataTable arpScanTable)
         {
             int counter = 0;
+            Task<int[]> arp = Task.Run(() =>
+            {
+                return ARPScn.getResults(arpScanTable);
+            });
+            Task<int[]> port = Task.Run(() =>
+            {
+                return PORTScn.getValues(PORTScn.generateTable(new DataTable()));
+            }); 
             // Task runs in the background which is the nmap function
             while (true)
             {
                 //Runs while nmap command is still running, shows scanning dots
 
-                await Task.Delay(1000);
-                if (counter % 60 == 10)
+                await Task.Delay(500);
+                if (counter % 120 == 1)
                 {
-                    arpCanvas.Children.Clear();
-                    Task<int[]> arp = Task.Run(() =>
+                    arp = Task.Run(() =>
                     {
-                        return ARPScn.getResults(arpScanTable);
+                        return ARPScn.getResults(ARPScn.initialTable(new DataTable()));
                     });
-                    Task<int[]> port = Task.Run(() =>
+                    port = Task.Run(() =>
                     {
                         return PORTScn.getValues(PORTScn.generateTable(new DataTable()));
                     });
-                    port.Wait();
-                    arp.Wait();
+                }
+                if (arp.IsCompleted)
+                {
                     arpCanvas.Children.Clear();
                     graph arpGraph = new graph();
                     arpGraph.addColumn("Safe", arp.Result[0], Brushes.Green);
                     arpGraph.addColumn("Medium", arp.Result[1], Brushes.Orange);
                     arpGraph.addColumn("Unsafe", arp.Result[2], Brushes.Red);
                     arpGraph.drawGraph(false, arpCanvas, Brushes.Black);
+                }
+                if (port.IsCompleted)
+                {
                     portCanvas.Children.Clear();
-
                     graph PortGraph = new graph();
                     PortGraph.addColumn("Safe", port.Result[0], Brushes.Green);
                     PortGraph.addColumn("Medium", port.Result[1], Brushes.Orange);
                     PortGraph.addColumn("Unsafe", port.Result[2], Brushes.Red);
                     PortGraph.drawGraph(false, portCanvas, Brushes.Black);
                 }
+                
                 counter++;
             }
 
