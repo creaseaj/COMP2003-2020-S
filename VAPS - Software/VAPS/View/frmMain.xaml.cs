@@ -28,6 +28,9 @@ namespace VAPS.View
         //Declarations
         ARPController ARP;
         PortScanController PortScan;
+
+        graphController graphControl;
+
         UsernameSearchController usernameSearch;
         PasswordTesterController PasswordTesting;
         Image[] passwordImages;
@@ -42,6 +45,16 @@ namespace VAPS.View
             //Controllers
             ARP = new ARPController();
             PortScan = new PortScanController();
+
+            graphControl = new graphController();
+            PasswordTesting = new PasswordTesterController();
+            //Port.Instance.fileInput();
+            //Device.Instance.fileInput();
+
+            nController = new nmapController();
+            //Port.Instance.fileInput();
+            graphControl.runUpdates(ARPgraphCanvas, portCanvas, ARP, PortScan, ARP.formatTable(new DataTable()));
+
             usernameSearch = new UsernameSearchController();
             PasswordTesting = new PasswordTesterController();
             NMap = new nmapController();
@@ -55,6 +68,7 @@ namespace VAPS.View
             passwordImages = new Image[] { imgLength, imgLower, imgNumber, imgPassword, imgSpecial, imgUpper };
             ARPTextBlocks = new TextBlock[] { blockARPKnown, blockARPRegistered, blockARPUnknown };
             PortScannerBlocks = new TextBlock[] { txtBlockOpenNum, txtBlockCouldNum, txtBlockShouldNum };
+
 
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
@@ -136,12 +150,15 @@ namespace VAPS.View
         }
         private void ipsubShow_Click(object sender, RoutedEventArgs e)
         {
-            string ipaddress = NMap.GetLocalIPAddress();
-        }
 
-        private void nmapInstall_Click(object sender, RoutedEventArgs e)
-        {
-            //nmapOut.Text = new nmapController().scanLocal();
+            string ipaddress = nController.GetLocalIPAddress();
+            //nmapOut.Text = (ipaddress);
+
+            /// nController.Subnet();
+
+            //nmapOut.Text += nController.getSubnetFromIP(ipaddress);
+
+        }
 
         }
 
@@ -149,5 +166,6 @@ namespace VAPS.View
         {
             usernameSearch.runUsernameSearch(txtUsername.Text, btnUsernameSearch, dtGrdUsernames, txBlockUsernameResult);
         }
+
     }
 }
