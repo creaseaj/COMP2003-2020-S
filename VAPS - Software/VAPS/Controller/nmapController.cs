@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace VAPS.Controller
 {
@@ -193,7 +194,39 @@ namespace VAPS.Controller
             return cveNum;
         }
 
-        
+        public async Task nmapScanningProgress(Button nmapInstall, DataGrid nmapOutGrid)
+        {
+
+            // Task runs in the background which is the nmap function
+            Task<DataTable> nmapTable = Task.Run(() =>
+            {
+                return fingerPrint(GetLocalIPAddress(), getSubnetFromIP(GetLocalIPAddress()));
+            });
+            int counter = 0;
+            // Runs while nmap command is still running, shows scanning dots
+            while (!nmapTable.IsCompleted)
+            {
+                await Task.Delay(500);
+                switch (counter % 3)
+                {
+                    case 0:
+                        nmapInstall.Content = "Scanning.";
+                        break;
+                    case 1:
+                        nmapInstall.Content = "Scanning..";
+                        break;
+                    case 2:
+                        nmapInstall.Content = "Scanning...";
+                        break;
+                }
+                counter++;
+            }
+            nmapOutGrid.ItemsSource = nmapTable.Result.DefaultView;
+            nmapOutGrid.Visibility = Visibility.Visible;
+            nmapInstall.Content = "Run Nmap Scan";
+        }
+
+
 
     }
 }
