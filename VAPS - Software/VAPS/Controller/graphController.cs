@@ -46,7 +46,7 @@ namespace VAPS.Controller
             int counter = 0;
             Task<int[]> arp = Task.Run(() =>
             {
-                return ARPScn.getResults(arpScanTable);
+                return ARPScn.getResults(ARPScn.initialTable());
             });
             Task<int[]> port = Task.Run(() =>
             {
@@ -62,7 +62,7 @@ namespace VAPS.Controller
                 {
                     arp = Task.Run(() =>
                     {
-                        return ARPScn.getResults(ARPScn.initialTable(new DataTable()));
+                        return ARPScn.getResults(ARPScn.initialTable());
                     });
                     port = Task.Run(() =>
                     {

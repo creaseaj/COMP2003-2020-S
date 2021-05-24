@@ -173,7 +173,7 @@
     <Resource Include="Resources\Icons\check.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\WebAddresses.txt" />
+    <EmbeddedResource Include="Resources\WebAddresses.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

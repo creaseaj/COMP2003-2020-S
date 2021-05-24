@@ -30,7 +30,7 @@ namespace VAPS.View
         PortScanController PortScan;
 
         graphController graphControl;
-
+        nmapController nController;
         UsernameSearchController usernameSearch;
         PasswordTesterController PasswordTesting;
         Image[] passwordImages;
@@ -58,7 +58,6 @@ namespace VAPS.View
             usernameSearch = new UsernameSearchController();
             PasswordTesting = new PasswordTesterController();
             NMap = new nmapController();
-
             //Initial Fileinput
             Port.Instance.fileInput();
             Device.Instance.fileInput();
@@ -160,10 +159,11 @@ namespace VAPS.View
 
         }
 
-        }
+        
 
         private void btnUsernameSearch_Click(object sender, RoutedEventArgs e)
         {
+            
             usernameSearch.runUsernameSearch(txtUsername.Text, btnUsernameSearch, dtGrdUsernames, txBlockUsernameResult);
         }
 

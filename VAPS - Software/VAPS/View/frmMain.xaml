@@ -188,23 +188,8 @@
                             <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="497" VerticalAlignment="Top" Width="789" FontWeight="Normal" FontSize="48" Background="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
                         </Viewbox>
                     </Grid>
-                </TabItem>
+            </TabItem>
                
-                <TabItem x:Name="tabHolder_Copy4" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
-                    <Grid x:Name="gridPlaceholder5" Background="White"/>
-                </TabItem>
-                <TabItem x:Name="tabHolder_Copy5" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
-                    <Grid x:Name="gridPlaceholder6" Background="White"/>
-                </TabItem>
-                <TabItem x:Name="tabHolder_Copy6" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
-                    <Grid x:Name="gridPlaceholder7" Background="White"/>
-                </TabItem>
-                <TabItem x:Name="tabHolder_Copy7" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,6" >
-                    <Grid x:Name="gridPlaceholder8" Background="White"/>
-                </TabItem>
-                <TabItem x:Name="tabHolder_Copy8" Header="Placeholder" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,6" Height="38" >
-                    <Grid x:Name="gridPlaceholder9" Background="White"/>
-                </TabItem>
         </TabControl>
         <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="38" Click="btnExit_Click" HorizontalAlignment="Left" Width="153"/>
 
