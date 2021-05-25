@@ -67,6 +67,7 @@ namespace VAPS.Controller
             List<List<String>> arpOut = new List<List<string>>();
             string[] headers = { "IP Address", "MAC Address", "Status", "Friendly Name"};
             arpOut.Add(headers.ToList());
+            List<List<String>> arpCopy = arpList.ToList();
             foreach (List<String> item in arpList)
             {
                 List<String> newList = new List<string>();
