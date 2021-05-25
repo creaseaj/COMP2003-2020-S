@@ -164,6 +164,32 @@
                     <Label Content="Port Safety Level" HorizontalAlignment="Left" Margin="262,529,0,-34" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
+
+            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
+                <Grid x:Name="gridPlaceholder" Background="White">
+                    <Button x:Name="nmapInstall" Content="Run NMap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk" FontWeight="Normal"/>
+                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="292,10,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click" FontWeight="Normal"/>
+                    <CheckBox x:Name="authChkBx" Content="I have permission from the &#xD;&#xA;network administrator" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Normal"/>
+                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,52,-4,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem x:Name="tabUsername" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
+                    <Grid x:Name="gridUsername" Background="White">
+                        <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
+                        <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="66" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="640" Foreground="Black" FontWeight="Normal" FontSize="12" TextAlignment="Center"><Run Text="This tool will take the username you provide and search against a list of different websites to see if an account with that username exists. This is useful for highlighting how easy it can be to quickly find any sites you're apart of. With more common usernames, they're less likely to all be linked to one person but the more unique it, the more likely they are to be the same."/></TextBlock>
+                        <Label Content="Enter a username:" HorizontalAlignment="Left" Margin="201,123,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+                        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="46" Margin="201,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" FontSize="30" BorderBrush="Gray" FontWeight="Normal"/>
+                        <Button x:Name="btnUsernameSearch" Content="Search" HorizontalAlignment="Left" Margin="346,200,0,0" VerticalAlignment="Top" Width="137" Height="27" FontWeight="Normal" Click="btnUsernameSearch_Click"/>
+                        <TextBlock x:Name="txBlockUsernameResult" HorizontalAlignment="Left" Margin="303,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Normal" Foreground="Black"><Run Text="Number of sites matched:"/><LineBreak/><Run Text="Number of sites searched:"/></TextBlock>
+                        <Viewbox HorizontalAlignment="Left" Height="236" Margin="229,262,0,0" VerticalAlignment="Top" Width="374" OpacityMask="#FFFB1010">
+                            <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="497" VerticalAlignment="Top" Width="789" FontWeight="Normal" FontSize="48" Background="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
+                        </Viewbox>
+                    </Grid>
+            </TabItem>
+           
             <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPasswordTester" Background="White">
                     <PasswordBox x:Name="pwdPasswordInput" HorizontalAlignment="Left" Margin="201,254,0,0" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" Height="46" FontSize="20" PasswordChanged="PasswordBox_PasswordChanged"/>
@@ -189,31 +215,6 @@
                     <Button x:Name="btnShowClear" Content="Show Password" HorizontalAlignment="Left" Margin="553,232,0,0" VerticalAlignment="Top" Width="88" Height="23" FontWeight="Normal" FontSize="12" Click="btnShowClear_Click"/>
                 </Grid>
             </TabItem>
-
-
-
-            <TabItem x:Name="tabUsername" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
-                    <Grid x:Name="gridUsername" Background="White">
-                        <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
-                        <Rectangle Fill="#FFD6D6D6" HorizontalAlignment="Left" Height="66" Margin="100,52,0,0" VerticalAlignment="Top" Width="640"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="640" Foreground="Black" FontWeight="Normal" FontSize="12" TextAlignment="Center"><Run Text="This tool will take the username you provide and search against a list of different websites to see if an account with that username exists. This is useful for highlighting how easy it can be to quickly find any sites you're apart of. With more common usernames, they're less likely to all be linked to one person but the more unique it, the more likely they are to be the same."/></TextBlock>
-                        <Label Content="Enter a username:" HorizontalAlignment="Left" Margin="201,123,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
-                        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="46" Margin="201,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Background="#FFE6E6E6" FontSize="30" BorderBrush="Gray" FontWeight="Normal"/>
-                        <Button x:Name="btnUsernameSearch" Content="Search" HorizontalAlignment="Left" Margin="346,200,0,0" VerticalAlignment="Top" Width="137" Height="27" FontWeight="Normal" Click="btnUsernameSearch_Click"/>
-                        <TextBlock x:Name="txBlockUsernameResult" HorizontalAlignment="Left" Margin="303,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Normal" Foreground="Black"><Run Text="Number of sites matched:"/><LineBreak/><Run Text="Number of sites searched:"/></TextBlock>
-                        <Viewbox HorizontalAlignment="Left" Height="236" Margin="229,262,0,0" VerticalAlignment="Top" Width="374" OpacityMask="#FFFB1010">
-                            <DataGrid x:Name="dtGrdUsernames" HorizontalAlignment="Left" Height="497" VerticalAlignment="Top" Width="789" FontWeight="Normal" FontSize="48" Background="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
-                        </Viewbox>
-                    </Grid>
-            </TabItem>
-            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
-                <Grid x:Name="gridPlaceholder" Background="White">
-                    <Button x:Name="nmapInstall" Content="Run Nmap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk" FontWeight="Normal"/>
-                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="292,10,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click" FontWeight="Normal"/>
-                    <CheckBox x:Name="authChkBx" Content="I have permission from the &#xD;&#xA;network administrator" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Normal"/>
-                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,52,-4,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
-                </Grid>
-            </TabItem>   
         </TabControl>
         <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="38" Click="btnExit_Click" HorizontalAlignment="Left" Width="153"/>
 
