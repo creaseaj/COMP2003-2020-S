@@ -28,6 +28,9 @@ namespace VAPS.View
         //Declarations
         ARPController ARP;
         PortScanController PortScan;
+
+        graphController graphControl;
+        nmapController nController;
         UsernameSearchController usernameSearch;
         PasswordTesterController PasswordTesting;
         DashboardController dashboard;
@@ -45,6 +48,16 @@ namespace VAPS.View
             //Controllers
             ARP = new ARPController();
             PortScan = new PortScanController();
+
+            graphControl = new graphController();
+            PasswordTesting = new PasswordTesterController();
+            //Port.Instance.fileInput();
+            //Device.Instance.fileInput();
+
+            nController = new nmapController();
+            //Port.Instance.fileInput();
+            graphControl.runUpdates(ARPgraphCanvas, portCanvas, ARP, PortScan, ARP.formatTable(new DataTable()));
+
             usernameSearch = new UsernameSearchController();
             PasswordTesting = new PasswordTesterController();
             NMap = new nmapController();
@@ -61,6 +74,7 @@ namespace VAPS.View
             PortScannerBlocks = new TextBlock[] { txtBlockOpenNum, txtBlockCouldNum, txtBlockShouldNum };
             dashboardLabels = new Label[] { lblHighTotal, lblMediumTotal, lblLowTotal };
             dashboardInformation = new TextBlock[] { txtHighRisk, txtMediumRisk, txtLowRisk };
+
 
 
             //The visibilities are used in development, this code is likely to be removed and the items set to hidden in release
@@ -150,18 +164,23 @@ namespace VAPS.View
         }
         private void ipsubShow_Click(object sender, RoutedEventArgs e)
         {
-            string ipaddress = NMap.GetLocalIPAddress();
+
+            string ipaddress = nController.GetLocalIPAddress();
+            //nmapOut.Text = (ipaddress);
+
+            /// nController.Subnet();
+
+            //nmapOut.Text += nController.getSubnetFromIP(ipaddress);
+
         }
 
-        private void nmapInstall_Click(object sender, RoutedEventArgs e)
-        {
-            //nmapOut.Text = new nmapController().scanLocal();
-
-        }
+        
 
         private void btnUsernameSearch_Click(object sender, RoutedEventArgs e)
         {
+            
             usernameSearch.runUsernameSearch(txtUsername.Text, btnUsernameSearch, dtGrdUsernames, txBlockUsernameResult);
         }
+
     }
 }

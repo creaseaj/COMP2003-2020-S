@@ -35,3 +35,4 @@ Our port scanner allows the user to probe their network for open ports and gives
 * Tick Icon (Password guidance) - Icons made by <a href="https://www.flaticon.com/authors/alfredo-hernandez" title="Alfredo Hernandez">Alfredo Hernandez</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
 * Cross Icon (Password guidance) - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
 * Password strength estimation - https://github.com/hexasoftuk/Hexasoft.Zxcvbn
+* Operating System Vulnerability Indicator - https://nvd.nist.gov/vuln

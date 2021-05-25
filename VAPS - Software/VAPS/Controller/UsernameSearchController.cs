@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using VAPS.Model;
-
+using VAPS.Resources;
 namespace VAPS.Controller
 {
     class UsernameSearchController
     {
         public void fileInput()
         {
-            string filepath = ("Resources/WebAddresses.txt");
+            string filepath = ("C:/Users/Adam/source/repos/creaseaj/COMP2003-2020-S/VAPS - Software/VAPS/Resources/WebAddresses.txt");
             var fileReader = new StreamReader(File.OpenRead(filepath));
             List<String> newAddresses = new List<string>();
             while (!fileReader.EndOfStream)
