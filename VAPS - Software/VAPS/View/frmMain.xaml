@@ -102,15 +102,25 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <Label Content="Label" Height="100" Width="100"/>
-            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
-                <Grid x:Name="gridPlaceholder" Background="White">
-                    <Button x:Name="nmapInstall" Content="Run Nmap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk" FontWeight="Normal"/>
-                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="292,10,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click" FontWeight="Normal"/>
-                    <CheckBox x:Name="authChkBx" Content="I have permission from the &#xD;&#xA;network administrator" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Normal"/>
-                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,52,-4,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
+
+            <TabItem x:Name="tabHolder_Copy3" Header="ARP Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3">
+                <Grid x:Name="ARPgraphGrid" Background="White" Margin="48,0,0,34">
+                    <Canvas x:Name="ARPgraphCanvas" Margin="0,0,0,0"/>
+                    <Label Content="Device Safety Level" HorizontalAlignment="Left" Margin="262,527,0,-39" VerticalAlignment="Top"/>
+                    <Label Content="Device Count" HorizontalAlignment="Left" Margin="-105,210,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
                 </Grid>
             </TabItem>
+            <Label Content="Label" Height="100" Width="100"/>
+            
             <TabItem x:Name="tabPortScanner" Header="Port Scanner" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                 <Grid x:Name="gridPortScanner" Background="White">
                     <Button x:Name="btnPortScanner" Content="Run Port Scanner" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" FontSize="12" FontWeight="Normal" Height="32" Click="btnPortScanner_Click"/>
@@ -135,6 +145,23 @@
                     <TextBlock x:Name="txtBlockCouldNum" HorizontalAlignment="Center" Margin="508,513,276,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="45" TextAlignment="Center" FontSize="18" Foreground="Black"/>
                     <TextBlock x:Name="txtBlockShouldNum" HorizontalAlignment="Center" Margin="788,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="47" Width="41" TextAlignment="Center" FontSize="18" Foreground="Black"/>
 
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabHolder_Copy2" Header="Ports Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
+                <Grid x:Name="PORTgraphGrid" Background="White" Margin="49,0,0,27">
+                    <Canvas x:Name="portCanvas" Margin="0,0,0,0">
+                    </Canvas>
+                    <Label Content="Port Count" HorizontalAlignment="Left" Margin="-91,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label Content="Port Safety Level" HorizontalAlignment="Left" Margin="262,529,0,-34" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabPasswordTester" Header="Password Tester" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
@@ -163,18 +190,8 @@
                 </Grid>
             </TabItem>
 
-            <TabItem x:Name="tabHolder_Copy2" Header="Ports Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3" >
-                <Grid x:Name="PORTgraphGrid" Background="White">
-                    <Canvas x:Name="portCanvas" Margin="0,0,0,0">
-                    </Canvas>
-                </Grid>
-            </TabItem>
 
-            <TabItem x:Name="tabHolder_Copy3" Header="ARP Graph" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-6,0,3">
-                <Grid x:Name="ARPgraphGrid" Background="White">
-                    <Canvas x:Name="ARPgraphCanvas" Margin="0,0,0,0"/>
-                </Grid>
-            </TabItem>
+
             <TabItem x:Name="tabUsername" Header="Username Search" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
                     <Grid x:Name="gridUsername" Background="White">
                         <TextBlock x:Name="header_Copy" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="809" Foreground="#FF850505" FontSize="28" TextAlignment="Center"><Run Text="Username Search"/><LineBreak/><Run/></TextBlock>
@@ -189,7 +206,14 @@
                         </Viewbox>
                     </Grid>
             </TabItem>
-               
+            <TabItem x:Name="tabNMap" Header="NMap" Background="#FF363636" BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" Foreground="Gray" Margin="-5,-11,0,11" Height="38" >
+                <Grid x:Name="gridPlaceholder" Background="White">
+                    <Button x:Name="nmapInstall" Content="Run Nmap Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="277" Click="scnNtwrkClk" FontWeight="Normal"/>
+                    <Button x:Name="ipsubShow" Content="Show IP and Subnet" HorizontalAlignment="Left" Margin="292,10,0,0" VerticalAlignment="Top" Width="277" Click="ipsubShow_Click" FontWeight="Normal"/>
+                    <CheckBox x:Name="authChkBx" Content="I have permission from the &#xD;&#xA;network administrator" HorizontalAlignment="Left" Margin="574,10,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Normal"/>
+                    <DataGrid x:Name="nmapOutGrid" HorizontalAlignment="Left" Height="497" Margin="10,52,-4,0" VerticalAlignment="Top" Width="823" FontWeight="Normal"/>
+                </Grid>
+            </TabItem>   
         </TabControl>
         <Button x:Name="btnExit" Content="  Exit" Margin="1,0,0,1" Background="#FF363636" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" Foreground="White"  HorizontalContentAlignment="Left" BorderBrush="#FF363636" Height="38" Click="btnExit_Click" HorizontalAlignment="Left" Width="153"/>
 
