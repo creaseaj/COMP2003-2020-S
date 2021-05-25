@@ -33,10 +33,13 @@ namespace VAPS.View
         nmapController nController;
         UsernameSearchController usernameSearch;
         PasswordTesterController PasswordTesting;
+        DashboardController dashboard;
         Image[] passwordImages;
         TextBlock[] ARPTextBlocks;
         TextBlock[] PortScannerBlocks;
         nmapController NMap;
+        Label[] dashboardLabels;
+        TextBlock[] dashboardInformation;
 
         public CoreWindow()
         {
@@ -58,6 +61,8 @@ namespace VAPS.View
             usernameSearch = new UsernameSearchController();
             PasswordTesting = new PasswordTesterController();
             NMap = new nmapController();
+            dashboard = new DashboardController();
+
             //Initial Fileinput
             Port.Instance.fileInput();
             Device.Instance.fileInput();
@@ -67,6 +72,8 @@ namespace VAPS.View
             passwordImages = new Image[] { imgLength, imgLower, imgNumber, imgPassword, imgSpecial, imgUpper };
             ARPTextBlocks = new TextBlock[] { blockARPKnown, blockARPRegistered, blockARPUnknown };
             PortScannerBlocks = new TextBlock[] { txtBlockOpenNum, txtBlockCouldNum, txtBlockShouldNum };
+            dashboardLabels = new Label[] { lblHighTotal, lblMediumTotal, lblLowTotal };
+            dashboardInformation = new TextBlock[] { txtHighRisk, txtMediumRisk, txtLowRisk };
 
 
 
@@ -83,6 +90,8 @@ namespace VAPS.View
         private void btnARP_Click(object sender, RoutedEventArgs e)
         {
             ARP.ARPScan(btnRun1, arpGrid, ARPTextBlocks, txtARPDeviceName, btnARPAddName);
+            dashboard.updateDashboard(dashboardLabels, ARPTextBlocks, PortScannerBlocks);
+            dashboard.updateDashboardInformation(dashboardInformation, ARPTextBlocks, PortScannerBlocks);
         }
       
 
@@ -94,6 +103,8 @@ namespace VAPS.View
         private void btnPortScanner_Click(object sender, RoutedEventArgs e)
         {
             PortScan.runPortScan(PortScannerDataGrid, PortScannerBlocks);
+            dashboard.updateDashboard(dashboardLabels, ARPTextBlocks, PortScannerBlocks);
+            dashboard.updateDashboardInformation(dashboardInformation, ARPTextBlocks, PortScannerBlocks);
         }
 
         private void tabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -103,12 +114,16 @@ namespace VAPS.View
                 if (arpGrid.Items.Count <= 0)
                 {
                     ARP.ARPScan(btnRun1, arpGrid, ARPTextBlocks, txtARPDeviceName, btnARPAddName);
+                    dashboard.updateDashboard(dashboardLabels, ARPTextBlocks, PortScannerBlocks);
+                    dashboard.updateDashboardInformation(dashboardInformation, ARPTextBlocks, PortScannerBlocks);
                 }
                 
             }
             else if (tabPortScanner != null && tabPortScanner.IsSelected)
             {
                 PortScan.runPortScan(PortScannerDataGrid, PortScannerBlocks);
+                dashboard.updateDashboard(dashboardLabels, ARPTextBlocks, PortScannerBlocks);
+                dashboard.updateDashboardInformation(dashboardInformation, ARPTextBlocks, PortScannerBlocks);
             }
         }
 
