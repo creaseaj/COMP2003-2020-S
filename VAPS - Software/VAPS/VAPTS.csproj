@@ -100,6 +100,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\cmdController.cs" />
+    <Compile Include="Controller\DashboardController.cs" />
     <Compile Include="Controller\graphController.cs" />
     <Compile Include="Controller\nmapController.cs" />
     <Compile Include="Controller\PasswordTesterController.cs" />
