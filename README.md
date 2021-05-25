@@ -7,20 +7,8 @@ This repository contains the relevant files for our COMP2003 - Computing Project
 ## Product Vision ##
 Designed for Small-to-Medium enterprises whose systems may be vulnerable to attacks without realising, the Vulnerability Analysis and Pen-Testing Suite is a system testing kit. It searches for a range of vulnerabilities using traditional tools wrapped into one, user-friendly environment that outputs any results clearly and effectively.
 
-## Functionality ##
-### ARP Scan ###
-Our ARP (Address Resolution Protocol) viewer is a low-level network discovery tool, that gives users the ability to see the IP addresses and associated physical (MAC) addresses of devices on the network. In the screenshot below you can see VAPTS on the left giving the users a readout of a recent Arp scan, this can be compared to the default Arp command that ran through the command prompt on a windows machine on the right. You will notice that VAPTS can identify the devices manufacturer, due to our built-in web scraping techniques. We felt it was important for the users to be able to quickly identify the devices and having more detailed information about said devices allows for that to happen. 
-
-<p align="center">
-  <img src="/Documentation/Screenshots/ArpScan.jpg">
-</p>
-
-### Port Scan ###
-Our port scanner allows the user to probe their network for open ports and gives a detailed readout of the port number, state, and description of what the port is used for, along with our recommendation on if the port should be open or closed.  This can be seen at the bottom in the screenshot below, with easy to see indicators on security risk and the number of ports within each of the three categories shown clearly. 
-
-<p align="center">
-  <img src="/Documentation/Screenshots/PortScan.png">
-</p>
+## Help Page ##
+[http://web.socem.plymouth.ac.uk/comp2003/COMP2003_S/public/index.html](http://web.socem.plymouth.ac.uk/comp2003/COMP2003_S/public/index.html)
 
 ## Authors ##
 * [Matt Caine](https://github.com/Matt-Caine)
@@ -30,5 +18,9 @@ Our port scanner allows the user to probe their network for open ports and gives
 * [Kieran Wheatley](https://github.com/kieranwheatley)
 
 ## Acknowledgements ##
-* [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
+* Vendor ID's for MAC Addresses - [https://www.adminsub.net/mac-address-finder/](https://www.adminsub.net/mac-address-finder/)
 * [https://nmap.org/](https://nmap.org/)
+* Tick Icon (Password guidance) - Icons made by <a href="https://www.flaticon.com/authors/alfredo-hernandez" title="Alfredo Hernandez">Alfredo Hernandez</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
+* Cross Icon (Password guidance) - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
+* Password strength estimation - https://github.com/hexasoftuk/Hexasoft.Zxcvbn
+* Operating System Vulnerability Indicator - https://nvd.nist.gov/vuln
