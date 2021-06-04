@@ -38,7 +38,6 @@ namespace VAPS.Controller
                 {
                     if (line.Contains("  "))
                     {
-                        //MessageBox.Show("I have more than one space in me!");
                         string editedLine = line;
                         RegexOptions options = RegexOptions.None;
                         Regex regex = new Regex("[ ]{2,}", options);
