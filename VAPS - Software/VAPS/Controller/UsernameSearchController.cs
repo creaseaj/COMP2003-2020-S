@@ -16,7 +16,8 @@ namespace VAPS.Controller
     {
         public void fileInput()
         {
-            string filepath = ("C:/Users/Adam/source/repos/creaseaj/COMP2003-2020-S/VAPS - Software/VAPS/Resources/WebAddresses.txt");
+            //Read in the web addresses to be searched
+            string filepath = ("Resources/WebAddresses.txt");
             var fileReader = new StreamReader(File.OpenRead(filepath));
             List<String> newAddresses = new List<string>();
             while (!fileReader.EndOfStream)
@@ -26,6 +27,7 @@ namespace VAPS.Controller
             WebAddress.Instance.addWebAddresses(newAddresses);
             fileReader.Close();
         }
+        //Check the username against each address in the file and if it finds a result, add it to the DataTable to return to GUI
         public DataTable generateResults(string username)
         {
             DataTable UsernameTable = new DataTable();
@@ -45,6 +47,7 @@ namespace VAPS.Controller
             }           
             return UsernameTable;
         }
+        //Method for searching the usernames. Takes a url (provided by the file) and uses the HttpWebRequest package to check if the url and username combined returns a results
         public static string searchUsername(String url)
         {
             List<String> matches = new List<string>();
