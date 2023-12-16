@@ -8,7 +8,7 @@ This repository contains the relevant files for our COMP2003 - Computing Project
 Designed for Small-to-Medium enterprises whose systems may be vulnerable to attacks without realising, the Vulnerability Analysis and Pen-Testing Suite is a system testing kit. It searches for a range of vulnerabilities using traditional tools wrapped into one, user-friendly environment that outputs any results clearly and effectively.
 
 ## Help Page ##
-[http://web.socem.plymouth.ac.uk/comp2003/COMP2003_S/public/index.html](http://web.socem.plymouth.ac.uk/comp2003/COMP2003_S/public/index.html)
+[http://web.socem.plymouth.ac.uk/comp2003/COMP2003_S/public/index.html](https://adamcrease.dev/COMP2003-2020-S/)
 
 ## Authors ##
 * [Matt Caine](https://github.com/Matt-Caine)
